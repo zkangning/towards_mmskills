@@ -1,0 +1,17 @@
+[project]
+name = "mmskills"
+version = "0.1.0"
+description = "Multimodal skill integration layer for OSWorld visual agents"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "backoff",
+  "openai",
+  "Pillow",
+  "requests",
+  "tqdm",
+  "wrapt_timeout_decorator",
+]
+
+[tool.setuptools]
+packages = ["mm_agents", "mm_agents.utils"]
