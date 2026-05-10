@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Multimodal skill integration layer for OSWorld visual agents"
 readme = "README.md"
 requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
 dependencies = [
   "backoff",
   "openai",
@@ -12,6 +13,20 @@ dependencies = [
   "tqdm",
   "wrapt_timeout_decorator",
 ]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/zkangning/towards_mmskills"
+Repository = "https://github.com/zkangning/towards_mmskills"
+Issues = "https://github.com/zkangning/towards_mmskills/issues"
 
 [tool.setuptools]
 packages = ["mm_agents", "mm_agents.utils"]

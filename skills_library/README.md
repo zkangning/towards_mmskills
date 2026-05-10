@@ -1,10 +1,33 @@
-# 📚 Released Skills Subset
+# 📚 Released MMSkills Subset
 
-This directory contains a compact public subset of generated Ubuntu MMSkills.
-Each skill is a self-contained directory with `SKILL.md`, state-card metadata,
-and visual references.
+This directory contains the public MMSkills subset released with the repository. Each skill is a self-contained multimodal package for a recurring Ubuntu desktop workflow.
 
-Released skills:
+## Package Structure
+
+```text
+<domain>/<skill_name>/
+├── SKILL.md                  # Procedure, applicability, transfer limits, verification cues
+├── runtime_state_cards.json  # Compact state metadata loaded by the runtime agent
+├── state_cards.json          # Audit-grade state metadata for inspection
+├── plan.json                 # Generated plan metadata, when available
+└── Images/                   # Full frames, focus crops, before/after references
+```
+
+## Skill Inventory
+
+| Domain | Count | Released skills |
+|--------|------:|-----------------|
+| Chrome | 3 | Configure default search engine and preferences; manage bookmarks, reading list, and shortcuts; search web and open target result |
+| GIMP | 1 | Save projects and export edited images |
+| LibreOffice Calc | 3 | Create chart on target sheet; sort and filter tables; use formulas and functions |
+| LibreOffice Impress | 2 | Insert and configure images/audio/media; manage slide structure, ordering, and layouts |
+| LibreOffice Writer | 2 | Find and replace text or formatting; save, export, and use templates |
+| OS | 2 | Manage files and archives; query system state in Terminal |
+| Thunderbird | 1 | Compose, format, and send emails |
+| VLC | 1 | Open local media and verify playback surface |
+| VS Code | 1 | Search and replace project content |
+
+## Exact Directories
 
 - `chrome/CHROME_Configure_Default_Search_Engine_And_Search_Preferences`
 - `chrome/CHROME_Manage_Bookmarks_Reading_List_And_Shortcuts`
@@ -23,6 +46,9 @@ Released skills:
 - `vlc/VLC_Open_Local_Media_And_Verify_Playback_Surface`
 - `vs_code/VSCODE_Search_and_Replace_Project_Content`
 
-The full internal skill library is larger; this subset is selected to show the
-text, state-card, and visual-reference format across representative desktop
-domains.
+## Notes for Contributors
+
+- Keep each skill focused on one reusable workflow.
+- Prefer compact runtime state cards over broad visual dumps.
+- Add only visual references that are referenced by state cards.
+- Update `task_skill_mappings/task_skill_mapping.json` when a new skill should be selected automatically for released OSWorld tasks.
