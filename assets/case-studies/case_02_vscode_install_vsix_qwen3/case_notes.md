@@ -8,7 +8,7 @@
 
 ## Clips
 
-The source clips were cut from the original recordings. The website clips are H.264/yuv420p 720p derivatives for reliable browser playback. The window is manually chosen to emphasize the key behavioral contrast.
+The source clips were cut from the original recordings with stream-copy. The website and README clips keep the original 1920x1080 resolution and are encoded as high-quality H.264/yuv420p CRF18 videos for reliable direct browser playback. The window is manually chosen to emphasize the key behavioral contrast.
 
 | Variant | Score | Steps | Window | Clip | Caption |
 | --- | ---: | ---: | ---: | --- | --- |
