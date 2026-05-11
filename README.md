@@ -42,15 +42,62 @@
 
 ## 🎬 Demos
 
-Five OSWorld demos compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. The inline previews below run directly in the README, with each strip ordered left-to-right as **No skills / Text-only / MMSkills**. The full controllable video layout is also available at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
+Five OSWorld demos compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. Each video is ordered left-to-right as **No skills / Text-only / MMSkills** and plays directly in GitHub README. The full controllable video layout is also available at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
 
-| Demo | Inline preview |
-|------|----------------|
-| Calc merged headers | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_01_calc_merged_headers_qwen3/demo_preview.gif" width="720" alt="Calc merged headers demo preview: no skills, text-only, and MMSkills"/> |
-| VS Code local VSIX install | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_02_vscode_install_vsix_qwen3/demo_preview.gif" width="720" alt="VS Code local VSIX install demo preview: no skills, text-only, and MMSkills"/> |
-| GIMP text-layer move | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_03_gimp_move_text_box_geminipro31/demo_preview.gif" width="720" alt="GIMP text-layer move demo preview: no skills, text-only, and MMSkills"/> |
-| Calc chart creation | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_04_calc_clustered_chart_geminipro31/demo_preview.gif" width="720" alt="Calc chart creation demo preview: no skills, text-only, and MMSkills"/> |
-| Impress note and background | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_05_impress_purple_note_kimi_k26/demo_preview.gif" width="720" alt="Impress note and background demo preview: no skills, text-only, and MMSkills"/> |
+<details open>
+<summary><h3>1. Calc merged headers</h3></summary>
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/3fdbfaef-d4e7-4177-9b02-e94d5f5f5c61" width="95%" controls />
+</div>
+
+Creates Sheet2, merges the requested header ranges, and writes the target labels. MMSkills follows the intended spreadsheet workflow while the other modes make slower or less reliable progress.
+
+</details>
+
+<details>
+<summary><h3>2. VS Code local VSIX install</h3></summary>
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/f504fbe6-a0c0-4d7c-8d48-6f10be3e6868" width="95%" controls />
+</div>
+
+Installs a local VSIX extension through the GUI workflow. The comparison highlights how multimodal skill references reduce detours around extension discovery and confirmation steps.
+
+</details>
+
+<details>
+<summary><h3>3. GIMP text-layer move</h3></summary>
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/74ab6a67-64f8-40e0-bf57-ff5e6d3e60c7" width="95%" controls />
+</div>
+
+Moves a specific text layer in GIMP. The multimodal skill package provides visual grounding for the relevant layer and toolbar state, making the edit path clearer.
+
+</details>
+
+<details>
+<summary><h3>4. Calc chart creation</h3></summary>
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/a5d906e6-87de-437d-8769-cbd0ddd09d7c" width="95%" controls />
+</div>
+
+Builds the requested clustered chart in LibreOffice Calc. The side-by-side run shows the effect of reusable spreadsheet procedure knowledge on multi-step GUI manipulation.
+
+</details>
+
+<details>
+<summary><h3>5. Impress note and background</h3></summary>
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/db879ea0-9633-4112-bda0-8f860dec3360" width="95%" controls />
+</div>
+
+Updates an Impress slide note and visual background. MMSkills keeps the agent aligned with the presentation-specific workflow and target visual state.
+
+</details>
 
 ## 💡 Overview
 
