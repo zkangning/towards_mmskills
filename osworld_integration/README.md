@@ -8,7 +8,7 @@ This directory contains the MMSkills-aware runner files that can be copied into 
 
 They add:
 
-- the `mm_skill` and text-skill agent paths,
+- the `general`, `general_text_skill`, and `mm_skill` agent paths,
 - task-to-skill resolution,
 - per-task skill invocation logs,
 - skill usage summaries,

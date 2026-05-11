@@ -9,14 +9,14 @@ from typing import Dict, List, Optional, Set, Tuple
 
 from PIL import Image
 
-from mm_agents import gemini_agent as base_agent_mod
+from mm_agents import general_agent as base_agent_mod
 
 
 MAX_SKILL_LOAD_ROUNDS = 8
 
 
-class GeminiSkillAgent(base_agent_mod.GeminiAgent):
-    """GeminiAgent variant with on-demand LOAD_SKILL blocks."""
+class GeneralSkillAgent(base_agent_mod.GeneralAgent):
+    """GeneralAgent variant with on-demand LOAD_SKILL blocks."""
 
     def __init__(
         self,
@@ -45,7 +45,7 @@ class GeminiSkillAgent(base_agent_mod.GeminiAgent):
                 base_agent_mod.logger.info("[Skills] SkillLoader initialized with library: %s", self.skills_library_dir)
 
     def reset(self, _logger=None, vm_ip=None, **kwargs):
-        runtime_logger = _logger if _logger is not None else logging.getLogger("desktopenv.gemini_skill_agent")
+        runtime_logger = _logger if _logger is not None else logging.getLogger("desktopenv.general_skill_agent")
         super().reset(_logger=runtime_logger, vm_ip=vm_ip, **kwargs)
         self._task_skill_names = []
         self._task_skill_metadatas = []
@@ -81,7 +81,7 @@ class GeminiSkillAgent(base_agent_mod.GeminiAgent):
             "load_skill_successes": 0,
         }
         if base_agent_mod.logger:
-            base_agent_mod.logger.info("[Skills] Gemini task skills resolved: %s", self._task_skill_names)
+            base_agent_mod.logger.info("[Skills] General task skills resolved: %s", self._task_skill_names)
 
     def _build_skill_system_message(self, instruction: str) -> str:
         available_skills = "\n".join(
@@ -332,7 +332,7 @@ You are asked to complete the following task: {instruction}
                 json.dump(payload, f, indent=2, ensure_ascii=False)
         except Exception as e:
             if base_agent_mod.logger:
-                base_agent_mod.logger.error("[Skills] Failed to save Gemini skill_usage_summary.json: %s", str(e))
+                base_agent_mod.logger.error("[Skills] Failed to save general skill_usage_summary.json: %s", str(e))
 
     def predict(self, instruction: str, obs: Dict) -> List:
         screenshot_bytes = obs["screenshot"]
@@ -357,21 +357,21 @@ You are asked to complete the following task: {instruction}
 
             if base_agent_mod.logger:
                 base_agent_mod.logger.info("=" * 80)
-                base_agent_mod.logger.info("[GeminiSkill Prompt] Step %d round %d", len(self.actions), round_idx + 1)
-                base_agent_mod.logger.info("[GeminiSkill Prompt] System message:\n%s", system_message)
+                base_agent_mod.logger.info("[GeneralSkill Prompt] Step %d round %d", len(self.actions), round_idx + 1)
+                base_agent_mod.logger.info("[GeneralSkill Prompt] System message:\n%s", system_message)
                 base_agent_mod.logger.info("-" * 80)
-                base_agent_mod.logger.info("[GeminiSkill Prompt] Contents:\n%s", self._format_contents_for_log(contents))
+                base_agent_mod.logger.info("[GeneralSkill Prompt] Contents:\n%s", self._format_contents_for_log(contents))
                 base_agent_mod.logger.info("-" * 80)
 
             try:
                 response = self.call_llm(system_text=system_message, contents=contents)
             except Exception as e:
-                base_agent_mod.logger.error("Failed to call Gemini skill model %s, Error: %s", self.model, str(e))
+                base_agent_mod.logger.error("Failed to call skill model %s, Error: %s", self.model, str(e))
                 response = ""
 
             final_response = response or ""
             if base_agent_mod.logger:
-                base_agent_mod.logger.info("[GeminiSkill Response] %s", final_response)
+                base_agent_mod.logger.info("[GeneralSkill Response] %s", final_response)
 
             if self.save_conversation_json:
                 self._conversation_log.append(

@@ -9,16 +9,16 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from PIL import Image
 
-from mm_agents import gemini_agent as base_agent_mod
+from mm_agents import general_agent as base_agent_mod
 
 
 MAX_SKILL_LOAD_ROUNDS = 8
 ARCHITECTURE_VERSION = "mm_skill_base_contextual_history"
 
 
-class _MMSkillBaseAgent(base_agent_mod.GeminiAgent):
+class _MMSkillBaseAgent(base_agent_mod.GeneralAgent):
     """
-    Gemini skill agent with branch-based skill consultation.
+    MMSkill agent with branch-based skill consultation.
 
     Key design points:
     - The main trajectory history stores a step-level response that remains visible to
@@ -94,7 +94,7 @@ class _MMSkillBaseAgent(base_agent_mod.GeminiAgent):
         self._task_skill_metadatas = [meta_map[name] for name in self._task_skill_names if name in meta_map]
         self._consulted_skills = set()
         self._skill_usage_summary = self._empty_skill_usage_summary()
-        self._runtime_logger().info("[Skills/V2] Gemini task skills resolved: %s", self._task_skill_names)
+        self._runtime_logger().info("[Skills/V2] MMSkill task skills resolved: %s", self._task_skill_names)
 
     def _available_skills_text(self) -> str:
         lines = [
@@ -660,14 +660,14 @@ You are asked to complete the following task: {instruction}
 
             self._runtime_logger().info("=" * 80)
             self._runtime_logger().info(
-                "[GeminiSkill/V2][Branch %d] Step %d round %d",
+                "[MMSkill/V2][Branch %d] Step %d round %d",
                 branch_id,
                 step_idx,
                 round_idx + 1,
             )
-            self._runtime_logger().info("[GeminiSkill/V2][Branch %d] System message:\n%s", branch_id, system_message)
+            self._runtime_logger().info("[MMSkill/V2][Branch %d] System message:\n%s", branch_id, system_message)
             self._runtime_logger().info(
-                "[GeminiSkill/V2][Branch %d] Contents:\n%s",
+                "[MMSkill/V2][Branch %d] Contents:\n%s",
                 branch_id,
                 self._format_contents_for_log(contents),
             )
@@ -676,7 +676,7 @@ You are asked to complete the following task: {instruction}
                 response = self.call_llm(system_text=system_message, contents=contents)
             except Exception as e:
                 self._runtime_logger().error(
-                    "[GeminiSkill/V2][Branch %d] Failed to call Gemini model %s: %s",
+                    "[MMSkill/V2][Branch %d] Failed to call model %s: %s",
                     branch_id,
                     self.model,
                     str(e),
@@ -684,7 +684,7 @@ You are asked to complete the following task: {instruction}
                 response = ""
 
             final_response = response or ""
-            self._runtime_logger().info("[GeminiSkill/V2][Branch %d] Response: %s", branch_id, final_response)
+            self._runtime_logger().info("[MMSkill/V2][Branch %d] Response: %s", branch_id, final_response)
 
             round_record = {
                 "round": round_idx + 1,
@@ -793,18 +793,18 @@ You are asked to complete the following task: {instruction}
             )
 
             self._runtime_logger().info("=" * 80)
-            self._runtime_logger().info("[GeminiSkill/V2] Step %d main round %d", step_idx, round_idx + 1)
-            self._runtime_logger().info("[GeminiSkill/V2] System message:\n%s", system_message)
-            self._runtime_logger().info("[GeminiSkill/V2] Contents:\n%s", self._format_contents_for_log(contents))
+            self._runtime_logger().info("[MMSkill/V2] Step %d main round %d", step_idx, round_idx + 1)
+            self._runtime_logger().info("[MMSkill/V2] System message:\n%s", system_message)
+            self._runtime_logger().info("[MMSkill/V2] Contents:\n%s", self._format_contents_for_log(contents))
 
             try:
                 response = self.call_llm(system_text=system_message, contents=contents)
             except Exception as e:
-                self._runtime_logger().error("Failed to call Gemini skill v2 model %s: %s", self.model, str(e))
+                self._runtime_logger().error("Failed to call skill v2 model %s: %s", self.model, str(e))
                 response = ""
 
             final_response = response or ""
-            self._runtime_logger().info("[GeminiSkill/V2] Main response: %s", final_response)
+            self._runtime_logger().info("[MMSkill/V2] Main response: %s", final_response)
             self._append_main_conversation_log(
                 step_idx=step_idx,
                 round_idx=round_idx + 1,

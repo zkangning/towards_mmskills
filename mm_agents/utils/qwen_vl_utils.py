@@ -57,7 +57,7 @@ def preprocess_image_for_vlm(
     output_format: str = "PNG",
 ):
     """
-    Preprocess an image for VLM input using the shared OSWorld Qwen/Gemini path.
+    Preprocess an image for VLM input using the shared OSWorld visual-agent path.
 
     Returns:
         (base64_encoded_image, resized_width, resized_height)

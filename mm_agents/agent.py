@@ -1,6 +1,6 @@
 """Minimal OSWorld agent compatibility helpers used by MMSkills.
 
-This repository ships the MMSkills Gemini integration layer, not the full
+This repository ships the MMSkills general visual-agent integration layer, not the full
 OSWorld agent zoo.  The full OSWorld project provides a much larger
 ``mm_agents.agent`` module; the MMSkills files only need the response parsing
 helpers below when imported outside an OSWorld checkout.
@@ -77,6 +77,6 @@ class PromptAgent:
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         raise ImportError(
-            "MMSkills only vendors the Gemini/MMSkills integration layer. "
+            "MMSkills only vendors the general/MMSkills integration layer. "
             "Run OSWorld from an OSWorld checkout for PromptAgent baselines."
         )

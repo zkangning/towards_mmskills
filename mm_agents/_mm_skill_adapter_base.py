@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-from mm_agents import gemini_agent as base_agent_mod
+from mm_agents import general_agent as base_agent_mod
 from mm_agents import _mm_skill_state_cards as v4mod
 from mm_agents import _mm_skill_long_plan as v6mod
 
@@ -1207,14 +1207,14 @@ You are asked to complete the following task: {instruction}
                 )
                 self._runtime_logger().info("=" * 80)
                 self._runtime_logger().info(
-                    "[GeminiSkill/V7][Branch %d] Step %d state-view selection round %d",
+                    "[MMSkill/V7][Branch %d] Step %d state-view selection round %d",
                     branch_id,
                     step_idx,
                     round_idx + 1,
                 )
-                self._runtime_logger().info("[GeminiSkill/V7][Branch %d] System message:\n%s", branch_id, system_message)
+                self._runtime_logger().info("[MMSkill/V7][Branch %d] System message:\n%s", branch_id, system_message)
                 self._runtime_logger().info(
-                    "[GeminiSkill/V7][Branch %d] Contents:\n%s",
+                    "[MMSkill/V7][Branch %d] Contents:\n%s",
                     branch_id,
                     self._format_contents_for_log(contents),
                 )
@@ -1223,7 +1223,7 @@ You are asked to complete the following task: {instruction}
                     response = self.call_llm(system_text=system_message, contents=contents)
                 except Exception as e:
                     self._runtime_logger().error(
-                        "[GeminiSkill/V7][Branch %d] Failed during state-view selection: %s",
+                        "[MMSkill/V7][Branch %d] Failed during state-view selection: %s",
                         branch_id,
                         str(e),
                     )
@@ -1326,14 +1326,14 @@ You are asked to complete the following task: {instruction}
 
             self._runtime_logger().info("=" * 80)
             self._runtime_logger().info(
-                "[GeminiSkill/V7][Branch %d] Step %d planner round %d",
+                "[MMSkill/V7][Branch %d] Step %d planner round %d",
                 branch_id,
                 step_idx,
                 round_idx + 1,
             )
-            self._runtime_logger().info("[GeminiSkill/V7][Branch %d] System message:\n%s", branch_id, system_message)
+            self._runtime_logger().info("[MMSkill/V7][Branch %d] System message:\n%s", branch_id, system_message)
             self._runtime_logger().info(
-                "[GeminiSkill/V7][Branch %d] Contents:\n%s",
+                "[MMSkill/V7][Branch %d] Contents:\n%s",
                 branch_id,
                 self._format_contents_for_log(contents),
             )
@@ -1342,7 +1342,7 @@ You are asked to complete the following task: {instruction}
                 response = self.call_llm(system_text=system_message, contents=contents)
             except Exception as e:
                 self._runtime_logger().error(
-                    "[GeminiSkill/V7][Branch %d] Failed during planner stage: %s",
+                    "[MMSkill/V7][Branch %d] Failed during planner stage: %s",
                     branch_id,
                     str(e),
                 )

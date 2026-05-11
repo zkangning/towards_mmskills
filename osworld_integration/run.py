@@ -17,19 +17,23 @@ from mm_agents.agent import PromptAgent
 from mm_agents.qwen3vl_agent import Qwen3VLAgent
 from mm_agents.qwen3vl_skill_agent import Qwen3VLSkillAgent
 from mm_agents.qwen3vl_skill_agent_v2 import Qwen3VLSkillAgentV2
-from mm_agents.gemini_agent import GeminiAgent
-from mm_agents.gemini_skill_agent import GeminiSkillAgent
-from mm_agents.gemini_text_skill_agent import (
-    GeminiTextSkillAgent,
+from mm_agents.general_agent import GeneralAgent
+from mm_agents.general_skill_agent import GeneralSkillAgent
+from mm_agents.general_text_skill_agent import (
+    GeneralTextSkillAgent,
     TEXT_SKILL_MODE_BRANCH_PLANNER,
     TEXT_SKILL_MODE_INLINE_CONTEXT,
 )
 from mm_agents.mm_skill_agent import MMSkillAgent
 
 AGENT_TYPE_ALIASES = {
-    "gemini3pro": "gemini",
-    "gemini3pro_skill": "gemini_skill",
+    "gemini": "general",
+    "gemini_skill": "general_skill",
+    "gemini_text_skill": "general_text_skill",
+    "gemini3pro": "general",
+    "gemini3pro_skill": "general_skill",
 }
+GENERAL_AGENT_TYPES = {"general", "general_skill", "general_text_skill", "mm_skill"}
 
 # Almost deprecated since it's not multi-env, use run_multienv_*.py instead
 
@@ -126,6 +130,9 @@ def config() -> argparse.Namespace:
             "qwen3vl",
             "qwen3vl_skill",
             "qwen3vl_skill_v2",
+            "general",
+            "general_skill",
+            "general_text_skill",
             "gemini",
             "gemini_skill",
             "gemini_text_skill",
@@ -133,15 +140,17 @@ def config() -> argparse.Namespace:
             "gemini3pro",
             "gemini3pro_skill",
         ],
-        help="Agent type to use. `mm_skill` is the branch-loaded multimodal skill architecture; model-specific agents such as `gemini` provide the underlying VLM adapter.",
+        help="Agent type to use. `general` is the model-agnostic screenshot-to-pyautogui adapter; "
+             "`general_text_skill` and `mm_skill` add text-only or multimodal skill consultation. "
+             "Legacy `gemini*` names are accepted as aliases.",
     )
-    # Qwen3VL specific config
+    # Backend config
     parser.add_argument(
         "--api_backend",
         type=str,
         default="openai",
         choices=["openai", "dashscope", "gemini"],
-        help="API backend for Qwen3VL (openai, dashscope, or gemini)",
+        help="API backend. `general*` and `mm_skill` support openai-compatible and native gemini endpoints.",
     )
     parser.add_argument(
         "--base_url",
@@ -168,26 +177,26 @@ def config() -> argparse.Namespace:
         choices=["absolute", "relative"],
         help="Coordinate system for Qwen3VL agent (absolute or relative)",
     )
-    # Gemini-specific config
+    # Reasoning/thinking config for compatible backends
     parser.add_argument(
         "--thinking_level",
         type=str,
         default="HIGH",
         choices=["NONE", "LOW", "MEDIUM", "HIGH"],
-        help="Thinking level for Gemini models",
+        help="Thinking level for compatible native Gemini endpoints",
     )
     parser.add_argument(
         "--thinking_mode",
         type=str,
         default="auto",
         choices=["auto", "on", "off"],
-        help="Thinking mode for compatible backends used by GeminiAgent.",
+        help="Thinking mode for compatible backends used by GeneralAgent.",
     )
     parser.add_argument(
         "--include_thoughts",
         action="store_true",
         default=True,
-        help="Include thinking/reasoning in Gemini response",
+        help="Include thinking/reasoning in compatible backend responses",
     )
     parser.add_argument(
         "--client_password",
@@ -228,7 +237,7 @@ def config() -> argparse.Namespace:
         type=str,
         default=TEXT_SKILL_MODE_INLINE_CONTEXT,
         choices=[TEXT_SKILL_MODE_INLINE_CONTEXT, TEXT_SKILL_MODE_BRANCH_PLANNER],
-        help="Mode for gemini_text_skill: 'inline_context' keeps loaded SKILL.md text in the main context, "
+        help="Mode for general_text_skill: 'inline_context' keeps loaded SKILL.md text in the main context, "
              "'branch_planner' uses a lightweight text-only planner branch that returns JSON guidance.",
     )
     parser.add_argument(
@@ -260,7 +269,12 @@ def config() -> argparse.Namespace:
     args = parser.parse_args()
     args.agent_type = AGENT_TYPE_ALIASES.get(args.agent_type, args.agent_type)
 
-    if args.agent_type in {"gemini", "gemini_skill", "gemini_text_skill", "mm_skill"}:
+    if args.agent_type in GENERAL_AGENT_TYPES:
+        if args.api_backend not in {"openai", "gemini"}:
+            raise ValueError(
+                "general*, mm_skill agents support --api_backend openai or gemini. "
+                "Use an OpenAI-compatible endpoint for other model providers."
+            )
         if args.api_backend == "gemini":
             if args.api_key is None:
                 args.api_key = os.getenv("GEMINI_API_KEY")
@@ -375,8 +389,8 @@ def test(args: argparse.Namespace, test_all_meta: dict) -> None:
             skills_library_dir=args.skills_library_dir,
             save_conversation_json=args.save_conversation_json,
         )
-    elif args.agent_type == "gemini":
-        agent = GeminiAgent(
+    elif args.agent_type == "general":
+        agent = GeneralAgent(
             model=args.model,
             max_tokens=args.max_tokens,
             top_p=args.top_p,
@@ -395,8 +409,8 @@ def test(args: argparse.Namespace, test_all_meta: dict) -> None:
             coordinate_type=args.coordinate_type,
             save_conversation_json=args.save_conversation_json,
         )
-    elif args.agent_type == "gemini_skill":
-        agent = GeminiSkillAgent(
+    elif args.agent_type == "general_skill":
+        agent = GeneralSkillAgent(
             model=args.model,
             max_tokens=args.max_tokens,
             top_p=args.top_p,
@@ -417,8 +431,8 @@ def test(args: argparse.Namespace, test_all_meta: dict) -> None:
             skills_library_dir=args.skills_library_dir,
             save_conversation_json=args.save_conversation_json,
         )
-    elif args.agent_type == "gemini_text_skill":
-        agent = GeminiTextSkillAgent(
+    elif args.agent_type == "general_text_skill":
+        agent = GeneralTextSkillAgent(
             model=args.model,
             max_tokens=args.max_tokens,
             top_p=args.top_p,

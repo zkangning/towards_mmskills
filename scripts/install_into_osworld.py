@@ -11,9 +11,9 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 AGENT_FILES = [
-    "gemini_agent.py",
-    "gemini_skill_agent.py",
-    "gemini_text_skill_agent.py",
+    "general_agent.py",
+    "general_skill_agent.py",
+    "general_text_skill_agent.py",
     "_mm_skill_base.py",
     "_mm_skill_planner.py",
     "_mm_skill_state_cards.py",

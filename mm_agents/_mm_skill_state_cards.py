@@ -15,7 +15,7 @@ STATE_CARD_PREVIEW_LIMIT = 3
 
 class _MMSkillStateCardsAgent(v3mod._MMSkillPlannerAgent):
     """
-    Multimodal-optimized Gemini skills agent.
+    Multimodal-optimized MMSkills agent.
 
     Compared with v3:
     - Skill selection in the main prompt is informed by compact runtime state-card previews.
@@ -762,14 +762,14 @@ You are asked to complete the following task: {instruction}
                 )
                 self._runtime_logger().info("=" * 80)
                 self._runtime_logger().info(
-                    "[GeminiSkill/V4][Branch %d] Step %d image-selection round %d",
+                    "[MMSkill/V4][Branch %d] Step %d image-selection round %d",
                     branch_id,
                     step_idx,
                     round_idx + 1,
                 )
-                self._runtime_logger().info("[GeminiSkill/V4][Branch %d] System message:\n%s", branch_id, system_message)
+                self._runtime_logger().info("[MMSkill/V4][Branch %d] System message:\n%s", branch_id, system_message)
                 self._runtime_logger().info(
-                    "[GeminiSkill/V4][Branch %d] Contents:\n%s",
+                    "[MMSkill/V4][Branch %d] Contents:\n%s",
                     branch_id,
                     self._format_contents_for_log(contents),
                 )
@@ -778,7 +778,7 @@ You are asked to complete the following task: {instruction}
                     response = self.call_llm(system_text=system_message, contents=contents)
                 except Exception as e:
                     self._runtime_logger().error(
-                        "[GeminiSkill/V4][Branch %d] Failed during image selection: %s",
+                        "[MMSkill/V4][Branch %d] Failed during image selection: %s",
                         branch_id,
                         str(e),
                     )
@@ -882,14 +882,14 @@ You are asked to complete the following task: {instruction}
 
             self._runtime_logger().info("=" * 80)
             self._runtime_logger().info(
-                "[GeminiSkill/V4][Branch %d] Step %d planner round %d",
+                "[MMSkill/V4][Branch %d] Step %d planner round %d",
                 branch_id,
                 step_idx,
                 round_idx + 1,
             )
-            self._runtime_logger().info("[GeminiSkill/V4][Branch %d] System message:\n%s", branch_id, system_message)
+            self._runtime_logger().info("[MMSkill/V4][Branch %d] System message:\n%s", branch_id, system_message)
             self._runtime_logger().info(
-                "[GeminiSkill/V4][Branch %d] Contents:\n%s",
+                "[MMSkill/V4][Branch %d] Contents:\n%s",
                 branch_id,
                 self._format_contents_for_log(contents),
             )
@@ -898,7 +898,7 @@ You are asked to complete the following task: {instruction}
                 response = self.call_llm(system_text=system_message, contents=contents)
             except Exception as e:
                 self._runtime_logger().error(
-                    "[GeminiSkill/V4][Branch %d] Failed during planner stage: %s",
+                    "[MMSkill/V4][Branch %d] Failed during planner stage: %s",
                     branch_id,
                     str(e),
                 )

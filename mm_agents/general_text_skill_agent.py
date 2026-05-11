@@ -11,8 +11,8 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from PIL import Image
 
-from mm_agents import gemini_agent as base_agent_mod
-from mm_agents import gemini_skill_agent as inline_mod
+from mm_agents import general_agent as base_agent_mod
+from mm_agents import general_skill_agent as inline_mod
 
 
 TEXT_SKILL_MODE_INLINE_CONTEXT = "inline_context"
@@ -22,8 +22,8 @@ TEXT_SKILL_MODE_CHOICES = {
     TEXT_SKILL_MODE_BRANCH_PLANNER,
 }
 
-INLINE_ARCHITECTURE_VERSION = "gemini_text_skill_agent_inline_context"
-BRANCH_ARCHITECTURE_VERSION = "gemini_text_skill_agent_branch_planner"
+INLINE_ARCHITECTURE_VERSION = "general_text_skill_agent_inline_context"
+BRANCH_ARCHITECTURE_VERSION = "general_text_skill_agent_branch_planner"
 MAX_BRANCH_SKILL_CONSULTS_PER_SKILL = 2
 ACTIVE_PLANNER_MEMO_TTL_STEPS = 5
 
@@ -40,7 +40,7 @@ PLANNER_HISTORY_META_COMMENT_PREFIXES = (
 )
 
 
-class _InlineContextGeminiTextSkillAgent(inline_mod.GeminiSkillAgent):
+class _InlineContextGeneralTextSkillAgent(inline_mod.GeneralSkillAgent):
     def __init__(self, *args, text_skill_mode: str = TEXT_SKILL_MODE_INLINE_CONTEXT, **kwargs):
         kwargs["skill_mode"] = "text_only"
         super().__init__(*args, **kwargs)
@@ -89,7 +89,7 @@ class _InlineContextGeminiTextSkillAgent(inline_mod.GeminiSkillAgent):
                 )
 
 
-class _BranchPlannerGeminiTextSkillAgent(inline_mod.GeminiSkillAgent):
+class _BranchPlannerGeneralTextSkillAgent(inline_mod.GeneralSkillAgent):
     def __init__(self, *args, text_skill_mode: str = TEXT_SKILL_MODE_BRANCH_PLANNER, **kwargs):
         kwargs["skill_mode"] = "text_only"
         super().__init__(*args, **kwargs)
@@ -105,7 +105,7 @@ class _BranchPlannerGeminiTextSkillAgent(inline_mod.GeminiSkillAgent):
         return (
             base_agent_mod.logger
             if base_agent_mod.logger is not None
-            else logging.getLogger("desktopenv.gemini_text_skill_agent")
+            else logging.getLogger("desktopenv.general_text_skill_agent")
         )
 
     def _empty_usage_summary(self) -> Dict[str, Any]:
@@ -951,20 +951,20 @@ You are asked to complete the following task: {instruction}
         return final_response or "No valid action", []
 
 
-class GeminiTextSkillAgent:
+class GeneralTextSkillAgent:
     def __init__(self, *args, text_skill_mode: str = TEXT_SKILL_MODE_INLINE_CONTEXT, **kwargs):
         if text_skill_mode not in TEXT_SKILL_MODE_CHOICES:
             raise ValueError(
                 f"text_skill_mode must be one of {sorted(TEXT_SKILL_MODE_CHOICES)}, got: {text_skill_mode}"
             )
         if text_skill_mode == TEXT_SKILL_MODE_INLINE_CONTEXT:
-            impl = _InlineContextGeminiTextSkillAgent(
+            impl = _InlineContextGeneralTextSkillAgent(
                 *args,
                 text_skill_mode=text_skill_mode,
                 **kwargs,
             )
         else:
-            impl = _BranchPlannerGeminiTextSkillAgent(
+            impl = _BranchPlannerGeneralTextSkillAgent(
                 *args,
                 text_skill_mode=text_skill_mode,
                 **kwargs,

@@ -32,7 +32,7 @@
 
 - **[May 2026]** Public MMSkills release is available with a compact multimodal desktop-skill subset, runtime agent adapters, and OSWorld integration files.
 - **[May 2026]** The released package includes **16 skills** across Chrome, GIMP, LibreOffice, OS, Thunderbird, VLC, and VS Code.
-- **[May 2026]** The branch-loaded MMSkill runtime can run in text-only or multimodal skill modes with OpenAI-compatible and Gemini-compatible endpoints.
+- **[May 2026]** The branch-loaded MMSkill runtime can run in text-only or multimodal skill modes with model-agnostic OpenAI-compatible and native Gemini-compatible endpoints.
 
 ## 💡 Overview
 
@@ -84,8 +84,12 @@ The architecture is model-agnostic. A main visual agent receives compact skill h
 The reference integration supports:
 
 - `mm_skill`: multimodal branch-loaded skill consultation.
-- `gemini_text_skill`: text-only skill consultation for ablation and lightweight runs.
-- `gemini`: baseline Gemini/OpenAI-compatible visual-agent routing.
+- `general_text_skill`: text-only skill consultation for ablation and lightweight runs.
+- `general`: baseline model-agnostic screenshot-to-pyautogui visual-agent routing.
+
+Legacy `gemini`, `gemini_skill`, and `gemini_text_skill` CLI names are still accepted by the runner as aliases for compatibility, but the public files and recommended commands use the model-agnostic `general*` names.
+
+Any screenshot-capable VLM served through an OpenAI-compatible chat-completions API can use the same `general*` and `mm_skill` interfaces by setting `--model`, `--api_model` when needed, `--base_url`, and `--api_key`.
 
 ## 🔧 Installation
 
@@ -138,8 +142,8 @@ Run commands from the OSWorld checkout after installation.
 
 ```bash
 python run.py \
-  --agent_type gemini \
-  --model gemini-3-pro-preview \
+  --agent_type general \
+  --model gpt-4o \
   --api_backend openai \
   --observation_type screenshot \
   --action_space pyautogui \
@@ -153,8 +157,8 @@ python run.py \
 
 ```bash
 python run.py \
-  --agent_type gemini_text_skill \
-  --model gemini-3-pro-preview \
+  --agent_type general_text_skill \
+  --model gpt-4o \
   --api_backend openai \
   --observation_type screenshot \
   --action_space pyautogui \
@@ -173,7 +177,7 @@ python run.py \
 ```bash
 python run.py \
   --agent_type mm_skill \
-  --model gemini-3-pro-preview \
+  --model gpt-4o \
   --api_backend openai \
   --observation_type screenshot \
   --action_space pyautogui \

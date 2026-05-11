@@ -16,7 +16,7 @@ ARCHITECTURE_VERSION = "mm_skill_planner_branch"
 
 class _MMSkillPlannerAgent(v2mod._MMSkillBaseAgent):
     """
-    Planner-oriented Gemini skills agent.
+    Planner-oriented MMSkills agent.
 
     Compared with v2:
     - Skill branches are planners, not step executors.
@@ -574,14 +574,14 @@ You are asked to complete the following task: {instruction}
 
             self._runtime_logger().info("=" * 80)
             self._runtime_logger().info(
-                "[GeminiSkill/V3][Branch %d] Step %d round %d",
+                "[MMSkill/V3][Branch %d] Step %d round %d",
                 branch_id,
                 step_idx,
                 round_idx + 1,
             )
-            self._runtime_logger().info("[GeminiSkill/V3][Branch %d] System message:\n%s", branch_id, system_message)
+            self._runtime_logger().info("[MMSkill/V3][Branch %d] System message:\n%s", branch_id, system_message)
             self._runtime_logger().info(
-                "[GeminiSkill/V3][Branch %d] Contents:\n%s",
+                "[MMSkill/V3][Branch %d] Contents:\n%s",
                 branch_id,
                 self._format_contents_for_log(contents),
             )
@@ -590,7 +590,7 @@ You are asked to complete the following task: {instruction}
                 response = self.call_llm(system_text=system_message, contents=contents)
             except Exception as e:
                 self._runtime_logger().error(
-                    "[GeminiSkill/V3][Branch %d] Failed to call model %s: %s",
+                    "[MMSkill/V3][Branch %d] Failed to call model %s: %s",
                     branch_id,
                     self.model,
                     str(e),
@@ -598,7 +598,7 @@ You are asked to complete the following task: {instruction}
                 response = ""
 
             final_response = response or ""
-            self._runtime_logger().info("[GeminiSkill/V3][Branch %d] Response: %s", branch_id, final_response)
+            self._runtime_logger().info("[MMSkill/V3][Branch %d] Response: %s", branch_id, final_response)
 
             round_record = {
                 "round": round_idx + 1,
@@ -677,18 +677,18 @@ You are asked to complete the following task: {instruction}
             )
 
             self._runtime_logger().info("=" * 80)
-            self._runtime_logger().info("[GeminiSkill/V3] Step %d main round %d", step_idx, round_idx + 1)
-            self._runtime_logger().info("[GeminiSkill/V3] System message:\n%s", system_message)
-            self._runtime_logger().info("[GeminiSkill/V3] Contents:\n%s", self._format_contents_for_log(contents))
+            self._runtime_logger().info("[MMSkill/V3] Step %d main round %d", step_idx, round_idx + 1)
+            self._runtime_logger().info("[MMSkill/V3] System message:\n%s", system_message)
+            self._runtime_logger().info("[MMSkill/V3] Contents:\n%s", self._format_contents_for_log(contents))
 
             try:
                 response = self.call_llm(system_text=system_message, contents=contents)
             except Exception as e:
-                self._runtime_logger().error("Failed to call Gemini skill v3 model %s: %s", self.model, str(e))
+                self._runtime_logger().error("Failed to call skill v3 model %s: %s", self.model, str(e))
                 response = ""
 
             final_response = response or ""
-            self._runtime_logger().info("[GeminiSkill/V3] Main response: %s", final_response)
+            self._runtime_logger().info("[MMSkill/V3] Main response: %s", final_response)
             self._append_main_conversation_log(
                 step_idx=step_idx,
                 round_idx=round_idx + 1,

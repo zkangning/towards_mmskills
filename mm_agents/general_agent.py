@@ -1,7 +1,7 @@
 """
-Gemini desktop agent for OSWorld.
+General desktop VLM agent for OSWorld.
 
-The agent keeps Gemini's native "return Python code" interaction style, but
+The agent uses a model-agnostic "return Python code" interaction style, but
 borrows a few robustness ideas from Qwen3VLAgent:
 - image preprocessing via smart_resize
 - richer instruction text with explicit screen resolution / history
@@ -39,7 +39,7 @@ def encode_image(image_content: bytes) -> str:
 
 def process_image(image_bytes: bytes) -> Tuple[str, int, int]:
     """
-    Resize screenshots using the same heuristic as Qwen3VLAgent so Gemini sees
+    Resize screenshots using the same heuristic as Qwen3VLAgent so the model sees
     a similar visual input distribution during evaluation.
     """
     return preprocess_image_for_vlm(image_bytes)
@@ -47,7 +47,7 @@ def process_image(image_bytes: bytes) -> Tuple[str, int, int]:
 
 class _CoordinateTransformer(ast.NodeTransformer):
     """
-    Scale Gemini-emitted pyautogui coordinates into the real screen space.
+    Scale model-emitted pyautogui coordinates into the real screen space.
     Only constant numeric coordinates are transformed; everything else is kept.
     """
 
@@ -227,7 +227,7 @@ class _CoordinateTransformer(ast.NodeTransformer):
         return max(0, min(int(round(scaled)), original_dimension - 1))
 
 
-GEMINI_SYSTEM_PROMPT = """
+GENERAL_SYSTEM_PROMPT = """
 Follow the instruction to perform desktop computer tasks.
 You control the computer using Python code with `pyautogui`.
 
@@ -261,11 +261,11 @@ The computer password is '{CLIENT_PASSWORD}', use it when needed.
 """.strip()
 
 
-class GeminiAgent:
+class GeneralAgent:
     def __init__(
         self,
         platform: str = "ubuntu",
-        model: str = "gemini-3-pro",
+        model: str = "gpt-4o",
         max_tokens: int = 32768,
         top_p: float = 0.9,
         temperature: float = 0.0,
@@ -276,7 +276,7 @@ class GeminiAgent:
         client_password: str = "password",
         api_key: str | None = None,
         base_url: str | None = None,
-        api_backend: str = "gemini",
+        api_backend: str = "openai",
         api_model: str | None = None,
         thinking_level: str = "NONE",
         include_thoughts: bool = False,
@@ -316,12 +316,12 @@ class GeminiAgent:
         self.thinking_level = thinking_level
         self.include_thoughts = include_thoughts if thinking_level != "NONE" else False
 
-        assert action_space == "pyautogui", "GeminiAgent only supports 'pyautogui'"
-        assert observation_type == "screenshot", "GeminiAgent only supports 'screenshot'"
+        assert action_space == "pyautogui", "GeneralAgent only supports 'pyautogui'"
+        assert observation_type == "screenshot", "GeneralAgent only supports 'screenshot'"
         assert coordinate_type in {"absolute", "relative"}, "coordinate_type must be absolute or relative"
         assert self.thinking_mode in {"auto", "on", "off"}, "thinking_mode must be auto, on, or off"
 
-        self.system_message = GEMINI_SYSTEM_PROMPT.format(
+        self.system_message = GENERAL_SYSTEM_PROMPT.format(
             CLIENT_PASSWORD=self.client_password
         )
         self.responses: List[str] = []
@@ -342,7 +342,7 @@ class GeminiAgent:
             callback(stage=stage, detail=detail, **extra)
         except Exception:
             if logger:
-                logger.exception("[Gemini] Failed to report progress: stage=%s detail=%s", stage, detail)
+                logger.exception("[GeneralAgent] Failed to report progress: stage=%s detail=%s", stage, detail)
 
     @staticmethod
     def _extract_env_feedback(obs: Dict) -> str:
@@ -510,7 +510,7 @@ class GeminiAgent:
             return []
 
         if logger:
-            logger.info("[Gemini] Parsed bare executable response without code block.")
+            logger.info("[GeneralAgent] Parsed bare executable response without code block.")
         return [bare_code]
 
     def _finalize_step(
@@ -543,17 +543,17 @@ class GeminiAgent:
 
         if logger:
             logger.info("=" * 80)
-            logger.info("[Gemini Prompt] Step %d sending request to %s", len(self.actions), self.api_model)
+            logger.info("[GeneralAgent Prompt] Step %d sending request to %s", len(self.actions), self.api_model)
             logger.info("-" * 80)
-            logger.info("[Gemini Prompt] System message:\n%s", system_message)
+            logger.info("[GeneralAgent Prompt] System message:\n%s", system_message)
             logger.info("-" * 80)
-            logger.info("[Gemini Prompt] Contents:\n%s", self._format_contents_for_log(contents))
+            logger.info("[GeneralAgent Prompt] Contents:\n%s", self._format_contents_for_log(contents))
             logger.info("-" * 80)
 
         try:
             response = self.call_llm(system_text=system_message, contents=contents)
         except Exception as e:
-            logger.error("Failed to call Gemini model %s, Error: %s", self.model, str(e))
+            logger.error("Failed to call model %s, Error: %s", self.model, str(e))
             response = ""
 
         logger.info("RESPONSE: %s", response)
@@ -632,9 +632,9 @@ class GeminiAgent:
                 json.dump(self._conversation_log, f, indent=2, ensure_ascii=False)
         except Exception as e:
             if logger:
-                logger.error("[Gemini] Failed to save conversation.json: %s", str(e))
+                logger.error("[GeneralAgent] Failed to save conversation.json: %s", str(e))
 
-    def _build_gemini_payload(self, system_text: str, contents: list) -> dict:
+    def _build_native_gemini_payload(self, system_text: str, contents: list) -> dict:
         generation_config = {
             "temperature": self.temperature,
             "maxOutputTokens": self.max_tokens,
@@ -654,7 +654,7 @@ class GeminiAgent:
         }
 
     @staticmethod
-    def _gemini_part_to_openai_part(part: dict) -> dict | None:
+    def _content_part_to_openai_part(part: dict) -> dict | None:
         if "text" in part:
             return {"type": "text", "text": part["text"]}
 
@@ -677,7 +677,7 @@ class GeminiAgent:
             role = role_map.get(item.get("role", "user"), "user")
             parts = []
             for part in item.get("parts", []):
-                converted = self._gemini_part_to_openai_part(part)
+                converted = self._content_part_to_openai_part(part)
                 if converted is not None:
                     parts.append(converted)
             if not parts:
@@ -779,7 +779,7 @@ class GeminiAgent:
             choices = result.get("choices", [])
             if not choices:
                 logger.error(
-                    "[Gemini/OpenRouter] No choices in response: %s",
+                    "[GeneralAgent/OpenRouter] No choices in response: %s",
                     json.dumps(result, ensure_ascii=False)[:500],
                 )
                 return ""
@@ -796,7 +796,7 @@ class GeminiAgent:
                 return "".join(text_parts)
             return str(content or "")
         except Exception:
-            logger.exception("[Gemini/OpenRouter] Failed to extract text from response")
+            logger.exception("[GeneralAgent/OpenRouter] Failed to extract text from response")
             return ""
 
     @backoff.on_exception(
@@ -818,15 +818,15 @@ class GeminiAgent:
             return self._call_llm_openrouter(system_text=system_text, contents=contents)
         if self.api_backend == "openai":
             return self._call_llm_openai(system_text=system_text, contents=contents)
-        return self._call_llm_gemini(system_text=system_text, contents=contents)
+        return self._call_llm_native_gemini(system_text=system_text, contents=contents)
 
-    def _call_llm_gemini(self, system_text: str, contents: list) -> str:
+    def _call_llm_native_gemini(self, system_text: str, contents: list) -> str:
         url = f"{self.base_url}/v1:generateContent"
         headers = {
             "api-key": self.api_key,
             "Content-Type": "application/json",
         }
-        payload = self._build_gemini_payload(system_text, contents)
+        payload = self._build_native_gemini_payload(system_text, contents)
 
         last_error = None
         for attempt in range(1, self.llm_max_retries + 1):
@@ -835,7 +835,7 @@ class GeminiAgent:
                 f"backend=gemini attempt={attempt}/{self.llm_max_retries} timeout={self.llm_request_timeout}s",
             )
             logger.info(
-                "[Gemini] Generating content with model %s (attempt %d/%d), url: %s",
+                "[GeneralAgent] Generating content with model %s (attempt %d/%d), url: %s",
                 self.model,
                 attempt,
                 self.llm_max_retries,
@@ -855,7 +855,7 @@ class GeminiAgent:
                         f"backend=gemini attempt={attempt}/{self.llm_max_retries} status={response.status_code}",
                     )
                     logger.error(
-                        "[Gemini] HTTP %d error (attempt %d/%d): %s",
+                        "[GeneralAgent] HTTP %d error (attempt %d/%d): %s",
                         response.status_code,
                         attempt,
                         self.llm_max_retries,
@@ -870,11 +870,11 @@ class GeminiAgent:
                         continue
                     if response.status_code == 400 and len(contents) > 1:
                         logger.warning(
-                            "[Gemini] 400 Bad Request, truncating history from %d to 1 message",
+                            "[GeneralAgent] 400 Bad Request, truncating history from %d to 1 message",
                             len(contents),
                         )
                         contents = [contents[-1]]
-                        payload = self._build_gemini_payload(system_text, contents)
+                        payload = self._build_native_gemini_payload(system_text, contents)
                         self._report_progress(
                             "llm_request_attempt_retry",
                             f"backend=gemini attempt={attempt}/{self.llm_max_retries} truncated_history=1",
@@ -898,7 +898,7 @@ class GeminiAgent:
                     return text
 
                 logger.warning(
-                    "[Gemini] Empty text extracted from response (attempt %d/%d), raw: %s",
+                    "[GeneralAgent] Empty text extracted from response (attempt %d/%d), raw: %s",
                     attempt,
                     self.llm_max_retries,
                     json.dumps(result, ensure_ascii=False)[:500],
@@ -907,7 +907,7 @@ class GeminiAgent:
                     "llm_request_attempt_empty",
                     f"backend=gemini attempt={attempt}/{self.llm_max_retries}",
                 )
-                last_error = ValueError("Empty text in Gemini response")
+                last_error = ValueError("Empty text in native Gemini response")
                 time.sleep(3)
             except requests.exceptions.Timeout as e:
                 last_error = e
@@ -916,7 +916,7 @@ class GeminiAgent:
                     f"backend=gemini attempt={attempt}/{self.llm_max_retries} timeout={self.llm_request_timeout}s",
                 )
                 logger.error(
-                    "[Gemini] Request timeout (attempt %d/%d): %s",
+                    "[GeneralAgent] Request timeout (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -929,7 +929,7 @@ class GeminiAgent:
                     f"backend=gemini attempt={attempt}/{self.llm_max_retries}",
                 )
                 logger.error(
-                    "[Gemini] Connection error (attempt %d/%d): %s",
+                    "[GeneralAgent] Connection error (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -942,7 +942,7 @@ class GeminiAgent:
                     f"backend=gemini attempt={attempt}/{self.llm_max_retries} error={type(e).__name__}",
                 )
                 logger.error(
-                    "[Gemini] Unexpected error (attempt %d/%d): %s",
+                    "[GeneralAgent] Unexpected error (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -954,7 +954,7 @@ class GeminiAgent:
             "llm_call_failed",
             f"backend=gemini retries_exhausted={self.llm_max_retries} last_error={type(last_error).__name__ if last_error else 'None'}",
         )
-        logger.error("[Gemini] All %d attempts failed. Last error: %s", self.llm_max_retries, str(last_error))
+        logger.error("[GeneralAgent] All %d attempts failed. Last error: %s", self.llm_max_retries, str(last_error))
         return ""
 
     def _call_llm_openai(self, system_text: str, contents: list) -> str:
@@ -986,7 +986,7 @@ class GeminiAgent:
                 f"backend=openai attempt={attempt}/{self.llm_max_retries} timeout={self.llm_request_timeout}s",
             )
             logger.info(
-                "[Gemini/OpenAI] Generating content with model %s (attempt %d/%d), base_url: %s, thinking_mode=%s",
+                "[GeneralAgent/OpenAI] Generating content with model %s (attempt %d/%d), base_url: %s, thinking_mode=%s",
                 self.api_model,
                 attempt,
                 self.llm_max_retries,
@@ -1005,7 +1005,7 @@ class GeminiAgent:
                     return content
 
                 logger.warning(
-                    "[Gemini/OpenAI] Empty content extracted from response (attempt %d/%d)",
+                    "[GeneralAgent/OpenAI] Empty content extracted from response (attempt %d/%d)",
                     attempt,
                     self.llm_max_retries,
                 )
@@ -1022,7 +1022,7 @@ class GeminiAgent:
                     f"backend=openai attempt={attempt}/{self.llm_max_retries}",
                 )
                 logger.error(
-                    "[Gemini/OpenAI] Rate limit (attempt %d/%d): %s",
+                    "[GeneralAgent/OpenAI] Rate limit (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -1036,7 +1036,7 @@ class GeminiAgent:
                     f"backend=openai attempt={attempt}/{self.llm_max_retries} timeout={self.llm_request_timeout}s",
                 )
                 logger.error(
-                    "[Gemini/OpenAI] Connection/timeout error (attempt %d/%d): %s",
+                    "[GeneralAgent/OpenAI] Connection/timeout error (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -1049,14 +1049,14 @@ class GeminiAgent:
                     f"backend=openai attempt={attempt}/{self.llm_max_retries} error=BadRequest",
                 )
                 logger.error(
-                    "[Gemini/OpenAI] Bad request (attempt %d/%d): %s",
+                    "[GeneralAgent/OpenAI] Bad request (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
                 )
                 if len(contents_to_send) > 1:
                     logger.warning(
-                        "[Gemini/OpenAI] Truncating history from %d to 1 message after bad request",
+                        "[GeneralAgent/OpenAI] Truncating history from %d to 1 message after bad request",
                         len(contents_to_send),
                     )
                     contents_to_send = [contents_to_send[-1]]
@@ -1074,7 +1074,7 @@ class GeminiAgent:
                     f"backend=openai attempt={attempt}/{self.llm_max_retries} error=InternalServerError",
                 )
                 logger.error(
-                    "[Gemini/OpenAI] Internal server error (attempt %d/%d): %s",
+                    "[GeneralAgent/OpenAI] Internal server error (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -1087,7 +1087,7 @@ class GeminiAgent:
                     f"backend=openai attempt={attempt}/{self.llm_max_retries} error={type(e).__name__}",
                 )
                 logger.error(
-                    "[Gemini/OpenAI] Unexpected error (attempt %d/%d): %s",
+                    "[GeneralAgent/OpenAI] Unexpected error (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -1099,7 +1099,7 @@ class GeminiAgent:
             "llm_call_failed",
             f"backend=openai retries_exhausted={self.llm_max_retries} last_error={type(last_error).__name__ if last_error else 'None'}",
         )
-        logger.error("[Gemini/OpenAI] All %d attempts failed. Last error: %s", self.llm_max_retries, str(last_error))
+        logger.error("[GeneralAgent/OpenAI] All %d attempts failed. Last error: %s", self.llm_max_retries, str(last_error))
         return ""
 
     def _call_llm_openrouter(self, system_text: str, contents: list) -> str:
@@ -1115,7 +1115,7 @@ class GeminiAgent:
                 f"backend=openrouter attempt={attempt}/{self.llm_max_retries} timeout={self.llm_request_timeout}s",
             )
             logger.info(
-                "[Gemini/OpenRouter] Generating content with model %s (attempt %d/%d), base_url: %s, thinking_mode=%s",
+                "[GeneralAgent/OpenRouter] Generating content with model %s (attempt %d/%d), base_url: %s, thinking_mode=%s",
                 self.api_model,
                 attempt,
                 self.llm_max_retries,
@@ -1136,7 +1136,7 @@ class GeminiAgent:
                         f"backend=openrouter attempt={attempt}/{self.llm_max_retries} status={response.status_code}",
                     )
                     logger.error(
-                        "[Gemini/OpenRouter] HTTP %d error (attempt %d/%d): %s",
+                        "[GeneralAgent/OpenRouter] HTTP %d error (attempt %d/%d): %s",
                         response.status_code,
                         attempt,
                         self.llm_max_retries,
@@ -1150,7 +1150,7 @@ class GeminiAgent:
                         continue
                     if response.status_code == 400 and len(contents_to_send) > 1:
                         logger.warning(
-                            "[Gemini/OpenRouter] 400 Bad Request, truncating history from %d to 1 message",
+                            "[GeneralAgent/OpenRouter] 400 Bad Request, truncating history from %d to 1 message",
                             len(contents_to_send),
                         )
                         contents_to_send = [contents_to_send[-1]]
@@ -1176,7 +1176,7 @@ class GeminiAgent:
                     return content
 
                 logger.warning(
-                    "[Gemini/OpenRouter] Empty content extracted from response (attempt %d/%d), raw: %s",
+                    "[GeneralAgent/OpenRouter] Empty content extracted from response (attempt %d/%d), raw: %s",
                     attempt,
                     self.llm_max_retries,
                     json.dumps(result, ensure_ascii=False)[:500],
@@ -1194,7 +1194,7 @@ class GeminiAgent:
                     f"backend=openrouter attempt={attempt}/{self.llm_max_retries} timeout={self.llm_request_timeout}s",
                 )
                 logger.error(
-                    "[Gemini/OpenRouter] Request timeout (attempt %d/%d): %s",
+                    "[GeneralAgent/OpenRouter] Request timeout (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -1207,7 +1207,7 @@ class GeminiAgent:
                     f"backend=openrouter attempt={attempt}/{self.llm_max_retries}",
                 )
                 logger.error(
-                    "[Gemini/OpenRouter] Connection error (attempt %d/%d): %s",
+                    "[GeneralAgent/OpenRouter] Connection error (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -1220,7 +1220,7 @@ class GeminiAgent:
                     f"backend=openrouter attempt={attempt}/{self.llm_max_retries} error={type(e).__name__}",
                 )
                 logger.error(
-                    "[Gemini/OpenRouter] Unexpected error (attempt %d/%d): %s",
+                    "[GeneralAgent/OpenRouter] Unexpected error (attempt %d/%d): %s",
                     attempt,
                     self.llm_max_retries,
                     str(e),
@@ -1233,7 +1233,7 @@ class GeminiAgent:
             f"backend=openrouter retries_exhausted={self.llm_max_retries} last_error={type(last_error).__name__ if last_error else 'None'}",
         )
         logger.error(
-            "[Gemini/OpenRouter] All %d attempts failed. Last error: %s",
+            "[GeneralAgent/OpenRouter] All %d attempts failed. Last error: %s",
             self.llm_max_retries,
             str(last_error),
         )
@@ -1243,12 +1243,12 @@ class GeminiAgent:
         try:
             candidates = result.get("candidates", [])
             if not candidates:
-                logger.error("[Gemini] No candidates in response: %s", json.dumps(result, ensure_ascii=False)[:500])
+                logger.error("[GeneralAgent] No candidates in response: %s", json.dumps(result, ensure_ascii=False)[:500])
                 return ""
 
             parts = candidates[0].get("content", {}).get("parts", [])
             if not parts:
-                logger.error("[Gemini] No parts in response candidate")
+                logger.error("[GeneralAgent] No parts in response candidate")
                 return ""
 
             text_parts = []
@@ -1266,7 +1266,7 @@ class GeminiAgent:
                     return part["text"]
             return ""
         except (KeyError, IndexError, TypeError) as e:
-            logger.error("[Gemini] Failed to extract text from response: %s", str(e))
+            logger.error("[GeneralAgent] Failed to extract text from response: %s", str(e))
             return ""
 
     def _scale_code_coordinates(
@@ -1293,7 +1293,7 @@ class GeminiAgent:
             ast.fix_missing_locations(tree)
             return ast.unparse(tree)
         except Exception as e:
-            logger.debug("Failed to scale Gemini code coordinates: %s", str(e))
+            logger.debug("Failed to scale model code coordinates: %s", str(e))
             return code
 
     def parse_actions(
@@ -1330,7 +1330,7 @@ class GeminiAgent:
 
     def reset(self, _logger=None, vm_ip=None, **kwargs):
         global logger
-        logger = _logger if _logger is not None else logging.getLogger("desktopenv.gemini_agent")
+        logger = _logger if _logger is not None else logging.getLogger("desktopenv.general_agent")
         self.vm_ip = vm_ip
         self._result_dir = kwargs.get("result_dir")
         self.responses = []
