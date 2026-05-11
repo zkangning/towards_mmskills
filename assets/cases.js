@@ -1,5 +1,6 @@
 (function () {
   const caseList = document.getElementById("caseList");
+  const caseOverview = document.getElementById("caseOverview");
   const basePath = "assets/case-studies";
   const variantOrder = [
     ["no_skills", "No Skills"],
@@ -14,6 +15,10 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function displayTitle(title) {
+    return String(title || "").replace(/\bv9\b/g, "MMSkills");
   }
 
   function variantVideo(caseItem, key, label) {
@@ -63,7 +68,7 @@
             <span>${escapeHtml(caseItem.app)}</span>
             <span>${escapeHtml(caseItem.task_id)}</span>
           </p>
-          <h2>${escapeHtml(caseItem.title)}</h2>
+          <h2>${escapeHtml(displayTitle(caseItem.title))}</h2>
           <p class="case-instruction"><strong>Task:</strong> ${escapeHtml(caseItem.instruction)}</p>
           <p class="case-rationale"><strong>Why selected:</strong> ${escapeHtml(caseItem.why_selected)}</p>
         </header>
@@ -75,6 +80,22 @@
     `;
   }
 
+  function overviewHtml(caseItem) {
+    const variants = caseItem.variants || {};
+    const noSkills = variants.no_skills || {};
+    const textOnly = variants.text_only || {};
+    const multimodal = variants.multimodal_v9 || {};
+    return `
+      <a class="case-overview-card" href="#${escapeHtml(caseItem.id)}">
+        <span>${escapeHtml(caseItem.app)}</span>
+        <strong>${escapeHtml(displayTitle(caseItem.title).split(":")[0])}</strong>
+        <small>
+          scores ${escapeHtml(noSkills.score)} / ${escapeHtml(textOnly.score)} / ${escapeHtml(multimodal.score)}
+        </small>
+      </a>
+    `;
+  }
+
   fetch(`${basePath}/manifest.json`)
     .then((response) => {
       if (!response.ok) {
@@ -83,6 +104,7 @@
       return response.json();
     })
     .then((manifest) => {
+      caseOverview.innerHTML = manifest.cases.map(overviewHtml).join("");
       caseList.innerHTML = manifest.cases.map(caseHtml).join("");
     })
     .catch((error) => {

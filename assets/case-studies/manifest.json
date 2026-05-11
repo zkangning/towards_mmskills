@@ -1,5 +1,5 @@
 {
-  "created_by": "build_lossless_case_studies.py",
+  "created_by": "build_case_study_site.py",
   "ffmpeg": "/opt/miniconda3/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1",
   "copy_mode": "-map 0:v:0 -an -c:v copy",
   "cases": [
@@ -20,9 +20,9 @@
           "clip_start_sec": 98.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
-            "bytes": 1133886,
+            "bytes": 453246,
             "duration_sec": 56.4,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 157 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 61 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_qwen3/no_skills/pyautogui/screenshot/qwen3vl235_skills419_no_skills_full_tmux_rerun/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
           "source_probe": {
@@ -30,14 +30,21 @@
             "duration_sec": 275.67,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 152 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "e773957b2035ee1e6ca49cdbaed23e9eb558c5ddde5998b957c9b471e5e2c978",
+          "sha256": "405bf2f0da963b72c212f84259d5a7f6dcb96a08d1fea4f153e8b8f1e0bd483d",
           "skill_mode": "no_skills",
           "text_skill_mode": null,
           "task_skill_names": [],
           "loaded_skill_names": [],
           "consulted_skill_names": [],
           "load_skill_calls": 0,
-          "skill_branch_invocations": 0
+          "skill_branch_invocations": 0,
+          "source_clip_probe": {
+            "bytes": 1133886,
+            "duration_sec": 56.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 157 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "e773957b2035ee1e6ca49cdbaed23e9eb558c5ddde5998b957c9b471e5e2c978",
+          "poster_file": "no_skills.jpg"
         },
         "text_only": {
           "caption": "Text-only: starts toward the right operation, but loses cell selection state and ends by rewriting only Investment Summary, without the two second-row headers.",
@@ -47,9 +54,9 @@
           "clip_start_sec": 120.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
-            "bytes": 1002188,
+            "bytes": 446063,
             "duration_sec": 53.4,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 147 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 63 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_qwen3/text-only/pyautogui/screenshot/qwen3vl235_skills419_text_branch_full/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
           "source_probe": {
@@ -57,7 +64,7 @@
             "duration_sec": 196.57,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 147 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "e04a3595f8b950996f9aff411663eb91af722dcaae46f46ba1afe3de99634945",
+          "sha256": "5ace77524798a2dd03068e7c0df012eea2b1ed744c57d63606cb70ab0efb1090",
           "skill_mode": "text_only",
           "text_skill_mode": "branch_planner",
           "task_skill_names": [
@@ -67,7 +74,14 @@
           "loaded_skill_names": [],
           "consulted_skill_names": [],
           "load_skill_calls": 0,
-          "skill_branch_invocations": 0
+          "skill_branch_invocations": 0,
+          "source_clip_probe": {
+            "bytes": 1002188,
+            "duration_sec": 53.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 147 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "e04a3595f8b950996f9aff411663eb91af722dcaae46f46ba1afe3de99634945",
+          "poster_file": "text_only.jpg"
         },
         "multimodal_v9": {
           "caption": "Multimodal v9: creates Sheet2, selects each target range, merges A1:C1, A2:B2, and C2:D2, then writes all three labels.",
@@ -77,9 +91,9 @@
           "clip_start_sec": 80.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
-            "bytes": 990786,
+            "bytes": 435670,
             "duration_sec": 55.07,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 140 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 60 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_qwen3/multimodal_v9/pyautogui/screenshot/qwen3vl235_skills419_multimodal_v9_full/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
           "source_probe": {
@@ -87,7 +101,7 @@
             "duration_sec": 189.43,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 140 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "48a04d6d8c105719279d6e8c8d7d5403d43e0bfc6c8f854e9282cacdd4f5e714",
+          "sha256": "617582cd1c1579dfd61e10c266a24d75e9a0e80435003b1cadee3588c5a15e7e",
           "skill_mode": "multimodal",
           "text_skill_mode": null,
           "task_skill_names": [
@@ -101,7 +115,14 @@
             "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
           ],
           "load_skill_calls": 1,
-          "skill_branch_invocations": 1
+          "skill_branch_invocations": 1,
+          "source_clip_probe": {
+            "bytes": 990786,
+            "duration_sec": 55.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 140 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "48a04d6d8c105719279d6e8c8d7d5403d43e0bfc6c8f854e9282cacdd4f5e714",
+          "poster_file": "multimodal.jpg"
         }
       }
     },
@@ -122,9 +143,9 @@
           "clip_start_sec": 60.0,
           "clip_target_duration_sec": 45.0,
           "clip_probe": {
-            "bytes": 594338,
+            "bytes": 236945,
             "duration_sec": 46.73,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 98 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 37 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_qwen3/no_skills/pyautogui/screenshot/qwen3vl235_skills419_no_skills_full_tmux_rerun/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
           "source_probe": {
@@ -132,14 +153,21 @@
             "duration_sec": 239.87,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 96 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "278d43b1f4deb1a8c1f9be18ec178d3effd329fc9096454420e097ad11581b64",
+          "sha256": "75fe8afc35422930553c12b58e0d60186eaaec3270f03499d51e342b7480173c",
           "skill_mode": "no_skills",
           "text_skill_mode": null,
           "task_skill_names": [],
           "loaded_skill_names": [],
           "consulted_skill_names": [],
           "load_skill_calls": 0,
-          "skill_branch_invocations": 0
+          "skill_branch_invocations": 0,
+          "source_clip_probe": {
+            "bytes": 594338,
+            "duration_sec": 46.73,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 98 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "278d43b1f4deb1a8c1f9be18ec178d3effd329fc9096454420e097ad11581b64",
+          "poster_file": "no_skills.jpg"
         },
         "text_only": {
           "caption": "Text-only: alternates between the Extensions icon and View menu, but never commits to the local VSIX installation path.",
@@ -149,9 +177,9 @@
           "clip_start_sec": 100.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
-            "bytes": 597921,
+            "bytes": 233042,
             "duration_sec": 50.07,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 92 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 34 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_qwen3/text-only/pyautogui/screenshot/qwen3vl235_skills419_text_branch_full/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
           "source_probe": {
@@ -159,7 +187,7 @@
             "duration_sec": 180.73,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 83 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "88ec49ca9af2bfcf2c33b1dd12b2d9cc3ef0077eaa4a1f0eeb419abd406776fe",
+          "sha256": "3f601fb17d70b20f18f7eebc9052460fe01c09e583a8a7850b982b3f9cebcb6a",
           "skill_mode": "text_only",
           "text_skill_mode": "branch_planner",
           "task_skill_names": [
@@ -168,7 +196,14 @@
           "loaded_skill_names": [],
           "consulted_skill_names": [],
           "load_skill_calls": 0,
-          "skill_branch_invocations": 0
+          "skill_branch_invocations": 0,
+          "source_clip_probe": {
+            "bytes": 597921,
+            "duration_sec": 50.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 92 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "88ec49ca9af2bfcf2c33b1dd12b2d9cc3ef0077eaa4a1f0eeb419abd406776fe",
+          "poster_file": "text_only.jpg"
         },
         "multimodal_v9": {
           "caption": "Multimodal v9: opens Extensions, uses the overflow menu's Install from VSIX option, selects /home/user/test.vsix, and stops after the install path is completed.",
@@ -178,9 +213,9 @@
           "clip_start_sec": 35.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
-            "bytes": 775754,
+            "bytes": 304566,
             "duration_sec": 51.73,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 116 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 44 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_qwen3/multimodal_v9/pyautogui/screenshot/qwen3vl235_skills419_multimodal_v9_full/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
           "source_probe": {
@@ -188,7 +223,7 @@
             "duration_sec": 141.93,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 104 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "cc940a4d19e9541b4e0cb4e1254cebf5a6e5f25173ca8de4cef6f1255c85db26",
+          "sha256": "cc55e5a6e4712dfc44bdeef69e94a634c36abdbcd767b54c148599c7876edfdd",
           "skill_mode": "multimodal",
           "text_skill_mode": null,
           "task_skill_names": [
@@ -201,7 +236,14 @@
             "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
           ],
           "load_skill_calls": 1,
-          "skill_branch_invocations": 1
+          "skill_branch_invocations": 1,
+          "source_clip_probe": {
+            "bytes": 775754,
+            "duration_sec": 51.73,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 116 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "cc940a4d19e9541b4e0cb4e1254cebf5a6e5f25173ca8de4cef6f1255c85db26",
+          "poster_file": "multimodal.jpg"
         }
       }
     },
@@ -222,9 +264,9 @@
           "clip_start_sec": 250.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
-            "bytes": 1169986,
+            "bytes": 601241,
             "duration_sec": 57.23,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 160 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 81 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_geminipro31/no_skills/pyautogui/screenshot/gemini31pro_office_no_skills/gimp/e2dd0213-26db-4349-abe5-d5667bfd725c/recording.mp4",
           "source_probe": {
@@ -232,14 +274,21 @@
             "duration_sec": 334.43,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 135 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "f85e6f12a9fd072653f350f9cba94f05589a35191830c3d28718a6b07cbf8946",
+          "sha256": "8e30f027ddf1220f3739f580f8648d21205ba5355edd233aa4310eb88719c2cb",
           "skill_mode": "no_skills",
           "text_skill_mode": null,
           "task_skill_names": [],
           "loaded_skill_names": [],
           "consulted_skill_names": [],
           "load_skill_calls": 0,
-          "skill_branch_invocations": 0
+          "skill_branch_invocations": 0,
+          "source_clip_probe": {
+            "bytes": 1169986,
+            "duration_sec": 57.23,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 160 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "f85e6f12a9fd072653f350f9cba94f05589a35191830c3d28718a6b07cbf8946",
+          "poster_file": "no_skills.jpg"
         },
         "text_only": {
           "caption": "Text-only: receives the right high-level idea but keeps dragging large distances from the wrong visual anchor, so the target text box is not placed correctly.",
@@ -249,9 +298,9 @@
           "clip_start_sec": 245.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
-            "bytes": 776625,
+            "bytes": 316081,
             "duration_sec": 58.4,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 103 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 40 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_geminipro31/text-only/pyautogui/screenshot/geminipro31_skills419_text_branch_full/gimp/e2dd0213-26db-4349-abe5-d5667bfd725c/recording.mp4",
           "source_probe": {
@@ -259,7 +308,7 @@
             "duration_sec": 396.77,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 100 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "e53654632ac291e0847aeb385037051f7a50f14d3c4f62aedc8c151fc6ba7528",
+          "sha256": "24ed68f3b5af68db1103beeca2fbadb83a95932d593f2ba97f4a0f10f6951e0f",
           "skill_mode": "text_only",
           "text_skill_mode": "branch_planner",
           "task_skill_names": [
@@ -271,7 +320,14 @@
             "GIMP_GIMP_Move_Text_Or_Object_Layers_Without_Selecting_Background_Content"
           ],
           "load_skill_calls": 1,
-          "skill_branch_invocations": 1
+          "skill_branch_invocations": 1,
+          "source_clip_probe": {
+            "bytes": 776625,
+            "duration_sec": 58.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 103 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "e53654632ac291e0847aeb385037051f7a50f14d3c4f62aedc8c151fc6ba7528",
+          "poster_file": "text_only.jpg"
         },
         "multimodal_v9": {
           "caption": "Multimodal v9: activates the text/object layer, uses the move tool, and drags the text box left while avoiding the background layer.",
@@ -281,9 +337,9 @@
           "clip_start_sec": 45.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
-            "bytes": 816327,
+            "bytes": 365288,
             "duration_sec": 53.4,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 119 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 51 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_geminipro31/multimodal_v9/pyautogui/screenshot/geminipro31_skills419_multimodal_v9_full/gimp/e2dd0213-26db-4349-abe5-d5667bfd725c/recording.mp4",
           "source_probe": {
@@ -291,7 +347,7 @@
             "duration_sec": 189.53,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 127 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "78ac81d7d0fa0ba95e3a8079e6adb7f32f4d85e66be2c68bf6d460fff8a9b757",
+          "sha256": "8449919825ec319e5e8f103c94a6b8c45f738293b2e792070aeaa5a382c03b0e",
           "skill_mode": "multimodal",
           "text_skill_mode": null,
           "task_skill_names": [
@@ -305,7 +361,14 @@
             "GIMP_GIMP_Move_Text_Or_Object_Layers_Without_Selecting_Background_Content"
           ],
           "load_skill_calls": 1,
-          "skill_branch_invocations": 1
+          "skill_branch_invocations": 1,
+          "source_clip_probe": {
+            "bytes": 816327,
+            "duration_sec": 53.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 119 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "78ac81d7d0fa0ba95e3a8079e6adb7f32f4d85e66be2c68bf6d460fff8a9b757",
+          "poster_file": "multimodal.jpg"
         }
       }
     },
@@ -326,9 +389,9 @@
           "clip_start_sec": 0.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
-            "bytes": 1261808,
+            "bytes": 500488,
             "duration_sec": 55.07,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 180 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 69 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_geminipro31/no_skills/pyautogui/screenshot/gemini31pro_office_no_skills/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
           "source_probe": {
@@ -336,14 +399,21 @@
             "duration_sec": 326.63,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 150 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "965fbf45cd6b069c67397668102b994c67f0b2517a4ec3ddc46874226a63242b",
+          "sha256": "adb38f8ff676e29b2f449cbaf4323056df623f9a2e5414b2c7bd5bde972f91de",
           "skill_mode": "no_skills",
           "text_skill_mode": null,
           "task_skill_names": [],
           "loaded_skill_names": [],
           "consulted_skill_names": [],
           "load_skill_calls": 0,
-          "skill_branch_invocations": 0
+          "skill_branch_invocations": 0,
+          "source_clip_probe": {
+            "bytes": 1261808,
+            "duration_sec": 55.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 180 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "965fbf45cd6b069c67397668102b994c67f0b2517a4ec3ddc46874226a63242b",
+          "poster_file": "no_skills.jpg"
         },
         "text_only": {
           "caption": "Text-only: repeatedly retries chart insertion and sheet movement, but does not stabilize the correct data range, title, and destination sheet.",
@@ -353,9 +423,9 @@
           "clip_start_sec": 140.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
-            "bytes": 1111335,
+            "bytes": 445405,
             "duration_sec": 62.47,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 139 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 54 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_geminipro31/text-only/pyautogui/screenshot/geminipro31_skills419_text_branch_full/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
           "source_probe": {
@@ -363,7 +433,7 @@
             "duration_sec": 321.77,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 144 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "7280047be9dfcd8ce8c6010bb658a013f48fab52e6c1425f6b23c7782076c60b",
+          "sha256": "66c78b15772d1fe7ebddadc7ac3601ecf820bdff54594060393fe90188cbf4f4",
           "skill_mode": "text_only",
           "text_skill_mode": "branch_planner",
           "task_skill_names": [
@@ -374,7 +444,14 @@
             "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
           ],
           "load_skill_calls": 1,
-          "skill_branch_invocations": 1
+          "skill_branch_invocations": 1,
+          "source_clip_probe": {
+            "bytes": 1111335,
+            "duration_sec": 62.47,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 139 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "7280047be9dfcd8ce8c6010bb658a013f48fab52e6c1425f6b23c7782076c60b",
+          "poster_file": "text_only.jpg"
         },
         "multimodal_v9": {
           "caption": "Multimodal v9: selects the Sales/COGS data range, opens the chart wizard, enters the exact title Sales & COGS, creates Sheet2, and moves the chart there.",
@@ -384,9 +461,9 @@
           "clip_start_sec": 220.0,
           "clip_target_duration_sec": 60.0,
           "clip_probe": {
-            "bytes": 1426399,
+            "bytes": 584744,
             "duration_sec": 63.4,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 176 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 70 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_geminipro31/multimodal_v9/pyautogui/screenshot/geminipro31_skills419_multimodal_v9_full/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
           "source_probe": {
@@ -394,7 +471,7 @@
             "duration_sec": 312.57,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 170 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "5078958a31743ea9f857f6c1cc935053885c97a20a4d276c06f99bcc948b62b8",
+          "sha256": "1a027ab50057e7713b5137828d456909d0cc68ed3e6e40fb191086247c8d8b5e",
           "skill_mode": "multimodal",
           "text_skill_mode": null,
           "task_skill_names": [
@@ -407,7 +484,14 @@
             "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
           ],
           "load_skill_calls": 2,
-          "skill_branch_invocations": 2
+          "skill_branch_invocations": 2,
+          "source_clip_probe": {
+            "bytes": 1426399,
+            "duration_sec": 63.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 176 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "5078958a31743ea9f857f6c1cc935053885c97a20a4d276c06f99bcc948b62b8",
+          "poster_file": "multimodal.jpg"
         }
       }
     },
@@ -428,9 +512,9 @@
           "clip_start_sec": 135.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
-            "bytes": 1055614,
+            "bytes": 440088,
             "duration_sec": 56.73,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 145 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 59 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_kimi_k26/no_skills/pyautogui/screenshot/kimi_k26_no_skills_full/libreoffice_impress/841b50aa-df53-47bd-a73a-22d3a9f73160/recording.mp4",
           "source_probe": {
@@ -438,14 +522,21 @@
             "duration_sec": 255.27,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 130 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "334d065298f577cda200412cca8d9059af94f6227038e81faa95ff811ad74ae4",
+          "sha256": "a61c0f1e4d800a84a3f95ee93a5ef19b6a84e2bc36630bbc8745a090bfef55c8",
           "skill_mode": "no_skills",
           "text_skill_mode": null,
           "task_skill_names": [],
           "loaded_skill_names": [],
           "consulted_skill_names": [],
           "load_skill_calls": 0,
-          "skill_branch_invocations": 0
+          "skill_branch_invocations": 0,
+          "source_clip_probe": {
+            "bytes": 1055614,
+            "duration_sec": 56.73,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 145 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "334d065298f577cda200412cca8d9059af94f6227038e81faa95ff811ad74ae4",
+          "poster_file": "no_skills.jpg"
         },
         "text_only": {
           "caption": "Text-only: enters APP in the notes area, then drifts through menus and context clicks without reliably setting the purple slide background.",
@@ -455,9 +546,9 @@
           "clip_start_sec": 0.0,
           "clip_target_duration_sec": 60.0,
           "clip_probe": {
-            "bytes": 1097564,
+            "bytes": 429729,
             "duration_sec": 60.07,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 143 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 54 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_kimi_k26/text-only/pyautogui/screenshot/kimi_k26_text_branch_full/libreoffice_impress/841b50aa-df53-47bd-a73a-22d3a9f73160/recording.mp4",
           "source_probe": {
@@ -465,7 +556,7 @@
             "duration_sec": 530.53,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 119 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "96eb34813737a4e417382d6d33f9a691b4e119385329fbfba25a1ae695ff6a20",
+          "sha256": "b9e4c483f81b68e461f6a2734a4e23212cf9730845f316028e419542ebf7d856",
           "skill_mode": "text_only",
           "text_skill_mode": "branch_planner",
           "task_skill_names": [
@@ -478,7 +569,14 @@
             "LIBREOFFICEIMPRESS_Edit_Speaker_Notes_and_Notes_Views"
           ],
           "load_skill_calls": 2,
-          "skill_branch_invocations": 2
+          "skill_branch_invocations": 2,
+          "source_clip_probe": {
+            "bytes": 1097564,
+            "duration_sec": 60.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 143 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "96eb34813737a4e417382d6d33f9a691b4e119385329fbfba25a1ae695ff6a20",
+          "poster_file": "text_only.jpg"
         },
         "multimodal_v9": {
           "caption": "Multimodal v9: switches to Notes view, writes APP, returns to the slide/background controls, selects purple, and verifies the final state.",
@@ -488,9 +586,9 @@
           "clip_start_sec": 25.0,
           "clip_target_duration_sec": 75.0,
           "clip_probe": {
-            "bytes": 1313990,
+            "bytes": 509339,
             "duration_sec": 75.07,
-            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 137 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720, 51 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
           "source_recording": "evaluation_results/skills419_full_domain_kimi_k26/multimodal_v9/pyautogui/screenshot/kimi_k26_multimodal_v9_full/libreoffice_impress/841b50aa-df53-47bd-a73a-22d3a9f73160/recording.mp4",
           "source_probe": {
@@ -498,7 +596,7 @@
             "duration_sec": 314.6,
             "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 133 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
           },
-          "sha256": "27ecb633e967022526dea83899920e5120796a9a75f5b84008af81c2a2686d63",
+          "sha256": "bd82bc7158654f7676af55a53b957c9b2fc6d598471aaa0f2198bc23e36e34d6",
           "skill_mode": "multimodal",
           "text_skill_mode": null,
           "task_skill_names": [
@@ -512,9 +610,23 @@
             "LIBREOFFICEIMPRESS_Edit_Speaker_Notes_and_Notes_Views"
           ],
           "load_skill_calls": 1,
-          "skill_branch_invocations": 1
+          "skill_branch_invocations": 1,
+          "source_clip_probe": {
+            "bytes": 1313990,
+            "duration_sec": 75.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 137 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_clip_sha256": "27ecb633e967022526dea83899920e5120796a9a75f5b84008af81c2a2686d63",
+          "poster_file": "multimodal.jpg"
         }
       }
     }
-  ]
+  ],
+  "source_created_by": "build_lossless_case_studies.py",
+  "source_directory_name": "case_study_lossless_clips_20260511",
+  "website_encoding": {
+    "video": "H.264 high profile, yuv420p, 1280px wide, CRF 28, no audio, faststart",
+    "poster": "JPEG frame at 1s, 1280px wide",
+    "reason": "GitHub Pages/browser playback compatibility and lighter page loading."
+  }
 }

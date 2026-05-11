@@ -23,8 +23,6 @@
   <a href="#-overview">Overview</a> |
   <a href="#-installation">Installation</a> |
   <a href="#-quick-start">Quick Start</a> |
-  <a href="#-case-studies">Case Studies</a> |
-  <a href="#-skill-library">Skill Library</a> |
   <a href="#-citation">Citation</a>
 </p>
 
@@ -211,7 +209,7 @@ Use `--domain all` for the full no-Google-Drive OSWorld split. The runner writes
 
 ## 🎬 Case Studies
 
-The website includes five OSWorld case studies comparing the same task under no skills, text-only skill guidance, and multimodal MMSkills. Browse the full video layout at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
+The website includes five OSWorld case studies comparing the same task under no skills, text-only skill guidance, and multimodal MMSkills. The repository stores web-friendly H.264/yuv420p clips under [`assets/case-studies/`](assets/case-studies/), derived from the local source clip bundle. Browse the full video layout at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
 
 | Case | No skills | Text-only | MMSkills |
 |------|-----------|-----------|----------|
