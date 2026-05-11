@@ -1,0 +1,520 @@
+{
+  "created_by": "build_lossless_case_studies.py",
+  "ffmpeg": "/opt/miniconda3/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1",
+  "copy_mode": "-map 0:v:0 -an -c:v copy",
+  "cases": [
+    {
+      "id": "case_01_calc_merged_headers_qwen3",
+      "title": "Calc merged headers: v9 completes the structured sheet layout",
+      "model": "qwen3",
+      "app": "libreoffice_calc",
+      "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+      "instruction": "Create a new sheet named \"Sheet2\" and merge cells A1:C1 to write the header \"Investment Summary\". Beneath that, merge cells A2:B2 to write \"High Interest Rate\" and merge cells C2:D2 to form \"Low Interest Rate\".",
+      "why_selected": "The failure modes are visible in the sheet-tab/menu region, while the successful run visibly builds the three merged report headers.",
+      "variants": {
+        "no_skills": {
+          "caption": "No-skills: repeatedly clicks around the sheet tab/context-menu area and never constructs the requested merged-cell layout.",
+          "score": "0.0",
+          "steps": 20,
+          "clip_file": "no_skills.mp4",
+          "clip_start_sec": 98.0,
+          "clip_target_duration_sec": 50.0,
+          "clip_probe": {
+            "bytes": 1133886,
+            "duration_sec": 56.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 157 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_qwen3/no_skills/pyautogui/screenshot/qwen3vl235_skills419_no_skills_full_tmux_rerun/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
+          "source_probe": {
+            "bytes": 5346186,
+            "duration_sec": 275.67,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 152 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "e773957b2035ee1e6ca49cdbaed23e9eb558c5ddde5998b957c9b471e5e2c978",
+          "skill_mode": "no_skills",
+          "text_skill_mode": null,
+          "task_skill_names": [],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [],
+          "load_skill_calls": 0,
+          "skill_branch_invocations": 0
+        },
+        "text_only": {
+          "caption": "Text-only: starts toward the right operation, but loses cell selection state and ends by rewriting only Investment Summary, without the two second-row headers.",
+          "score": "0.0",
+          "steps": 20,
+          "clip_file": "text_only.mp4",
+          "clip_start_sec": 120.0,
+          "clip_target_duration_sec": 50.0,
+          "clip_probe": {
+            "bytes": 1002188,
+            "duration_sec": 53.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 147 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_qwen3/text-only/pyautogui/screenshot/qwen3vl235_skills419_text_branch_full/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
+          "source_probe": {
+            "bytes": 3689036,
+            "duration_sec": 196.57,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 147 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "e04a3595f8b950996f9aff411663eb91af722dcaae46f46ba1afe3de99634945",
+          "skill_mode": "text_only",
+          "text_skill_mode": "branch_planner",
+          "task_skill_names": [
+            "LIBREOFFICECALC_Build_Merged_Report_Headers_and_Multi_Row_Layouts",
+            "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
+          ],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [],
+          "load_skill_calls": 0,
+          "skill_branch_invocations": 0
+        },
+        "multimodal_v9": {
+          "caption": "Multimodal v9: creates Sheet2, selects each target range, merges A1:C1, A2:B2, and C2:D2, then writes all three labels.",
+          "score": "1.0",
+          "steps": 12,
+          "clip_file": "multimodal.mp4",
+          "clip_start_sec": 80.0,
+          "clip_target_duration_sec": 50.0,
+          "clip_probe": {
+            "bytes": 990786,
+            "duration_sec": 55.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 140 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_qwen3/multimodal_v9/pyautogui/screenshot/qwen3vl235_skills419_multimodal_v9_full/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
+          "source_probe": {
+            "bytes": 3399568,
+            "duration_sec": 189.43,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 140 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "48a04d6d8c105719279d6e8c8d7d5403d43e0bfc6c8f854e9282cacdd4f5e714",
+          "skill_mode": "multimodal",
+          "text_skill_mode": null,
+          "task_skill_names": [
+            "LIBREOFFICECALC_Build_Merged_Report_Headers_and_Multi_Row_Layouts",
+            "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
+          ],
+          "loaded_skill_names": [
+            "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
+          ],
+          "consulted_skill_names": [
+            "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
+          ],
+          "load_skill_calls": 1,
+          "skill_branch_invocations": 1
+        }
+      }
+    },
+    {
+      "id": "case_02_vscode_install_vsix_qwen3",
+      "title": "VS Code local VSIX install: v9 follows the local-file route",
+      "model": "qwen3",
+      "app": "vs_code",
+      "task_id": "0512bb38-d531-4acf-9e7e-0add90816068",
+      "instruction": "Install an extension in VS Code from local VSIX file \"/home/user/test.vsix\".",
+      "why_selected": "The no-skill and text-only runs visibly loop on the Extensions/View entry point, while v9 opens the VSIX install flow and selects the file.",
+      "variants": {
+        "no_skills": {
+          "caption": "No-skills: reaches the Extensions area but repeats clicks near the panel menu and never opens the Install from VSIX file picker.",
+          "score": "0.0",
+          "steps": 20,
+          "clip_file": "no_skills.mp4",
+          "clip_start_sec": 60.0,
+          "clip_target_duration_sec": 45.0,
+          "clip_probe": {
+            "bytes": 594338,
+            "duration_sec": 46.73,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 98 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_qwen3/no_skills/pyautogui/screenshot/qwen3vl235_skills419_no_skills_full_tmux_rerun/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
+          "source_probe": {
+            "bytes": 2984730,
+            "duration_sec": 239.87,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 96 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "278d43b1f4deb1a8c1f9be18ec178d3effd329fc9096454420e097ad11581b64",
+          "skill_mode": "no_skills",
+          "text_skill_mode": null,
+          "task_skill_names": [],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [],
+          "load_skill_calls": 0,
+          "skill_branch_invocations": 0
+        },
+        "text_only": {
+          "caption": "Text-only: alternates between the Extensions icon and View menu, but never commits to the local VSIX installation path.",
+          "score": "0.0",
+          "steps": 20,
+          "clip_file": "text_only.mp4",
+          "clip_start_sec": 100.0,
+          "clip_target_duration_sec": 50.0,
+          "clip_probe": {
+            "bytes": 597921,
+            "duration_sec": 50.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 92 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_qwen3/text-only/pyautogui/screenshot/qwen3vl235_skills419_text_branch_full/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
+          "source_probe": {
+            "bytes": 1941517,
+            "duration_sec": 180.73,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 83 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "88ec49ca9af2bfcf2c33b1dd12b2d9cc3ef0077eaa4a1f0eeb419abd406776fe",
+          "skill_mode": "text_only",
+          "text_skill_mode": "branch_planner",
+          "task_skill_names": [
+            "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
+          ],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [],
+          "load_skill_calls": 0,
+          "skill_branch_invocations": 0
+        },
+        "multimodal_v9": {
+          "caption": "Multimodal v9: opens Extensions, uses the overflow menu's Install from VSIX option, selects /home/user/test.vsix, and stops after the install path is completed.",
+          "score": "1.0",
+          "steps": 8,
+          "clip_file": "multimodal.mp4",
+          "clip_start_sec": 35.0,
+          "clip_target_duration_sec": 50.0,
+          "clip_probe": {
+            "bytes": 775754,
+            "duration_sec": 51.73,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 116 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_qwen3/multimodal_v9/pyautogui/screenshot/qwen3vl235_skills419_multimodal_v9_full/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
+          "source_probe": {
+            "bytes": 1907782,
+            "duration_sec": 141.93,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 104 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "cc940a4d19e9541b4e0cb4e1254cebf5a6e5f25173ca8de4cef6f1255c85db26",
+          "skill_mode": "multimodal",
+          "text_skill_mode": null,
+          "task_skill_names": [
+            "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
+          ],
+          "loaded_skill_names": [
+            "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
+          ],
+          "consulted_skill_names": [
+            "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
+          ],
+          "load_skill_calls": 1,
+          "skill_branch_invocations": 1
+        }
+      }
+    },
+    {
+      "id": "case_03_gimp_move_text_box_geminipro31",
+      "title": "GIMP text-layer move: v9 moves the intended layer, not the background",
+      "model": "geminipro31",
+      "app": "gimp",
+      "task_id": "e2dd0213-26db-4349-abe5-d5667bfd725c",
+      "instruction": "Shift the text box to the left without accidentally selecting the image layer beneath it.",
+      "why_selected": "This case has a clear visual distinction: failures drag around the wrong target or overshoot, while v9 deliberately activates and moves the text layer.",
+      "variants": {
+        "no_skills": {
+          "caption": "No-skills: repeatedly clicks tools/layers and drags from the image area, often affecting or targeting the background instead of the text box.",
+          "score": "0.0",
+          "steps": 20,
+          "clip_file": "no_skills.mp4",
+          "clip_start_sec": 250.0,
+          "clip_target_duration_sec": 55.0,
+          "clip_probe": {
+            "bytes": 1169986,
+            "duration_sec": 57.23,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 160 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_geminipro31/no_skills/pyautogui/screenshot/gemini31pro_office_no_skills/gimp/e2dd0213-26db-4349-abe5-d5667bfd725c/recording.mp4",
+          "source_probe": {
+            "bytes": 5784310,
+            "duration_sec": 334.43,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 135 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "f85e6f12a9fd072653f350f9cba94f05589a35191830c3d28718a6b07cbf8946",
+          "skill_mode": "no_skills",
+          "text_skill_mode": null,
+          "task_skill_names": [],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [],
+          "load_skill_calls": 0,
+          "skill_branch_invocations": 0
+        },
+        "text_only": {
+          "caption": "Text-only: receives the right high-level idea but keeps dragging large distances from the wrong visual anchor, so the target text box is not placed correctly.",
+          "score": "0.0",
+          "steps": 20,
+          "clip_file": "text_only.mp4",
+          "clip_start_sec": 245.0,
+          "clip_target_duration_sec": 55.0,
+          "clip_probe": {
+            "bytes": 776625,
+            "duration_sec": 58.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 103 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_geminipro31/text-only/pyautogui/screenshot/geminipro31_skills419_text_branch_full/gimp/e2dd0213-26db-4349-abe5-d5667bfd725c/recording.mp4",
+          "source_probe": {
+            "bytes": 5125338,
+            "duration_sec": 396.77,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 100 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "e53654632ac291e0847aeb385037051f7a50f14d3c4f62aedc8c151fc6ba7528",
+          "skill_mode": "text_only",
+          "text_skill_mode": "branch_planner",
+          "task_skill_names": [
+            "GIMP_GIMP_Move_Text_Or_Object_Layers_Without_Selecting_Background_Content",
+            "GIMP_GIMP_Manage_Layers_Masks_and_Blend_States"
+          ],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [
+            "GIMP_GIMP_Move_Text_Or_Object_Layers_Without_Selecting_Background_Content"
+          ],
+          "load_skill_calls": 1,
+          "skill_branch_invocations": 1
+        },
+        "multimodal_v9": {
+          "caption": "Multimodal v9: activates the text/object layer, uses the move tool, and drags the text box left while avoiding the background layer.",
+          "score": "1.0",
+          "steps": 8,
+          "clip_file": "multimodal.mp4",
+          "clip_start_sec": 45.0,
+          "clip_target_duration_sec": 50.0,
+          "clip_probe": {
+            "bytes": 816327,
+            "duration_sec": 53.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 119 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_geminipro31/multimodal_v9/pyautogui/screenshot/geminipro31_skills419_multimodal_v9_full/gimp/e2dd0213-26db-4349-abe5-d5667bfd725c/recording.mp4",
+          "source_probe": {
+            "bytes": 3095400,
+            "duration_sec": 189.53,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 127 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "78ac81d7d0fa0ba95e3a8079e6adb7f32f4d85e66be2c68bf6d460fff8a9b757",
+          "skill_mode": "multimodal",
+          "text_skill_mode": null,
+          "task_skill_names": [
+            "GIMP_GIMP_Move_Text_Or_Object_Layers_Without_Selecting_Background_Content",
+            "GIMP_GIMP_Manage_Layers_Masks_and_Blend_States"
+          ],
+          "loaded_skill_names": [
+            "GIMP_GIMP_Move_Text_Or_Object_Layers_Without_Selecting_Background_Content"
+          ],
+          "consulted_skill_names": [
+            "GIMP_GIMP_Move_Text_Or_Object_Layers_Without_Selecting_Background_Content"
+          ],
+          "load_skill_calls": 1,
+          "skill_branch_invocations": 1
+        }
+      }
+    },
+    {
+      "id": "case_04_calc_clustered_chart_geminipro31",
+      "title": "Calc chart creation: v9 creates and relocates the exact chart",
+      "model": "geminipro31",
+      "app": "libreoffice_calc",
+      "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+      "instruction": "Create a clustered column chart showing the Sales and COGS data for each week in a new sheet named \"Sheet2\". Set the chart title as \"Sales & COGS\".",
+      "why_selected": "The chart wizard, title entry, and chart relocation are directly visible, making the successful skill-guided sequence easy to contrast.",
+      "variants": {
+        "no_skills": {
+          "caption": "No-skills: selects data and clicks chart-related controls, but then cuts/pastes around the workbook and never leaves a correct clustered chart with the required title on Sheet2.",
+          "score": "0.0",
+          "steps": 20,
+          "clip_file": "no_skills.mp4",
+          "clip_start_sec": 0.0,
+          "clip_target_duration_sec": 55.0,
+          "clip_probe": {
+            "bytes": 1261808,
+            "duration_sec": 55.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 180 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_geminipro31/no_skills/pyautogui/screenshot/gemini31pro_office_no_skills/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
+          "source_probe": {
+            "bytes": 6279773,
+            "duration_sec": 326.63,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 150 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "965fbf45cd6b069c67397668102b994c67f0b2517a4ec3ddc46874226a63242b",
+          "skill_mode": "no_skills",
+          "text_skill_mode": null,
+          "task_skill_names": [],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [],
+          "load_skill_calls": 0,
+          "skill_branch_invocations": 0
+        },
+        "text_only": {
+          "caption": "Text-only: repeatedly retries chart insertion and sheet movement, but does not stabilize the correct data range, title, and destination sheet.",
+          "score": "0.0",
+          "steps": 20,
+          "clip_file": "text_only.mp4",
+          "clip_start_sec": 140.0,
+          "clip_target_duration_sec": 55.0,
+          "clip_probe": {
+            "bytes": 1111335,
+            "duration_sec": 62.47,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 139 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_geminipro31/text-only/pyautogui/screenshot/geminipro31_skills419_text_branch_full/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
+          "source_probe": {
+            "bytes": 5920600,
+            "duration_sec": 321.77,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 144 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "7280047be9dfcd8ce8c6010bb658a013f48fab52e6c1425f6b23c7782076c60b",
+          "skill_mode": "text_only",
+          "text_skill_mode": "branch_planner",
+          "task_skill_names": [
+            "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+          ],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [
+            "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+          ],
+          "load_skill_calls": 1,
+          "skill_branch_invocations": 1
+        },
+        "multimodal_v9": {
+          "caption": "Multimodal v9: selects the Sales/COGS data range, opens the chart wizard, enters the exact title Sales & COGS, creates Sheet2, and moves the chart there.",
+          "score": "1.0",
+          "steps": 16,
+          "clip_file": "multimodal.mp4",
+          "clip_start_sec": 220.0,
+          "clip_target_duration_sec": 60.0,
+          "clip_probe": {
+            "bytes": 1426399,
+            "duration_sec": 63.4,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 176 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_geminipro31/multimodal_v9/pyautogui/screenshot/geminipro31_skills419_multimodal_v9_full/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
+          "source_probe": {
+            "bytes": 6765498,
+            "duration_sec": 312.57,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 170 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "5078958a31743ea9f857f6c1cc935053885c97a20a4d276c06f99bcc948b62b8",
+          "skill_mode": "multimodal",
+          "text_skill_mode": null,
+          "task_skill_names": [
+            "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+          ],
+          "loaded_skill_names": [
+            "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+          ],
+          "consulted_skill_names": [
+            "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+          ],
+          "load_skill_calls": 2,
+          "skill_branch_invocations": 2
+        }
+      }
+    },
+    {
+      "id": "case_05_impress_purple_note_kimi_k26",
+      "title": "Impress note and background: v9 completes both required edits",
+      "model": "kimi_k26",
+      "app": "libreoffice_impress",
+      "task_id": "841b50aa-df53-47bd-a73a-22d3a9f73160",
+      "instruction": "Add a note \"APP\" into the slide and give the slide a purple background color.",
+      "why_selected": "Both final requirements are visible: the note text is entered in Notes view and the slide background changes to purple.",
+      "variants": {
+        "no_skills": {
+          "caption": "No-skills: interacts with the sidebar and menus but does not complete the combined note plus purple-background requirement.",
+          "score": "0",
+          "steps": 17,
+          "clip_file": "no_skills.mp4",
+          "clip_start_sec": 135.0,
+          "clip_target_duration_sec": 55.0,
+          "clip_probe": {
+            "bytes": 1055614,
+            "duration_sec": 56.73,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 145 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_kimi_k26/no_skills/pyautogui/screenshot/kimi_k26_no_skills_full/libreoffice_impress/841b50aa-df53-47bd-a73a-22d3a9f73160/recording.mp4",
+          "source_probe": {
+            "bytes": 4241532,
+            "duration_sec": 255.27,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 130 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "334d065298f577cda200412cca8d9059af94f6227038e81faa95ff811ad74ae4",
+          "skill_mode": "no_skills",
+          "text_skill_mode": null,
+          "task_skill_names": [],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [],
+          "load_skill_calls": 0,
+          "skill_branch_invocations": 0
+        },
+        "text_only": {
+          "caption": "Text-only: enters APP in the notes area, then drifts through menus and context clicks without reliably setting the purple slide background.",
+          "score": "0",
+          "steps": 20,
+          "clip_file": "text_only.mp4",
+          "clip_start_sec": 0.0,
+          "clip_target_duration_sec": 60.0,
+          "clip_probe": {
+            "bytes": 1097564,
+            "duration_sec": 60.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 143 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_kimi_k26/text-only/pyautogui/screenshot/kimi_k26_text_branch_full/libreoffice_impress/841b50aa-df53-47bd-a73a-22d3a9f73160/recording.mp4",
+          "source_probe": {
+            "bytes": 8109433,
+            "duration_sec": 530.53,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 119 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "96eb34813737a4e417382d6d33f9a691b4e119385329fbfba25a1ae695ff6a20",
+          "skill_mode": "text_only",
+          "text_skill_mode": "branch_planner",
+          "task_skill_names": [
+            "LIBREOFFICEIMPRESS_Edit_Speaker_Notes_and_Notes_Views",
+            "LIBREOFFICEIMPRESS_Configure_Slide_Backgrounds_and_Fill_Effects"
+          ],
+          "loaded_skill_names": [],
+          "consulted_skill_names": [
+            "LIBREOFFICEIMPRESS_Configure_Slide_Backgrounds_and_Fill_Effects",
+            "LIBREOFFICEIMPRESS_Edit_Speaker_Notes_and_Notes_Views"
+          ],
+          "load_skill_calls": 2,
+          "skill_branch_invocations": 2
+        },
+        "multimodal_v9": {
+          "caption": "Multimodal v9: switches to Notes view, writes APP, returns to the slide/background controls, selects purple, and verifies the final state.",
+          "score": "1",
+          "steps": 15,
+          "clip_file": "multimodal.mp4",
+          "clip_start_sec": 25.0,
+          "clip_target_duration_sec": 75.0,
+          "clip_probe": {
+            "bytes": 1313990,
+            "duration_sec": 75.07,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 137 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "source_recording": "evaluation_results/skills419_full_domain_kimi_k26/multimodal_v9/pyautogui/screenshot/kimi_k26_multimodal_v9_full/libreoffice_impress/841b50aa-df53-47bd-a73a-22d3a9f73160/recording.mp4",
+          "source_probe": {
+            "bytes": 5347778,
+            "duration_sec": 314.6,
+            "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 133 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+          },
+          "sha256": "27ecb633e967022526dea83899920e5120796a9a75f5b84008af81c2a2686d63",
+          "skill_mode": "multimodal",
+          "text_skill_mode": null,
+          "task_skill_names": [
+            "LIBREOFFICEIMPRESS_Edit_Speaker_Notes_and_Notes_Views",
+            "LIBREOFFICEIMPRESS_Configure_Slide_Backgrounds_and_Fill_Effects"
+          ],
+          "loaded_skill_names": [
+            "LIBREOFFICEIMPRESS_Edit_Speaker_Notes_and_Notes_Views"
+          ],
+          "consulted_skill_names": [
+            "LIBREOFFICEIMPRESS_Edit_Speaker_Notes_and_Notes_Views"
+          ],
+          "load_skill_calls": 1,
+          "skill_branch_invocations": 1
+        }
+      }
+    }
+  ]
+}

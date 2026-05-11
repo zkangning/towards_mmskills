@@ -164,6 +164,28 @@
   color: var(--library-ink);
 }
 
+.sidebar-note {
+  display: grid;
+  gap: 5px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--library-line);
+}
+
+.sidebar-note strong {
+  color: var(--library-accent-dark);
+}
+
+.sidebar-note span {
+  color: var(--library-muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.sidebar-note code {
+  color: #26313a;
+  font-size: 0.82rem;
+}
+
 .library-main {
   min-width: 0;
 }

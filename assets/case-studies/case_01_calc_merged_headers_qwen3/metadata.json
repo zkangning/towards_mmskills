@@ -1,0 +1,102 @@
+{
+  "id": "case_01_calc_merged_headers_qwen3",
+  "title": "Calc merged headers: v9 completes the structured sheet layout",
+  "model": "qwen3",
+  "app": "libreoffice_calc",
+  "task_id": "1d17d234-e39d-4ed7-b46f-4417922a4e7c",
+  "instruction": "Create a new sheet named \"Sheet2\" and merge cells A1:C1 to write the header \"Investment Summary\". Beneath that, merge cells A2:B2 to write \"High Interest Rate\" and merge cells C2:D2 to form \"Low Interest Rate\".",
+  "why_selected": "The failure modes are visible in the sheet-tab/menu region, while the successful run visibly builds the three merged report headers.",
+  "variants": {
+    "no_skills": {
+      "caption": "No-skills: repeatedly clicks around the sheet tab/context-menu area and never constructs the requested merged-cell layout.",
+      "score": "0.0",
+      "steps": 20,
+      "clip_file": "no_skills.mp4",
+      "clip_start_sec": 98.0,
+      "clip_target_duration_sec": 50.0,
+      "clip_probe": {
+        "bytes": 1133886,
+        "duration_sec": 56.4,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 157 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_qwen3/no_skills/pyautogui/screenshot/qwen3vl235_skills419_no_skills_full_tmux_rerun/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
+      "source_probe": {
+        "bytes": 5346186,
+        "duration_sec": 275.67,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 152 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "e773957b2035ee1e6ca49cdbaed23e9eb558c5ddde5998b957c9b471e5e2c978",
+      "skill_mode": "no_skills",
+      "text_skill_mode": null,
+      "task_skill_names": [],
+      "loaded_skill_names": [],
+      "consulted_skill_names": [],
+      "load_skill_calls": 0,
+      "skill_branch_invocations": 0
+    },
+    "text_only": {
+      "caption": "Text-only: starts toward the right operation, but loses cell selection state and ends by rewriting only Investment Summary, without the two second-row headers.",
+      "score": "0.0",
+      "steps": 20,
+      "clip_file": "text_only.mp4",
+      "clip_start_sec": 120.0,
+      "clip_target_duration_sec": 50.0,
+      "clip_probe": {
+        "bytes": 1002188,
+        "duration_sec": 53.4,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 147 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_qwen3/text-only/pyautogui/screenshot/qwen3vl235_skills419_text_branch_full/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
+      "source_probe": {
+        "bytes": 3689036,
+        "duration_sec": 196.57,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 147 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "e04a3595f8b950996f9aff411663eb91af722dcaae46f46ba1afe3de99634945",
+      "skill_mode": "text_only",
+      "text_skill_mode": "branch_planner",
+      "task_skill_names": [
+        "LIBREOFFICECALC_Build_Merged_Report_Headers_and_Multi_Row_Layouts",
+        "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
+      ],
+      "loaded_skill_names": [],
+      "consulted_skill_names": [],
+      "load_skill_calls": 0,
+      "skill_branch_invocations": 0
+    },
+    "multimodal_v9": {
+      "caption": "Multimodal v9: creates Sheet2, selects each target range, merges A1:C1, A2:B2, and C2:D2, then writes all three labels.",
+      "score": "1.0",
+      "steps": 12,
+      "clip_file": "multimodal.mp4",
+      "clip_start_sec": 80.0,
+      "clip_target_duration_sec": 50.0,
+      "clip_probe": {
+        "bytes": 990786,
+        "duration_sec": 55.07,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 140 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_qwen3/multimodal_v9/pyautogui/screenshot/qwen3vl235_skills419_multimodal_v9_full/libreoffice_calc/1d17d234-e39d-4ed7-b46f-4417922a4e7c/recording.mp4",
+      "source_probe": {
+        "bytes": 3399568,
+        "duration_sec": 189.43,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 140 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "48a04d6d8c105719279d6e8c8d7d5403d43e0bfc6c8f854e9282cacdd4f5e714",
+      "skill_mode": "multimodal",
+      "text_skill_mode": null,
+      "task_skill_names": [
+        "LIBREOFFICECALC_Build_Merged_Report_Headers_and_Multi_Row_Layouts",
+        "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
+      ],
+      "loaded_skill_names": [
+        "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
+      ],
+      "consulted_skill_names": [
+        "LIBREOFFICECALC_Manage_Calc_Worksheets_and_Cross_Sheet_Data"
+      ],
+      "load_skill_calls": 1,
+      "skill_branch_invocations": 1
+    }
+  }
+}

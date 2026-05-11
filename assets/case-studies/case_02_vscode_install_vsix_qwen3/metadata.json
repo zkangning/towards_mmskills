@@ -1,0 +1,100 @@
+{
+  "id": "case_02_vscode_install_vsix_qwen3",
+  "title": "VS Code local VSIX install: v9 follows the local-file route",
+  "model": "qwen3",
+  "app": "vs_code",
+  "task_id": "0512bb38-d531-4acf-9e7e-0add90816068",
+  "instruction": "Install an extension in VS Code from local VSIX file \"/home/user/test.vsix\".",
+  "why_selected": "The no-skill and text-only runs visibly loop on the Extensions/View entry point, while v9 opens the VSIX install flow and selects the file.",
+  "variants": {
+    "no_skills": {
+      "caption": "No-skills: reaches the Extensions area but repeats clicks near the panel menu and never opens the Install from VSIX file picker.",
+      "score": "0.0",
+      "steps": 20,
+      "clip_file": "no_skills.mp4",
+      "clip_start_sec": 60.0,
+      "clip_target_duration_sec": 45.0,
+      "clip_probe": {
+        "bytes": 594338,
+        "duration_sec": 46.73,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 98 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_qwen3/no_skills/pyautogui/screenshot/qwen3vl235_skills419_no_skills_full_tmux_rerun/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
+      "source_probe": {
+        "bytes": 2984730,
+        "duration_sec": 239.87,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 96 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "278d43b1f4deb1a8c1f9be18ec178d3effd329fc9096454420e097ad11581b64",
+      "skill_mode": "no_skills",
+      "text_skill_mode": null,
+      "task_skill_names": [],
+      "loaded_skill_names": [],
+      "consulted_skill_names": [],
+      "load_skill_calls": 0,
+      "skill_branch_invocations": 0
+    },
+    "text_only": {
+      "caption": "Text-only: alternates between the Extensions icon and View menu, but never commits to the local VSIX installation path.",
+      "score": "0.0",
+      "steps": 20,
+      "clip_file": "text_only.mp4",
+      "clip_start_sec": 100.0,
+      "clip_target_duration_sec": 50.0,
+      "clip_probe": {
+        "bytes": 597921,
+        "duration_sec": 50.07,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 92 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_qwen3/text-only/pyautogui/screenshot/qwen3vl235_skills419_text_branch_full/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
+      "source_probe": {
+        "bytes": 1941517,
+        "duration_sec": 180.73,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 83 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "88ec49ca9af2bfcf2c33b1dd12b2d9cc3ef0077eaa4a1f0eeb419abd406776fe",
+      "skill_mode": "text_only",
+      "text_skill_mode": "branch_planner",
+      "task_skill_names": [
+        "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
+      ],
+      "loaded_skill_names": [],
+      "consulted_skill_names": [],
+      "load_skill_calls": 0,
+      "skill_branch_invocations": 0
+    },
+    "multimodal_v9": {
+      "caption": "Multimodal v9: opens Extensions, uses the overflow menu's Install from VSIX option, selects /home/user/test.vsix, and stops after the install path is completed.",
+      "score": "1.0",
+      "steps": 8,
+      "clip_file": "multimodal.mp4",
+      "clip_start_sec": 35.0,
+      "clip_target_duration_sec": 50.0,
+      "clip_probe": {
+        "bytes": 775754,
+        "duration_sec": 51.73,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 116 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_qwen3/multimodal_v9/pyautogui/screenshot/qwen3vl235_skills419_multimodal_v9_full/vs_code/0512bb38-d531-4acf-9e7e-0add90816068/recording.mp4",
+      "source_probe": {
+        "bytes": 1907782,
+        "duration_sec": 141.93,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 104 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "cc940a4d19e9541b4e0cb4e1254cebf5a6e5f25173ca8de4cef6f1255c85db26",
+      "skill_mode": "multimodal",
+      "text_skill_mode": null,
+      "task_skill_names": [
+        "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
+      ],
+      "loaded_skill_names": [
+        "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
+      ],
+      "consulted_skill_names": [
+        "VSCODE_Install_Local_VSIX_and_Verify_Extension_Installed"
+      ],
+      "load_skill_calls": 1,
+      "skill_branch_invocations": 1
+    }
+  }
+}

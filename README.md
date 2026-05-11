@@ -10,6 +10,7 @@
 [![OSWorld](https://img.shields.io/badge/Benchmark-OSWorld-7b39e2.svg)](https://github.com/xlang-ai/OSWorld)
 [![Website](https://img.shields.io/badge/Website-MMSkills-0f766e.svg)](https://zkangning.github.io/towards_mmskills/)
 [![Skill Library](https://img.shields.io/badge/Skill%20Library-247%20Ubuntu%20Skills-4420A8.svg)](https://zkangning.github.io/towards_mmskills/skills.html)
+[![Case Studies](https://img.shields.io/badge/Case%20Studies-5%20Video%20Comparisons-a15c11.svg)](https://zkangning.github.io/towards_mmskills/cases.html)
 [![GitHub stars](https://img.shields.io/github/stars/zkangning/towards_mmskills?style=social)](https://github.com/zkangning/towards_mmskills/stargazers)
 
 </div>
@@ -18,9 +19,12 @@
   <a href="#-latest-news">News</a> |
   <a href="https://zkangning.github.io/towards_mmskills/">Website</a> |
   <a href="https://zkangning.github.io/towards_mmskills/skills.html">Skill Library</a> |
+  <a href="https://zkangning.github.io/towards_mmskills/cases.html">Case Studies</a> |
   <a href="#-overview">Overview</a> |
   <a href="#-installation">Installation</a> |
   <a href="#-quick-start">Quick Start</a> |
+  <a href="#-case-studies">Case Studies</a> |
+  <a href="#-skill-library">Skill Library</a> |
   <a href="#-citation">Citation</a>
 </p>
 
@@ -32,6 +36,7 @@
 
 ## 📣 Latest News
 
+- **[May 2026]** The website now includes [case-study video comparisons](https://zkangning.github.io/towards_mmskills/cases.html) for no-skill, text-only, and multimodal MMSkills runs.
 - **[May 2026]** The project website and searchable [MMSkills Library](https://zkangning.github.io/towards_mmskills/skills.html) are live, indexing **247 Ubuntu GUI skills** from the open-source skill assets.
 - **[May 2026]** Public MMSkills release is available with a compact multimodal desktop-skill subset, runtime agent adapters, and OSWorld integration files.
 - **[May 2026]** The released package includes Ubuntu skills across Chrome, GIMP, LibreOffice, OS, Thunderbird, VLC, VS Code, and multi-app workflows.
@@ -51,6 +56,7 @@ Project pages:
 
 - [MMSkills website](https://zkangning.github.io/towards_mmskills/)
 - [Searchable Ubuntu Skill Library](https://zkangning.github.io/towards_mmskills/skills.html)
+- [Case-study video comparisons](https://zkangning.github.io/towards_mmskills/cases.html)
 
 ## ✨ Highlights
 
@@ -203,6 +209,18 @@ python run.py \
 
 Use `--domain all` for the full no-Google-Drive OSWorld split. The runner writes trajectories, screenshots, `skill_invocations.json`, `skill_usage_summary.json`, and aggregate metrics under the selected `--result_dir`.
 
+## 🎬 Case Studies
+
+The website includes five OSWorld case studies comparing the same task under no skills, text-only skill guidance, and multimodal MMSkills. Browse the full video layout at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
+
+| Case | No skills | Text-only | MMSkills |
+|------|-----------|-----------|----------|
+| Calc merged headers | [video](assets/case-studies/case_01_calc_merged_headers_qwen3/no_skills.mp4) | [video](assets/case-studies/case_01_calc_merged_headers_qwen3/text_only.mp4) | [video](assets/case-studies/case_01_calc_merged_headers_qwen3/multimodal.mp4) |
+| VS Code local VSIX install | [video](assets/case-studies/case_02_vscode_install_vsix_qwen3/no_skills.mp4) | [video](assets/case-studies/case_02_vscode_install_vsix_qwen3/text_only.mp4) | [video](assets/case-studies/case_02_vscode_install_vsix_qwen3/multimodal.mp4) |
+| GIMP text-layer move | [video](assets/case-studies/case_03_gimp_move_text_box_geminipro31/no_skills.mp4) | [video](assets/case-studies/case_03_gimp_move_text_box_geminipro31/text_only.mp4) | [video](assets/case-studies/case_03_gimp_move_text_box_geminipro31/multimodal.mp4) |
+| Calc chart creation | [video](assets/case-studies/case_04_calc_clustered_chart_geminipro31/no_skills.mp4) | [video](assets/case-studies/case_04_calc_clustered_chart_geminipro31/text_only.mp4) | [video](assets/case-studies/case_04_calc_clustered_chart_geminipro31/multimodal.mp4) |
+| Impress note and background | [video](assets/case-studies/case_05_impress_purple_note_kimi_k26/no_skills.mp4) | [video](assets/case-studies/case_05_impress_purple_note_kimi_k26/text_only.mp4) | [video](assets/case-studies/case_05_impress_purple_note_kimi_k26/multimodal.mp4) |
+
 ## 📚 Skill Library
 
 The website indexes **247 Ubuntu GUI skills** from the open-source skill assets. Each skill card links to a structured view of its `SKILL.md`, runtime state cards, and ordered visual references.
@@ -223,6 +241,8 @@ skills_library/<domain>/<skill_name>/
 ```
 
 The main agent sees only concise skill names and state hints. Detailed visual evidence is loaded lazily by the branch planner, which keeps the main context compact while preserving access to state-specific multimodal references.
+
+`runtime_state_cards.json` is the inference-facing version: it contains compact state descriptions, when-to-use rules, visible cues, verification cues, and selected image views for branch-time loading. `state_cards.json` is the richer authoring/audit version: it keeps transfer-limit notes, highlight targets, grounding queries, bounding boxes, crop decisions, and evidence-source metadata for inspection and regeneration.
 
 ## 🧪 Outputs
 

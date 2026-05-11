@@ -1,0 +1,102 @@
+{
+  "id": "case_04_calc_clustered_chart_geminipro31",
+  "title": "Calc chart creation: v9 creates and relocates the exact chart",
+  "model": "geminipro31",
+  "app": "libreoffice_calc",
+  "task_id": "12382c62-0cd1-4bf2-bdc8-1d20bf9b2371",
+  "instruction": "Create a clustered column chart showing the Sales and COGS data for each week in a new sheet named \"Sheet2\". Set the chart title as \"Sales & COGS\".",
+  "why_selected": "The chart wizard, title entry, and chart relocation are directly visible, making the successful skill-guided sequence easy to contrast.",
+  "variants": {
+    "no_skills": {
+      "caption": "No-skills: selects data and clicks chart-related controls, but then cuts/pastes around the workbook and never leaves a correct clustered chart with the required title on Sheet2.",
+      "score": "0.0",
+      "steps": 20,
+      "clip_file": "no_skills.mp4",
+      "clip_start_sec": 0.0,
+      "clip_target_duration_sec": 55.0,
+      "clip_probe": {
+        "bytes": 1261808,
+        "duration_sec": 55.07,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 180 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_geminipro31/no_skills/pyautogui/screenshot/gemini31pro_office_no_skills/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
+      "source_probe": {
+        "bytes": 6279773,
+        "duration_sec": 326.63,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 150 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "965fbf45cd6b069c67397668102b994c67f0b2517a4ec3ddc46874226a63242b",
+      "skill_mode": "no_skills",
+      "text_skill_mode": null,
+      "task_skill_names": [],
+      "loaded_skill_names": [],
+      "consulted_skill_names": [],
+      "load_skill_calls": 0,
+      "skill_branch_invocations": 0
+    },
+    "text_only": {
+      "caption": "Text-only: repeatedly retries chart insertion and sheet movement, but does not stabilize the correct data range, title, and destination sheet.",
+      "score": "0.0",
+      "steps": 20,
+      "clip_file": "text_only.mp4",
+      "clip_start_sec": 140.0,
+      "clip_target_duration_sec": 55.0,
+      "clip_probe": {
+        "bytes": 1111335,
+        "duration_sec": 62.47,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 139 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_geminipro31/text-only/pyautogui/screenshot/geminipro31_skills419_text_branch_full/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
+      "source_probe": {
+        "bytes": 5920600,
+        "duration_sec": 321.77,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 144 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "7280047be9dfcd8ce8c6010bb658a013f48fab52e6c1425f6b23c7782076c60b",
+      "skill_mode": "text_only",
+      "text_skill_mode": "branch_planner",
+      "task_skill_names": [
+        "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+      ],
+      "loaded_skill_names": [],
+      "consulted_skill_names": [
+        "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+      ],
+      "load_skill_calls": 1,
+      "skill_branch_invocations": 1
+    },
+    "multimodal_v9": {
+      "caption": "Multimodal v9: selects the Sales/COGS data range, opens the chart wizard, enters the exact title Sales & COGS, creates Sheet2, and moves the chart there.",
+      "score": "1.0",
+      "steps": 16,
+      "clip_file": "multimodal.mp4",
+      "clip_start_sec": 220.0,
+      "clip_target_duration_sec": 60.0,
+      "clip_probe": {
+        "bytes": 1426399,
+        "duration_sec": 63.4,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 176 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "source_recording": "evaluation_results/skills419_full_domain_geminipro31/multimodal_v9/pyautogui/screenshot/geminipro31_skills419_multimodal_v9_full/libreoffice_calc/12382c62-0cd1-4bf2-bdc8-1d20bf9b2371/recording.mp4",
+      "source_probe": {
+        "bytes": 6765498,
+        "duration_sec": 312.57,
+        "video_stream": "Stream #0:0[0x1](und): Video: h264 (High 4:4:4 Predictive) (avc1 / 0x31637661), yuv444p(progressive), 1920x1080, 170 kb/s, 30 fps, 30 tbr, 15360 tbn (default)"
+      },
+      "sha256": "5078958a31743ea9f857f6c1cc935053885c97a20a4d276c06f99bcc948b62b8",
+      "skill_mode": "multimodal",
+      "text_skill_mode": null,
+      "task_skill_names": [
+        "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+      ],
+      "loaded_skill_names": [
+        "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+      ],
+      "consulted_skill_names": [
+        "LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type"
+      ],
+      "load_skill_calls": 2,
+      "skill_branch_invocations": 2
+    }
+  }
+}
