@@ -8,17 +8,19 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-Apache--2.0-green.svg)](LICENSE)
 [![OSWorld](https://img.shields.io/badge/Benchmark-OSWorld-7b39e2.svg)](https://github.com/xlang-ai/OSWorld)
-[![Skills](https://img.shields.io/badge/Released%20Skills-16-4420A8.svg)](skills_library)
+[![Website](https://img.shields.io/badge/Website-MMSkills-0f766e.svg)](https://zkangning.github.io/towards_mmskills/)
+[![Skill Library](https://img.shields.io/badge/Skill%20Library-247%20Ubuntu%20Skills-4420A8.svg)](https://zkangning.github.io/towards_mmskills/skills.html)
 [![GitHub stars](https://img.shields.io/github/stars/zkangning/towards_mmskills?style=social)](https://github.com/zkangning/towards_mmskills/stargazers)
 
 </div>
 
 <p align="center">
   <a href="#-latest-news">News</a> |
+  <a href="https://zkangning.github.io/towards_mmskills/">Website</a> |
+  <a href="https://zkangning.github.io/towards_mmskills/skills.html">Skill Library</a> |
   <a href="#-overview">Overview</a> |
   <a href="#-installation">Installation</a> |
   <a href="#-quick-start">Quick Start</a> |
-  <a href="#-released-skills">Released Skills</a> |
   <a href="#-citation">Citation</a>
 </p>
 
@@ -30,8 +32,9 @@
 
 ## 📣 Latest News
 
+- **[May 2026]** The project website and searchable [MMSkills Library](https://zkangning.github.io/towards_mmskills/skills.html) are live, indexing **247 Ubuntu GUI skills** from the open-source skill assets.
 - **[May 2026]** Public MMSkills release is available with a compact multimodal desktop-skill subset, runtime agent adapters, and OSWorld integration files.
-- **[May 2026]** The released package includes **16 skills** across Chrome, GIMP, LibreOffice, OS, Thunderbird, VLC, and VS Code.
+- **[May 2026]** The released package includes Ubuntu skills across Chrome, GIMP, LibreOffice, OS, Thunderbird, VLC, VS Code, and multi-app workflows.
 - **[May 2026]** The branch-loaded MMSkill runtime can run in text-only or multimodal skill modes with model-agnostic OpenAI-compatible and native Gemini-compatible endpoints.
 
 ## 💡 Overview
@@ -43,6 +46,11 @@
 </div>
 
 This repository is a focused open-source release. It is not a full OSWorld fork; instead, it provides the MMSkill runtime layer, an install script, OSWorld runner patches, task-to-skill mappings, and a representative public skill library.
+
+Project pages:
+
+- [MMSkills website](https://zkangning.github.io/towards_mmskills/)
+- [Searchable Ubuntu Skill Library](https://zkangning.github.io/towards_mmskills/skills.html)
 
 ## ✨ Highlights
 
@@ -61,12 +69,13 @@ This repository is a focused open-source release. It is not a full OSWorld fork;
 
 ```text
 MMSkills/
-├── assets/                    # README figure and project title asset
+├── assets/                    # README figures, website assets, and skill-library previews
 ├── mm_agents/                 # MMSkill runtime architecture and model adapters
 ├── osworld_integration/       # MMSkills-aware OSWorld runner files
-├── skills_library/            # Public multimodal skills subset
+├── skills_library/            # Public multimodal skills subset for direct runtime use
 ├── task_skill_mappings/       # OSWorld task-to-skill mapping for released skills
 └── scripts/
+    ├── build_skill_library_site.py # Generate the website skill-library index
     ├── install_into_osworld.py # Install this release into an OSWorld checkout
     └── sync_from_sources.py    # Maintainer sync helper for source checkouts
 ```
@@ -194,23 +203,13 @@ python run.py \
 
 Use `--domain all` for the full no-Google-Drive OSWorld split. The runner writes trajectories, screenshots, `skill_invocations.json`, `skill_usage_summary.json`, and aggregate metrics under the selected `--result_dir`.
 
-## 📚 Released Skills
+## 📚 Skill Library
 
-The released subset contains **16 skills** across representative Ubuntu desktop domains.
+The website indexes **247 Ubuntu GUI skills** from the open-source skill assets. Each skill card links to a structured view of its `SKILL.md`, runtime state cards, and ordered visual references.
 
-| Domain | Skills |
-|--------|--------|
-| Chrome | Search, bookmarks, and search-engine preferences |
-| GIMP | Save projects and export edited images |
-| LibreOffice Calc | Sorting/filtering, charts, formulas, and functions |
-| LibreOffice Impress | Media insertion and slide organization |
-| LibreOffice Writer | Find/replace and save/export workflows |
-| OS | File/archive management and terminal state queries |
-| Thunderbird | Compose, format, and send emails |
-| VLC | Open local media and verify playback |
-| VS Code | Project search and replace |
+Browse the live library at [zkangning.github.io/towards_mmskills/skills.html](https://zkangning.github.io/towards_mmskills/skills.html).
 
-See [`skills_library/README.md`](skills_library/README.md) for the exact skill directory list.
+The repository also includes a compact runtime-ready subset under [`skills_library/`](skills_library/) for immediate OSWorld integration.
 
 ## 📦 Skill Package Format
 

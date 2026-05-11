@@ -112,17 +112,23 @@ def bullets_after_heading(text: str, heading_patterns: tuple[str, ...], limit: i
     return bullets
 
 
-def count_json_items(path: Path) -> int:
+def read_json(path: Path) -> dict | list | None:
     if not path.exists():
-        return 0
+        return None
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
+        return None
+
+
+def count_json_items(path: Path) -> int:
+    data = read_json(path)
+    if data is None:
         return 0
     if isinstance(data, list):
         return len(data)
     if isinstance(data, dict):
-        for key in ("cards", "state_cards", "runtime_state_cards", "steps"):
+        for key in ("states", "cards", "state_cards", "runtime_state_cards", "steps"):
             value = data.get(key)
             if isinstance(value, list):
                 return len(value)
@@ -159,11 +165,24 @@ def choose_thumbnail(images: list[Path]) -> Path | None:
     return sorted(images, key=score)[0]
 
 
-def make_thumbnail(source: Path, dest: Path) -> bool:
+def make_preview(source: Path, dest: Path, max_size: int = 420) -> bool:
     dest.parent.mkdir(parents=True, exist_ok=True)
     if shutil.which("sips"):
         result = subprocess.run(
-            ["sips", "-Z", "640", "-s", "format", "jpeg", str(source), "--out", str(dest)],
+            [
+                "sips",
+                "-Z",
+                str(max_size),
+                "-s",
+                "format",
+                "jpeg",
+                "-s",
+                "formatOptions",
+                "72",
+                str(source),
+                "--out",
+                str(dest),
+            ],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
             check=False,
@@ -195,11 +214,89 @@ def infer_tags(name: str, description: str, domain: str) -> list[str]:
     return tags
 
 
+def strip_front_matter(text: str) -> str:
+    return re.sub(r"\A---\s*\n.*?\n---\s*\n", "", text, flags=re.DOTALL).strip()
+
+
+def view_type_from_name(path: Path) -> str:
+    name = path.stem.lower()
+    if "focus_crop" in name:
+        return "focus_crop"
+    if name.endswith("_before") or "_before" in name:
+        return "before"
+    if name.endswith("_after") or "_after" in name:
+        return "after"
+    return "full_frame"
+
+
+def image_label(path: Path) -> str:
+    stem = path.stem
+    for suffix in ("_focus_crop", "_before", "_after"):
+        stem = stem.replace(suffix, "")
+    return stem.replace("_", " ").strip().title()
+
+
+def extract_runtime_states(runtime_payload: dict | list | None, preview_lookup: dict[str, str]) -> list[dict]:
+    if not isinstance(runtime_payload, dict):
+        return []
+    states = runtime_payload.get("states")
+    if not isinstance(states, list):
+        return []
+
+    extracted = []
+    for state in states:
+        if not isinstance(state, dict):
+            continue
+        views = state.get("available_views")
+        if not isinstance(views, list):
+            view_bundle = state.get("view_bundle")
+            if isinstance(view_bundle, dict):
+                views = view_bundle.get("available_views")
+        if not isinstance(views, list):
+            views = []
+
+        extracted_views = []
+        for view in views:
+            if not isinstance(view, dict):
+                continue
+            image_path = str(view.get("image_path", ""))
+            extracted_views.append(
+                {
+                    "viewType": view.get("view_type", ""),
+                    "imagePath": image_path,
+                    "previewPath": preview_lookup.get(image_path, ""),
+                    "useFor": view.get("use_for", ""),
+                    "label": view.get("label", ""),
+                }
+            )
+
+        extracted.append(
+            {
+                "stateId": state.get("state_id", ""),
+                "stateName": state.get("state_name", ""),
+                "stage": state.get("stage", ""),
+                "imageRole": state.get("image_role", ""),
+                "whenToUse": state.get("when_to_use", ""),
+                "whenNotToUse": state.get("when_not_to_use", ""),
+                "visibleCues": state.get("visible_cues", []),
+                "verificationCue": state.get("verification_cue", ""),
+                "preferredViewOrder": state.get("preferred_view_order", []),
+                "availableViews": extracted_views,
+            }
+        )
+    return extracted
+
+
 def build_payload(source_dir: Path, output_dir: Path) -> dict:
     skills = []
     domains: dict[str, dict] = {}
-    thumbnail_dir = output_dir / "thumbnails"
-    thumbnail_dir.mkdir(parents=True, exist_ok=True)
+    preview_dir = output_dir / "image-previews"
+    legacy_thumbnail_dir = output_dir / "thumbnails"
+    if preview_dir.exists():
+        shutil.rmtree(preview_dir)
+    if legacy_thumbnail_dir.exists():
+        shutil.rmtree(legacy_thumbnail_dir)
+    preview_dir.mkdir(parents=True, exist_ok=True)
 
     for skill_md in sorted(source_dir.glob("*/*/SKILL.md")):
         skill_dir = skill_md.parent
@@ -214,16 +311,31 @@ def build_payload(source_dir: Path, output_dir: Path) -> dict:
         description = re.sub(r"\s+", " ", description).strip()
 
         images = image_files(skill_dir)
-        chosen_thumb = choose_thumbnail(images)
-        thumb_path = ""
-        if chosen_thumb:
-            thumb_name = f"{slugify(domain)}--{slugify(skill_id)}.jpg"
-            thumb_dest = thumbnail_dir / thumb_name
-            if make_thumbnail(chosen_thumb, thumb_dest):
-                thumb_path = f"assets/skill-library/thumbnails/{thumb_name}"
+        image_references = []
+        preview_lookup: dict[str, str] = {}
+        for image in images:
+            relative_image_path = image.relative_to(skill_dir).as_posix()
+            preview_name = f"{slugify(image.stem)}.jpg"
+            preview_dest = preview_dir / slugify(domain) / slugify(skill_id) / preview_name
+            preview_path = ""
+            if make_preview(image, preview_dest):
+                preview_path = preview_dest.relative_to(output_dir.parent.parent).as_posix()
+                preview_lookup[relative_image_path] = preview_path
+            image_references.append(
+                {
+                    "imagePath": relative_image_path,
+                    "previewPath": preview_path,
+                    "viewType": view_type_from_name(image),
+                    "label": image_label(image),
+                }
+            )
 
-        state_count = count_json_items(skill_dir / "state_cards.json")
-        runtime_count = count_json_items(skill_dir / "runtime_state_cards.json")
+        state_cards_path = skill_dir / "state_cards.json"
+        runtime_cards_path = skill_dir / "runtime_state_cards.json"
+        runtime_payload = read_json(runtime_cards_path)
+        state_payload = read_json(state_cards_path)
+        state_count = count_json_items(state_cards_path)
+        runtime_count = count_json_items(runtime_cards_path)
         plan_count = count_json_items(skill_dir / "plan.json")
         applicability = bullets_after_heading(
             text,
@@ -247,7 +359,6 @@ def build_payload(source_dir: Path, output_dir: Path) -> dict:
                 "platform": "Ubuntu",
                 "category": "GUI Tasks",
                 "sourcePath": f"ubuntu/{domain}/{skill_id}",
-                "thumbnail": thumb_path,
                 "imageCount": len(images),
                 "stateCardCount": state_count,
                 "runtimeCardCount": runtime_count,
@@ -256,6 +367,11 @@ def build_payload(source_dir: Path, output_dir: Path) -> dict:
                 "overview": overview,
                 "applicability": applicability,
                 "failureModes": failure_modes,
+                "skillMarkdown": strip_front_matter(text),
+                "runtimeSchema": runtime_payload.get("schema_version", "") if isinstance(runtime_payload, dict) else "",
+                "stateSchema": state_payload.get("schema_version", "") if isinstance(state_payload, dict) else "",
+                "runtimeStates": extract_runtime_states(runtime_payload, preview_lookup),
+                "imageReferences": image_references,
                 "completenessScore": runtime_count * 3 + state_count * 2 + len(images),
             }
         )
@@ -323,7 +439,7 @@ def main() -> None:
     )
     print(
         f"Wrote {len(payload['skills'])} skills, {payload['stats']['imageCount']} image references, "
-        f"and {len(list((output_dir / 'thumbnails').glob('*.jpg')))} thumbnails to {output_dir}"
+        f"and {len(list((output_dir / 'image-previews').rglob('*.jpg')))} previews to {output_dir}"
     )
 
 
