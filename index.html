@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="MMSkills: Towards Multimodal Skills for General Visual Agents."
+    />
+    <meta
+      name="keywords"
+      content="MMSkills, multimodal skills, visual agents, GUI agents, OSWorld, computer use agents"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="MMSkills" />
+    <meta
+      property="og:description"
+      content="Reusable multimodal procedural knowledge for general visual agents."
+    />
+    <meta property="og:image" content="assets/full_figure.png" />
+    <title>MMSkills: Towards Multimodal Skills for General Visual Agents</title>
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+
+  <body>
+    <header class="hero">
+      <div class="container narrow centered">
+        <img class="title-mark" src="assets/mmskills_title.svg" alt="MMSkills" />
+        <h1>MMSkills: Towards Multimodal Skills for General Visual Agents</h1>
+
+        <p class="authors paper-authors">
+          Kangning Zhang<sup>1,2&#8225;*</sup>, Shuai Shao<sup>1,2&#8225;*</sup>,
+          Qingyao Li<sup>1,2*</sup>, Jianghao Lin<sup>1</sup>,
+          Lingyue Fu<sup>1</sup>, Shijian Wang<sup>3</sup>,<br />
+          Wenxiang Jiao<sup>2,&#9993;</sup>, Yuan Lu<sup>2, &#9993;</sup>, Weiwen Liu<sup>1,&#9993;</sup>,
+          Weinan Zhang<sup>1,&#9993;</sup>, Yong Yu<sup>1,&#9993;</sup>
+        </p>
+
+        <p class="affiliations paper-affiliations">
+          <sup>1</sup>Shanghai Jiao Tong University &nbsp;
+          <sup>2</sup>Xiaohongshu Inc. &nbsp;
+          <sup>3</sup>Southeast University
+          <br />
+          <sup>*</sup>Work done during internship at Xiaohongshu Inc.,
+          <sup>&#8225;</sup>Equal contribution,
+          <sup>&#9993;</sup>Corresponding authors
+        </p>
+
+        <nav class="publication-links" aria-label="Project links">
+          <a class="button dark" href="assets/website/mmskills_arxiv.pdf">Paper</a>
+          <a class="button dark" href="https://github.com/zkangning/towards_mmskills">Code</a>
+          <a class="button dark" href="https://huggingface.co/datasets/zkangning/towards_mmskills">Dataset</a>
+          <a class="button dark" href="skills.html">Skill Library</a>
+          <a class="button dark" href="cases.html">Case Studies</a>
+          <a class="button dark" href="#quick-start">Quick Start</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="teaser">
+        <div class="container narrow">
+          <img
+            class="main-figure"
+            src="assets/full_figure.png"
+            alt="Overview of the MMSkills framework"
+          />
+          <h2>
+            MMSkills turns public visual-agent trajectories into reusable multimodal
+            skill packages with text procedures, runtime state cards, and multi-view
+            keyframes. At inference time, branch loading lets agents inspect only the
+            relevant skill evidence before acting in the live environment.
+          </h2>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">What MMSkills Provides</h2>
+          <div class="feature-grid">
+            <article class="feature">
+              <h3>Multimodal skill packages</h3>
+              <p>
+                Each MMSkill binds a reusable textual procedure to state cards and
+                visual keyframes that specify when to use the procedure, when to skip
+                it, and how to verify progress.
+              </p>
+            </article>
+            <article class="feature">
+              <h3>Trajectory-to-skill Generator</h3>
+              <p>
+                Public non-evaluation trajectories are grouped, merged, drafted,
+                grounded, and audited into compact reusable skills rather than stored
+                as raw demonstrations.
+              </p>
+            </article>
+            <article class="feature">
+              <h3>Branch-loaded utilization</h3>
+              <p>
+                A temporary branch selects relevant state cards and views, aligns them
+                with the live screenshot, and returns structured guidance to the main
+                agent.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section light">
+        <div class="container narrow">
+          <h2 class="section-title centered">A Concrete MMSkill Package</h2>
+          <img
+            class="paper-figure"
+            src="assets/website/fig_intro_mmskill_example.png"
+            alt="Concrete MMSkills example with skill package and three usage modes"
+          />
+          <p class="caption">
+            A concrete MMSkills example. A multimodal skill package combines a textual
+            procedure, runtime state cards, and multi-view visual evidence. For the
+            same chart-creation task, text-only guidance can miss the active sheet
+            state, while branch-loaded MMSkills align skill evidence with the live
+            screen and return state-aware guidance for the main agent.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title centered">Ubuntu Skill Library</h2>
+          <p class="section-lead">
+            The public Skill Library currently indexes 247 Ubuntu desktop MMSkills
+            spanning browser, office, system, code editor, email, media,
+            image-editing, and cross-application workflows.
+          </p>
+          <div class="domain-grid">
+            <span>Chrome</span>
+            <span>GIMP</span>
+            <span>LibreOffice Calc</span>
+            <span>LibreOffice Impress</span>
+            <span>LibreOffice Writer</span>
+            <span>Multi-App Workflows</span>
+            <span>OS</span>
+            <span>Thunderbird</span>
+            <span>VLC</span>
+            <span>VS Code</span>
+          </div>
+
+          <div class="task-list">
+            <h3>Example skills</h3>
+            <select multiple size="8" aria-label="Example MMSkills">
+              <option>CHROME_Search_Web_And_Open_Target_Result</option>
+              <option>CHROME_Manage_Bookmarks_Reading_List_And_Shortcuts</option>
+              <option>GIMP_GIMP_Save_Projects_and_Export_Edited_Images</option>
+              <option>LIBREOFFICECALC_Create_Chart_on_Target_Sheet_with_Exact_Title_and_Type</option>
+              <option>LIBREOFFICECALC_Sort_and_Filter_Calc_Tables</option>
+              <option>LIBREOFFICEIMPRESS_Manage_Slide_Structure_Ordering_and_Layouts</option>
+              <option>LIBREOFFICEWRITER_Find_and_Replace_Text_or_Formatting</option>
+              <option>MULTIAPP_Transfer_Browser_Research_Into_Writer</option>
+              <option>OS_Manage_Files_and_Archives_in_Files</option>
+              <option>THUNDERBIRD_Compose_Format_and_Send_Thunderbird_Emails</option>
+              <option>VLC_Open_Local_Media_And_Verify_Playback_Surface</option>
+              <option>VSCODE_Search_and_Replace_Project_Content</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="section light">
+        <div class="container narrow">
+          <h2 class="section-title centered">Results Overview</h2>
+          <p class="section-lead">
+            Across GUI and game-based visual-agent benchmarks, MMSkills improves
+            performance over no-skill and text-only skill conditions, especially for
+            smaller or click-heavy visual agents.
+          </p>
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Benchmark</th>
+                  <th>Model</th>
+                  <th>No skill</th>
+                  <th>MMSkills</th>
+                  <th>Gain</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>OSWorld</td>
+                  <td>Gemini 3.1 Pro</td>
+                  <td>44.08</td>
+                  <td>50.11</td>
+                  <td>+6.03</td>
+                </tr>
+                <tr>
+                  <td>OSWorld</td>
+                  <td>Gemini 3 Flash</td>
+                  <td>36.65</td>
+                  <td>47.97</td>
+                  <td>+11.32</td>
+                </tr>
+                <tr>
+                  <td>OSWorld</td>
+                  <td>Qwen3-VL-235B</td>
+                  <td>21.34</td>
+                  <td>39.17</td>
+                  <td>+17.83</td>
+                </tr>
+                <tr>
+                  <td>OSWorld</td>
+                  <td>Qwen3-VL-8B-Instruct</td>
+                  <td>10.78</td>
+                  <td>25.40</td>
+                  <td>+14.62</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <img
+            class="paper-figure"
+            src="assets/website/fig_ablation_results.png"
+            alt="Ablation results for MMSkills"
+          />
+          <p class="caption">
+            Ablations show that runtime state cards, visual keyframes, branch loading,
+            and view selection all contribute to effective multimodal skill use.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="columns">
+            <article>
+              <h2 class="section-title">Behavioral Shift</h2>
+              <p>
+                MMSkills does not only raise final success rate. It changes how agents
+                behave: fewer low-level primitives, fewer repeated actions, stronger
+                completion judgments, and more structured state-aware execution.
+              </p>
+              <img
+                class="paper-figure"
+                src="assets/website/fig_behavior_shift.png"
+                alt="Behavior shifts induced by MMSkills"
+              />
+            </article>
+            <article>
+              <h2 class="section-title">Interaction Case Study</h2>
+              <p>
+                In representative OSWorld traces, the main agent acts directly when
+                possible, consults skill branches at decision points, and receives
+                compact guidance grounded in selected state cards and visual evidence.
+              </p>
+              <img
+                class="paper-figure"
+                src="assets/website/fig_interaction_case.png"
+                alt="Representative interaction case with branch-loaded MMSkills"
+              />
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section light" id="case-studies">
+        <div class="container narrow">
+          <h2 class="section-title centered">Case Studies</h2>
+          <p class="section-lead">
+            Five OSWorld case studies compare no-skill, text-only skill, and
+            multimodal MMSkills runs with the same task instruction. The examples
+            show how visual state cards help agents avoid repeated clicks, wrong
+            routes, and misplaced GUI actions.
+          </p>
+          <nav class="publication-links" aria-label="Case study links">
+            <a class="button dark" href="cases.html">View Case Studies</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section" id="quick-start">
+        <div class="container narrow">
+          <h2 class="section-title centered">Quick Start</h2>
+          <pre><code>git clone https://github.com/zkangning/towards_mmskills.git
+cd towards_mmskills
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+python3 scripts/install_into_osworld.py /path/to/OSWorld --with-runner --with-skills</code></pre>
+
+          <pre><code>python run.py \
+  --agent_type mm_skill \
+  --model gpt-4o \
+  --api_backend openai \
+  --observation_type screenshot \
+  --action_space pyautogui \
+  --max_steps 20 \
+  --skills_library_dir skills_library \
+  --task_skill_mapping_root task_skill_mappings/task_skill_mapping.json \
+  --skill_mode multimodal \
+  --task_skill_top_k 6 \
+  --save_conversation_json \
+  --test_all_meta_path evaluation_examples/test_nogdrive.json \
+  --domain chrome \
+  --result_dir results/mm_skill_multimodal</code></pre>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <h2 class="section-title centered">BibTeX</h2>
+          <pre><code>@software{mmskills2026,
+  title = {MMSkills: Towards Multimodal Skills for General Visual Agents},
+  year = {2026},
+  url = {https://github.com/zkangning/towards_mmskills}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container narrow centered">
+        <p>
+          Website layout inspired by the WebArena and Nerfies project pages.
+          Content and figures are for MMSkills.
+        </p>
+        <p>
+          <a href="https://webarena.dev/og/">WebArena template reference</a>
+          &nbsp;|&nbsp;
+          <a href="https://github.com/nerfies/nerfies.github.io">Nerfies source</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "no_skills": "No-skills: reaches the Extensions area but repeats clicks near the panel menu and never opens the Install from VSIX file picker.",
+  "text_only": "Text-only: alternates between the Extensions icon and View menu, but never commits to the local VSIX installation path.",
+  "multimodal_v9": "Multimodal v9: opens Extensions, uses the overflow menu's Install from VSIX option, selects /home/user/test.vsix, and stops after the install path is completed."
+}

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 86" width="520" height="86" role="img" aria-label="MMSkills">
+  <defs>
+    <linearGradient id="wordGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="34%" stop-color="#4420a8"/>
+      <stop offset="70%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#6b7280"/>
+    </linearGradient>
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="55%" stop-color="#4420a8"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.70"/>
+      <stop offset="50%" stop-color="#4420a8" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.70"/>
+    </linearGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="1.6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g transform="translate(18, 10)">
+    <circle cx="34" cy="34" r="31" fill="none" stroke="url(#orbitGrad)" stroke-width="2"/>
+    <ellipse cx="34" cy="34" rx="31" ry="13" fill="none" stroke="url(#orbitGrad)" stroke-width="1.45" transform="rotate(-36, 34, 34)"/>
+    <ellipse cx="34" cy="34" rx="31" ry="13" fill="none" stroke="url(#orbitGrad)" stroke-width="1.45" transform="rotate(36, 34, 34)"/>
+    <rect x="23" y="23" width="22" height="22" rx="6" fill="url(#coreGrad)" filter="url(#softGlow)"/>
+    <path d="M28 34h12M34 28v12" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="34" cy="3" r="3.8" fill="#2563eb"/>
+    <circle cx="60" cy="49" r="3.8" fill="#7c3aed"/>
+    <circle cx="8" cy="49" r="3.8" fill="#a855f7"/>
+    <circle cx="55" cy="17" r="2.6" fill="#2563eb" opacity="0.62"/>
+    <circle cx="13" cy="17" r="2.6" fill="#a855f7" opacity="0.62"/>
+    <circle cx="34" cy="65" r="2.6" fill="#4420a8" opacity="0.62"/>
+  </g>
+
+  <text x="96" y="63" font-family="'Inter', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="56" font-weight="650" letter-spacing="1.6" fill="url(#wordGrad)">MMSkills</text>
+</svg>

@@ -1,0 +1,5 @@
+{
+  "no_skills": "No-skills: repeatedly clicks around the sheet tab/context-menu area and never constructs the requested merged-cell layout.",
+  "text_only": "Text-only: starts toward the right operation, but loses cell selection state and ends by rewriting only Investment Summary, without the two second-row headers.",
+  "multimodal_v9": "Multimodal v9: creates Sheet2, selects each target range, merges A1:C1, A2:B2, and C2:D2, then writes all three labels."
+}

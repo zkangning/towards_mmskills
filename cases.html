@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="MMSkills case studies comparing no-skills, text-only skills, and multimodal MMSkills runs."
+    />
+    <meta
+      name="keywords"
+      content="MMSkills, case studies, GUI agents, OSWorld, visual agents"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="MMSkills Case Studies" />
+    <meta
+      property="og:description"
+      content="Video comparisons showing how multimodal MMSkills changes visual-agent behavior."
+    />
+    <meta property="og:image" content="assets/full_figure.png" />
+    <title>MMSkills Case Studies</title>
+    <link rel="stylesheet" href="assets/site.css" />
+    <link rel="stylesheet" href="assets/cases.css" />
+  </head>
+
+  <body class="cases-page">
+    <header class="case-topbar">
+      <a class="case-brand" href="./" aria-label="MMSkills home">
+        <img src="assets/mmskills_title.svg" alt="MMSkills" />
+      </a>
+      <nav class="case-nav" aria-label="Website navigation">
+        <a href="./">Paper</a>
+        <a href="skills.html">Skill Library</a>
+        <a class="active" href="cases.html" aria-current="page">Case Studies</a>
+        <a href="https://github.com/zkangning/towards_mmskills">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="case-page-shell">
+      <section class="case-page-heading">
+        <p class="case-kicker">Behavioral Comparisons</p>
+        <h1>MMSkills Case Studies</h1>
+        <p>
+          Each case compares the same OSWorld task under no skills, text-only skill
+          guidance, and multimodal MMSkills. The clips are browser-friendly
+          derivatives of the source recordings and are loaded lazily.
+        </p>
+      </section>
+
+      <section class="case-explainer" aria-label="Video variants">
+        <div>
+          <strong>No Skills</strong>
+          <span>Baseline visual-agent run without skill retrieval.</span>
+        </div>
+        <div>
+          <strong>Text-only</strong>
+          <span>Branch planner receives procedural text but no visual state evidence.</span>
+        </div>
+        <div>
+          <strong>MMSkills</strong>
+          <span>Runtime branch loads state cards and visual references before acting.</span>
+        </div>
+      </section>
+
+      <section id="caseOverview" class="case-overview" aria-label="Case index"></section>
+
+      <section id="caseList" class="case-list" aria-label="Case study list"></section>
+    </main>
+
+    <script src="assets/cases.js"></script>
+  </body>
+</html>
