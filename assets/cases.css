@@ -208,8 +208,7 @@
   text-transform: uppercase;
 }
 
-.case-instruction,
-.case-rationale {
+.case-instruction {
   margin: 8px 0 0;
   color: var(--case-muted);
 }

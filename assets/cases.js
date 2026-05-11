@@ -70,7 +70,6 @@
           </p>
           <h2>${escapeHtml(displayTitle(caseItem.title))}</h2>
           <p class="case-instruction"><strong>Task:</strong> ${escapeHtml(caseItem.instruction)}</p>
-          <p class="case-rationale"><strong>Why selected:</strong> ${escapeHtml(caseItem.why_selected)}</p>
         </header>
         <div class="case-video-grid">
           ${variantOrder.map(([key, label]) => variantVideo(caseItem, key, label)).join("")}

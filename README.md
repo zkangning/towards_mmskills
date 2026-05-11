@@ -40,6 +40,18 @@
 - **[May 2026]** The released package includes Ubuntu skills across Chrome, GIMP, LibreOffice, OS, Thunderbird, VLC, VS Code, and multi-app workflows.
 - **[May 2026]** The branch-loaded MMSkill runtime can run in text-only or multimodal skill modes with model-agnostic OpenAI-compatible and native Gemini-compatible endpoints.
 
+## 🎬 Case Studies
+
+Five OSWorld cases compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. Click a thumbnail to open the corresponding clip, or browse the full layout at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
+
+| Case | No skills | Text-only | MMSkills |
+|------|-----------|-----------|----------|
+| Calc merged headers | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_01_calc_merged_headers_qwen3/no_skills.mp4"><img src="assets/case-studies/case_01_calc_merged_headers_qwen3/no_skills.jpg" width="180" alt="No-skills Calc merged headers case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_01_calc_merged_headers_qwen3/text_only.mp4"><img src="assets/case-studies/case_01_calc_merged_headers_qwen3/text_only.jpg" width="180" alt="Text-only Calc merged headers case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_01_calc_merged_headers_qwen3/multimodal.mp4"><img src="assets/case-studies/case_01_calc_merged_headers_qwen3/multimodal.jpg" width="180" alt="MMSkills Calc merged headers case"/></a> |
+| VS Code local VSIX install | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_02_vscode_install_vsix_qwen3/no_skills.mp4"><img src="assets/case-studies/case_02_vscode_install_vsix_qwen3/no_skills.jpg" width="180" alt="No-skills VS Code VSIX case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_02_vscode_install_vsix_qwen3/text_only.mp4"><img src="assets/case-studies/case_02_vscode_install_vsix_qwen3/text_only.jpg" width="180" alt="Text-only VS Code VSIX case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_02_vscode_install_vsix_qwen3/multimodal.mp4"><img src="assets/case-studies/case_02_vscode_install_vsix_qwen3/multimodal.jpg" width="180" alt="MMSkills VS Code VSIX case"/></a> |
+| GIMP text-layer move | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_03_gimp_move_text_box_geminipro31/no_skills.mp4"><img src="assets/case-studies/case_03_gimp_move_text_box_geminipro31/no_skills.jpg" width="180" alt="No-skills GIMP text-layer case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_03_gimp_move_text_box_geminipro31/text_only.mp4"><img src="assets/case-studies/case_03_gimp_move_text_box_geminipro31/text_only.jpg" width="180" alt="Text-only GIMP text-layer case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_03_gimp_move_text_box_geminipro31/multimodal.mp4"><img src="assets/case-studies/case_03_gimp_move_text_box_geminipro31/multimodal.jpg" width="180" alt="MMSkills GIMP text-layer case"/></a> |
+| Calc chart creation | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_04_calc_clustered_chart_geminipro31/no_skills.mp4"><img src="assets/case-studies/case_04_calc_clustered_chart_geminipro31/no_skills.jpg" width="180" alt="No-skills Calc chart case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_04_calc_clustered_chart_geminipro31/text_only.mp4"><img src="assets/case-studies/case_04_calc_clustered_chart_geminipro31/text_only.jpg" width="180" alt="Text-only Calc chart case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_04_calc_clustered_chart_geminipro31/multimodal.mp4"><img src="assets/case-studies/case_04_calc_clustered_chart_geminipro31/multimodal.jpg" width="180" alt="MMSkills Calc chart case"/></a> |
+| Impress note and background | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_05_impress_purple_note_kimi_k26/no_skills.mp4"><img src="assets/case-studies/case_05_impress_purple_note_kimi_k26/no_skills.jpg" width="180" alt="No-skills Impress note case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_05_impress_purple_note_kimi_k26/text_only.mp4"><img src="assets/case-studies/case_05_impress_purple_note_kimi_k26/text_only.jpg" width="180" alt="Text-only Impress note case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_05_impress_purple_note_kimi_k26/multimodal.mp4"><img src="assets/case-studies/case_05_impress_purple_note_kimi_k26/multimodal.jpg" width="180" alt="MMSkills Impress note case"/></a> |
+
 ## 💡 Overview
 
 **MMSkills** is a framework for representing, loading, and using reusable multimodal procedural knowledge for visual agents. Each skill combines textual procedure guidance, compact state-card metadata, and optional visual references. At inference time, the agent keeps only lightweight skill hints in the main context, then opens a temporary skill branch when task state suggests that a skill may help.
@@ -206,18 +218,6 @@ python run.py \
 ```
 
 Use `--domain all` for the full no-Google-Drive OSWorld split. The runner writes trajectories, screenshots, `skill_invocations.json`, `skill_usage_summary.json`, and aggregate metrics under the selected `--result_dir`.
-
-## 🎬 Case Studies
-
-The website includes five OSWorld case studies comparing the same task under no skills, text-only skill guidance, and multimodal MMSkills. The repository stores web-friendly H.264/yuv420p clips under [`assets/case-studies/`](assets/case-studies/), derived from the local source clip bundle. Browse the full video layout at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
-
-| Case | No skills | Text-only | MMSkills |
-|------|-----------|-----------|----------|
-| Calc merged headers | [video](assets/case-studies/case_01_calc_merged_headers_qwen3/no_skills.mp4) | [video](assets/case-studies/case_01_calc_merged_headers_qwen3/text_only.mp4) | [video](assets/case-studies/case_01_calc_merged_headers_qwen3/multimodal.mp4) |
-| VS Code local VSIX install | [video](assets/case-studies/case_02_vscode_install_vsix_qwen3/no_skills.mp4) | [video](assets/case-studies/case_02_vscode_install_vsix_qwen3/text_only.mp4) | [video](assets/case-studies/case_02_vscode_install_vsix_qwen3/multimodal.mp4) |
-| GIMP text-layer move | [video](assets/case-studies/case_03_gimp_move_text_box_geminipro31/no_skills.mp4) | [video](assets/case-studies/case_03_gimp_move_text_box_geminipro31/text_only.mp4) | [video](assets/case-studies/case_03_gimp_move_text_box_geminipro31/multimodal.mp4) |
-| Calc chart creation | [video](assets/case-studies/case_04_calc_clustered_chart_geminipro31/no_skills.mp4) | [video](assets/case-studies/case_04_calc_clustered_chart_geminipro31/text_only.mp4) | [video](assets/case-studies/case_04_calc_clustered_chart_geminipro31/multimodal.mp4) |
-| Impress note and background | [video](assets/case-studies/case_05_impress_purple_note_kimi_k26/no_skills.mp4) | [video](assets/case-studies/case_05_impress_purple_note_kimi_k26/text_only.mp4) | [video](assets/case-studies/case_05_impress_purple_note_kimi_k26/multimodal.mp4) |
 
 ## 📚 Skill Library
 
