@@ -27,20 +27,22 @@
         <img class="title-mark" src="assets/mmskills_title.svg" alt="MMSkills" />
         <h1>MMSkills: Towards Multimodal Skills for General Visual Agents</h1>
 
-        <p class="authors">
-          Kangning Zhang<sup>1,2*</sup>, Shuai Shao<sup>1,2*</sup>,
-          Qingyao Li<sup>1,2</sup>, Jianghao Lin<sup>1</sup>,
-          Lingyue Fu<sup>1</sup>, Shijian Wang<sup>3</sup>,
-          Yuan Lu<sup>2</sup>, Wenjiang Jiao<sup>2</sup>,
-          Weiwen Liu<sup>1</sup>, Weinan Zhang<sup>1</sup>, Yong Yu<sup>1</sup>
+        <p class="authors paper-authors">
+          Kangning Zhang<sup>1,2&#8225;*</sup>, Shuai Shao<sup>1,2&#8225;*</sup>,
+          Qingyao Li<sup>1,2*</sup>, Jianghao Lin<sup>1</sup>,
+          Lingyue Fu<sup>1</sup>, Shijian Wang<sup>3</sup>, Yuan Lu<sup>2</sup>,
+          Wenjiang Jiao<sup>2,&#9993;</sup>, Weiwen Liu<sup>1,&#9993;</sup>,
+          Weinan Zhang<sup>1,&#9993;</sup>, Yong Yu<sup>1,&#9993;</sup>
         </p>
 
-        <p class="affiliations">
+        <p class="affiliations paper-affiliations">
           <sup>1</sup>Shanghai Jiao Tong University &nbsp;
           <sup>2</sup>Xiaohongshu Inc. &nbsp;
           <sup>3</sup>Southeast University
           <br />
-          <sup>*</sup>Equal contribution / work done during internship at Xiaohongshu Inc.
+          <sup>*</sup>Work done during internship at Xiaohongshu Inc.,
+          <sup>&#8225;</sup>Equal contribution,
+          <sup>&#9993;</sup>Corresponding authors
         </p>
 
         <nav class="publication-links" aria-label="Project links">
@@ -107,14 +109,15 @@
           <h2 class="section-title centered">A Concrete MMSkill Package</h2>
           <img
             class="paper-figure"
-            src="assets/website/fig_skill_package_example.png"
-            alt="Example MMSkill package"
+            src="assets/website/fig_intro_mmskill_example.png"
+            alt="Concrete MMSkills example with skill package and three usage modes"
           />
           <p class="caption">
-            A skill package is not a text prompt with screenshots attached. It is a
-            state-conditioned procedure: text describes the reusable workflow, state
-            cards describe decision conditions, and keyframes ground the visible cues
-            needed for state recognition and verification.
+            A concrete MMSkills example. A multimodal skill package combines a textual
+            procedure, runtime state cards, and multi-view visual evidence. For the
+            same chart-creation task, text-only guidance can miss the active sheet
+            state, while branch-loaded MMSkills align skill evidence with the live
+            screen and return state-aware guidance for the main agent.
           </p>
         </div>
       </section>
