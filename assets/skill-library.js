@@ -29,6 +29,10 @@
     emptyState: document.getElementById("emptyState"),
     dialog: document.getElementById("skillDialog"),
     dialogContent: document.getElementById("skillDialogContent"),
+    imageLightbox: document.getElementById("imageLightbox"),
+    lightboxImage: document.getElementById("lightboxImage"),
+    lightboxTitle: document.getElementById("lightboxTitle"),
+    lightboxPath: document.getElementById("lightboxPath"),
   };
 
   const byId = new Map(library.skills.map((skill) => [skill.id, skill]));
@@ -283,6 +287,14 @@
     `;
   }
 
+  function imageSource(image) {
+    return image.fullPath || image.originalPath || image.previewPath || "";
+  }
+
+  function thumbnailSource(image) {
+    return image.previewPath || imageSource(image);
+  }
+
   function renderRuntimeStates(skill) {
     if (!skill.runtimeStates || !skill.runtimeStates.length) {
       return '<p class="detail-muted">No runtime states were extracted for this skill.</p>';
@@ -325,22 +337,55 @@
       <div class="image-reference-grid">
         ${skill.imageReferences
           .map(
-            (image) => `
-              <a class="image-reference-card" href="${escapeHtml(image.previewPath)}" target="_blank" rel="noreferrer">
+            (image) => {
+              const source = imageSource(image);
+              const thumbnail = thumbnailSource(image);
+              return `
+              <button
+                class="image-reference-card"
+                type="button"
+                data-lightbox-src="${escapeHtml(source)}"
+                data-lightbox-title="${escapeHtml(image.label)}"
+                data-lightbox-path="${escapeHtml(image.imagePath)}"
+                ${source ? "" : "disabled"}
+              >
                 ${
-                  image.previewPath
-                    ? `<img src="${escapeHtml(image.previewPath)}" alt="${escapeHtml(image.label)}" loading="lazy" />`
+                  thumbnail
+                    ? `<img src="${escapeHtml(thumbnail)}" alt="${escapeHtml(image.label)}" loading="lazy" />`
                     : '<div class="image-missing">No preview</div>'
                 }
                 <span class="image-reference-type">${escapeHtml(image.viewType)}</span>
                 <strong>${escapeHtml(image.label)}</strong>
                 <small>${escapeHtml(image.imagePath)}</small>
-              </a>
-            `
+              </button>
+            `;
+            }
           )
           .join("")}
       </div>
     `;
+  }
+
+  function openImageLightbox(button) {
+    const source = button.dataset.lightboxSrc;
+    if (!source || !elements.imageLightbox) {
+      return;
+    }
+    elements.lightboxImage.src = source;
+    elements.lightboxImage.alt = button.dataset.lightboxTitle || "Skill reference image";
+    setText(elements.lightboxTitle, button.dataset.lightboxTitle || "Skill reference image");
+    setText(elements.lightboxPath, button.dataset.lightboxPath || source);
+    elements.imageLightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+  }
+
+  function closeImageLightbox() {
+    if (!elements.imageLightbox || elements.imageLightbox.hidden) {
+      return;
+    }
+    elements.imageLightbox.hidden = true;
+    document.body.classList.remove("lightbox-open");
+    elements.lightboxImage.removeAttribute("src");
   }
 
   function openSkill(skillId) {
@@ -383,7 +428,7 @@
         <section class="detail-panel runtime-panel">
           <div class="detail-panel-title">
             <h3>runtime_state_cards.json</h3>
-            <span>${escapeHtml(skill.runtimeSchema || "runtime state bundle")}</span>
+            <span>Compact inference states for branch-time skill loading</span>
           </div>
           ${renderRuntimeStates(skill)}
         </section>
@@ -452,6 +497,18 @@
       const copyButton = event.target.closest("[data-copy-path]");
       if (copyButton) {
         copySkillPath(copyButton.dataset.copyPath, copyButton);
+        return;
+      }
+
+      const imageButton = event.target.closest("[data-lightbox-src]");
+      if (imageButton) {
+        openImageLightbox(imageButton);
+        return;
+      }
+
+      const lightboxClose = event.target.closest("[data-close-lightbox]");
+      if (lightboxClose || event.target === elements.imageLightbox) {
+        closeImageLightbox();
       }
     });
 
@@ -463,6 +520,20 @@
     elements.skillSort.addEventListener("change", (event) => {
       state.sort = event.target.value;
       renderSkills();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && elements.imageLightbox && !elements.imageLightbox.hidden) {
+        event.preventDefault();
+        closeImageLightbox();
+      }
+    });
+
+    elements.dialog.addEventListener("cancel", (event) => {
+      if (elements.imageLightbox && !elements.imageLightbox.hidden) {
+        event.preventDefault();
+        closeImageLightbox();
+      }
     });
   }
 

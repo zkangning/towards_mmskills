@@ -196,6 +196,25 @@ def make_preview(source: Path, dest: Path, max_size: int = 420) -> bool:
         return False
 
 
+def make_full_image(source: Path, dest: Path) -> bool:
+    """Write a full-resolution web display image without spatial downsampling."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        from PIL import Image
+
+        with Image.open(source) as image:
+            if image.mode not in ("RGB", "RGBA"):
+                image = image.convert("RGB")
+            image.save(dest, format="WEBP", quality=95, method=6)
+        return dest.exists()
+    except Exception:
+        try:
+            shutil.copy2(source, dest.with_suffix(source.suffix.lower()))
+            return True
+        except OSError:
+            return False
+
+
 def slugify(value: str) -> str:
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", value).strip("-").lower()
     return slug or "skill"
@@ -236,7 +255,11 @@ def image_label(path: Path) -> str:
     return stem.replace("_", " ").strip().title()
 
 
-def extract_runtime_states(runtime_payload: dict | list | None, preview_lookup: dict[str, str]) -> list[dict]:
+def extract_runtime_states(
+    runtime_payload: dict | list | None,
+    preview_lookup: dict[str, str],
+    full_lookup: dict[str, str],
+) -> list[dict]:
     if not isinstance(runtime_payload, dict):
         return []
     states = runtime_payload.get("states")
@@ -265,6 +288,7 @@ def extract_runtime_states(runtime_payload: dict | list | None, preview_lookup: 
                     "viewType": view.get("view_type", ""),
                     "imagePath": image_path,
                     "previewPath": preview_lookup.get(image_path, ""),
+                    "fullPath": full_lookup.get(image_path, ""),
                     "useFor": view.get("use_for", ""),
                     "label": view.get("label", ""),
                 }
@@ -291,12 +315,16 @@ def build_payload(source_dir: Path, output_dir: Path) -> dict:
     skills = []
     domains: dict[str, dict] = {}
     preview_dir = output_dir / "image-previews"
+    full_image_dir = output_dir / "full-images"
     legacy_thumbnail_dir = output_dir / "thumbnails"
     if preview_dir.exists():
         shutil.rmtree(preview_dir)
+    if full_image_dir.exists():
+        shutil.rmtree(full_image_dir)
     if legacy_thumbnail_dir.exists():
         shutil.rmtree(legacy_thumbnail_dir)
     preview_dir.mkdir(parents=True, exist_ok=True)
+    full_image_dir.mkdir(parents=True, exist_ok=True)
 
     for skill_md in sorted(source_dir.glob("*/*/SKILL.md")):
         skill_dir = skill_md.parent
@@ -313,6 +341,7 @@ def build_payload(source_dir: Path, output_dir: Path) -> dict:
         images = image_files(skill_dir)
         image_references = []
         preview_lookup: dict[str, str] = {}
+        full_lookup: dict[str, str] = {}
         for image in images:
             relative_image_path = image.relative_to(skill_dir).as_posix()
             preview_name = f"{slugify(image.stem)}.jpg"
@@ -321,10 +350,18 @@ def build_payload(source_dir: Path, output_dir: Path) -> dict:
             if make_preview(image, preview_dest):
                 preview_path = preview_dest.relative_to(output_dir.parent.parent).as_posix()
                 preview_lookup[relative_image_path] = preview_path
+            full_name = f"{slugify(image.stem)}.webp"
+            full_dest = full_image_dir / slugify(domain) / slugify(skill_id) / full_name
+            full_path = ""
+            if make_full_image(image, full_dest):
+                final_full_dest = full_dest if full_dest.exists() else full_dest.with_suffix(image.suffix.lower())
+                full_path = final_full_dest.relative_to(output_dir.parent.parent).as_posix()
+                full_lookup[relative_image_path] = full_path
             image_references.append(
                 {
                     "imagePath": relative_image_path,
                     "previewPath": preview_path,
+                    "fullPath": full_path,
                     "viewType": view_type_from_name(image),
                     "label": image_label(image),
                 }
@@ -368,9 +405,7 @@ def build_payload(source_dir: Path, output_dir: Path) -> dict:
                 "applicability": applicability,
                 "failureModes": failure_modes,
                 "skillMarkdown": strip_front_matter(text),
-                "runtimeSchema": runtime_payload.get("schema_version", "") if isinstance(runtime_payload, dict) else "",
-                "stateSchema": state_payload.get("schema_version", "") if isinstance(state_payload, dict) else "",
-                "runtimeStates": extract_runtime_states(runtime_payload, preview_lookup),
+                "runtimeStates": extract_runtime_states(runtime_payload, preview_lookup, full_lookup),
                 "imageReferences": image_references,
                 "completenessScore": runtime_count * 3 + state_count * 2 + len(images),
             }
@@ -439,7 +474,9 @@ def main() -> None:
     )
     print(
         f"Wrote {len(payload['skills'])} skills, {payload['stats']['imageCount']} image references, "
-        f"and {len(list((output_dir / 'image-previews').rglob('*.jpg')))} previews to {output_dir}"
+        f"{len(list((output_dir / 'image-previews').rglob('*.jpg')))} previews, "
+        f"and {len([path for path in (output_dir / 'full-images').rglob('*') if path.is_file()])} "
+        f"full-resolution images to {output_dir}"
     )
 
 
