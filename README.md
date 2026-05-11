@@ -10,7 +10,7 @@
 [![OSWorld](https://img.shields.io/badge/Benchmark-OSWorld-7b39e2.svg)](https://github.com/xlang-ai/OSWorld)
 [![Website](https://img.shields.io/badge/Website-MMSkills-0f766e.svg)](https://zkangning.github.io/towards_mmskills/)
 [![Skill Library](https://img.shields.io/badge/Skill%20Library-247%20Ubuntu%20Skills-4420A8.svg)](https://zkangning.github.io/towards_mmskills/skills.html)
-[![Case Studies](https://img.shields.io/badge/Case%20Studies-5%20Video%20Comparisons-a15c11.svg)](https://zkangning.github.io/towards_mmskills/cases.html)
+[![Demos](https://img.shields.io/badge/Demos-5%20Video%20Comparisons-a15c11.svg)](https://zkangning.github.io/towards_mmskills/cases.html)
 [![GitHub stars](https://img.shields.io/github/stars/zkangning/towards_mmskills?style=social)](https://github.com/zkangning/towards_mmskills/stargazers)
 
 </div>
@@ -19,7 +19,7 @@
   <a href="#-latest-news">News</a> |
   <a href="https://zkangning.github.io/towards_mmskills/">Website</a> |
   <a href="https://zkangning.github.io/towards_mmskills/skills.html">Skill Library</a> |
-  <a href="https://zkangning.github.io/towards_mmskills/cases.html">Case Studies</a> |
+  <a href="https://zkangning.github.io/towards_mmskills/cases.html">Demos</a> |
   <a href="#-overview">Overview</a> |
   <a href="#-installation">Installation</a> |
   <a href="#-quick-start">Quick Start</a> |
@@ -34,23 +34,23 @@
 
 ## 📣 Latest News
 
-- **[May 2026]** The website now includes [case-study video comparisons](https://zkangning.github.io/towards_mmskills/cases.html) for no-skill, text-only, and multimodal MMSkills runs.
+- **[May 2026]** The website now includes [demo video comparisons](https://zkangning.github.io/towards_mmskills/cases.html) for no-skill, text-only, and multimodal MMSkills runs.
 - **[May 2026]** The project website and searchable [MMSkills Library](https://zkangning.github.io/towards_mmskills/skills.html) are live, indexing **247 Ubuntu GUI skills** from the open-source skill assets.
 - **[May 2026]** Public MMSkills release is available with a compact multimodal desktop-skill subset, runtime agent adapters, and OSWorld integration files.
 - **[May 2026]** The released package includes Ubuntu skills across Chrome, GIMP, LibreOffice, OS, Thunderbird, VLC, VS Code, and multi-app workflows.
 - **[May 2026]** The branch-loaded MMSkill runtime can run in text-only or multimodal skill modes with model-agnostic OpenAI-compatible and native Gemini-compatible endpoints.
 
-## 🎬 Case Studies
+## 🎬 Demos
 
-Five OSWorld cases compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. Click a thumbnail to open the corresponding clip, or browse the full layout at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
+Five OSWorld demos compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. The inline previews below run directly in the README, with each strip ordered left-to-right as **No skills / Text-only / MMSkills**. The full controllable video layout is also available at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
 
-| Case | No skills | Text-only | MMSkills |
-|------|-----------|-----------|----------|
-| Calc merged headers | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_01_calc_merged_headers_qwen3/no_skills.mp4"><img src="assets/case-studies/case_01_calc_merged_headers_qwen3/no_skills.jpg" width="180" alt="No-skills Calc merged headers case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_01_calc_merged_headers_qwen3/text_only.mp4"><img src="assets/case-studies/case_01_calc_merged_headers_qwen3/text_only.jpg" width="180" alt="Text-only Calc merged headers case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_01_calc_merged_headers_qwen3/multimodal.mp4"><img src="assets/case-studies/case_01_calc_merged_headers_qwen3/multimodal.jpg" width="180" alt="MMSkills Calc merged headers case"/></a> |
-| VS Code local VSIX install | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_02_vscode_install_vsix_qwen3/no_skills.mp4"><img src="assets/case-studies/case_02_vscode_install_vsix_qwen3/no_skills.jpg" width="180" alt="No-skills VS Code VSIX case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_02_vscode_install_vsix_qwen3/text_only.mp4"><img src="assets/case-studies/case_02_vscode_install_vsix_qwen3/text_only.jpg" width="180" alt="Text-only VS Code VSIX case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_02_vscode_install_vsix_qwen3/multimodal.mp4"><img src="assets/case-studies/case_02_vscode_install_vsix_qwen3/multimodal.jpg" width="180" alt="MMSkills VS Code VSIX case"/></a> |
-| GIMP text-layer move | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_03_gimp_move_text_box_geminipro31/no_skills.mp4"><img src="assets/case-studies/case_03_gimp_move_text_box_geminipro31/no_skills.jpg" width="180" alt="No-skills GIMP text-layer case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_03_gimp_move_text_box_geminipro31/text_only.mp4"><img src="assets/case-studies/case_03_gimp_move_text_box_geminipro31/text_only.jpg" width="180" alt="Text-only GIMP text-layer case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_03_gimp_move_text_box_geminipro31/multimodal.mp4"><img src="assets/case-studies/case_03_gimp_move_text_box_geminipro31/multimodal.jpg" width="180" alt="MMSkills GIMP text-layer case"/></a> |
-| Calc chart creation | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_04_calc_clustered_chart_geminipro31/no_skills.mp4"><img src="assets/case-studies/case_04_calc_clustered_chart_geminipro31/no_skills.jpg" width="180" alt="No-skills Calc chart case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_04_calc_clustered_chart_geminipro31/text_only.mp4"><img src="assets/case-studies/case_04_calc_clustered_chart_geminipro31/text_only.jpg" width="180" alt="Text-only Calc chart case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_04_calc_clustered_chart_geminipro31/multimodal.mp4"><img src="assets/case-studies/case_04_calc_clustered_chart_geminipro31/multimodal.jpg" width="180" alt="MMSkills Calc chart case"/></a> |
-| Impress note and background | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_05_impress_purple_note_kimi_k26/no_skills.mp4"><img src="assets/case-studies/case_05_impress_purple_note_kimi_k26/no_skills.jpg" width="180" alt="No-skills Impress note case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_05_impress_purple_note_kimi_k26/text_only.mp4"><img src="assets/case-studies/case_05_impress_purple_note_kimi_k26/text_only.jpg" width="180" alt="Text-only Impress note case"/></a> | <a href="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_05_impress_purple_note_kimi_k26/multimodal.mp4"><img src="assets/case-studies/case_05_impress_purple_note_kimi_k26/multimodal.jpg" width="180" alt="MMSkills Impress note case"/></a> |
+| Demo | Inline preview |
+|------|----------------|
+| Calc merged headers | <img src="assets/case-studies/case_01_calc_merged_headers_qwen3/demo_preview.gif" width="720" alt="Calc merged headers demo preview: no skills, text-only, and MMSkills"/> |
+| VS Code local VSIX install | <img src="assets/case-studies/case_02_vscode_install_vsix_qwen3/demo_preview.gif" width="720" alt="VS Code local VSIX install demo preview: no skills, text-only, and MMSkills"/> |
+| GIMP text-layer move | <img src="assets/case-studies/case_03_gimp_move_text_box_geminipro31/demo_preview.gif" width="720" alt="GIMP text-layer move demo preview: no skills, text-only, and MMSkills"/> |
+| Calc chart creation | <img src="assets/case-studies/case_04_calc_clustered_chart_geminipro31/demo_preview.gif" width="720" alt="Calc chart creation demo preview: no skills, text-only, and MMSkills"/> |
+| Impress note and background | <img src="assets/case-studies/case_05_impress_purple_note_kimi_k26/demo_preview.gif" width="720" alt="Impress note and background demo preview: no skills, text-only, and MMSkills"/> |
 
 ## 💡 Overview
 
@@ -66,7 +66,7 @@ Project pages:
 
 - [MMSkills website](https://zkangning.github.io/towards_mmskills/)
 - [Searchable Ubuntu Skill Library](https://zkangning.github.io/towards_mmskills/skills.html)
-- [Case-study video comparisons](https://zkangning.github.io/towards_mmskills/cases.html)
+- [Demo video comparisons](https://zkangning.github.io/towards_mmskills/cases.html)
 
 ## ✨ Highlights
 
