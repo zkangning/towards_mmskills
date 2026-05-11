@@ -12,9 +12,9 @@ The source clips were cut from the original recordings with stream-copy. The web
 
 | Variant | Score | Steps | Window | Clip | Caption |
 | --- | ---: | ---: | ---: | --- | --- |
-| `no_skills` | 0.0 | 20 | 250.0s + 55.0s | [no_skills.mp4](no_skills.mp4) | No-skills: repeatedly clicks tools/layers and drags from the image area, often affecting or targeting the background instead of the text box. |
-| `text_only` | 0.0 | 20 | 245.0s + 55.0s | [text_only.mp4](text_only.mp4) | Text-only: receives the right high-level idea but keeps dragging large distances from the wrong visual anchor, so the target text box is not placed correctly. |
-| `multimodal_v9` | 1.0 | 8 | 45.0s + 50.0s | [multimodal.mp4](multimodal.mp4) | Multimodal v9: activates the text/object layer, uses the move tool, and drags the text box left while avoiding the background layer. |
+| `no_skills` | 0.0 | 20 | 250.0s + 55.0s | [no_skills_1080p.mp4](no_skills_1080p.mp4) | No-skills: repeatedly clicks tools/layers and drags from the image area, often affecting or targeting the background instead of the text box. |
+| `text_only` | 0.0 | 20 | 245.0s + 55.0s | [text_only_1080p.mp4](text_only_1080p.mp4) | Text-only: receives the right high-level idea but keeps dragging large distances from the wrong visual anchor, so the target text box is not placed correctly. |
+| `multimodal_v9` | 1.0 | 8 | 45.0s + 50.0s | [multimodal_1080p.mp4](multimodal_1080p.mp4) | Multimodal v9: activates the text/object layer, uses the move tool, and drags the text box left while avoiding the background layer. |
 
 ## Behavior Summary
 

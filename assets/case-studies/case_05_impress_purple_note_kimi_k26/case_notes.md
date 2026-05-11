@@ -12,9 +12,9 @@ The source clips were cut from the original recordings with stream-copy. The web
 
 | Variant | Score | Steps | Window | Clip | Caption |
 | --- | ---: | ---: | ---: | --- | --- |
-| `no_skills` | 0 | 17 | 135.0s + 55.0s | [no_skills.mp4](no_skills.mp4) | No-skills: interacts with the sidebar and menus but does not complete the combined note plus purple-background requirement. |
-| `text_only` | 0 | 20 | 0.0s + 60.0s | [text_only.mp4](text_only.mp4) | Text-only: enters APP in the notes area, then drifts through menus and context clicks without reliably setting the purple slide background. |
-| `multimodal_v9` | 1 | 15 | 25.0s + 75.0s | [multimodal.mp4](multimodal.mp4) | Multimodal v9: switches to Notes view, writes APP, returns to the slide/background controls, selects purple, and verifies the final state. |
+| `no_skills` | 0 | 17 | 135.0s + 55.0s | [no_skills_1080p.mp4](no_skills_1080p.mp4) | No-skills: interacts with the sidebar and menus but does not complete the combined note plus purple-background requirement. |
+| `text_only` | 0 | 20 | 0.0s + 60.0s | [text_only_1080p.mp4](text_only_1080p.mp4) | Text-only: enters APP in the notes area, then drifts through menus and context clicks without reliably setting the purple slide background. |
+| `multimodal_v9` | 1 | 15 | 25.0s + 75.0s | [multimodal_1080p.mp4](multimodal_1080p.mp4) | Multimodal v9: switches to Notes view, writes APP, returns to the slide/background controls, selects purple, and verifies the final state. |
 
 ## Behavior Summary
 

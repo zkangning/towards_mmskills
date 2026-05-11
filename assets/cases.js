@@ -28,7 +28,9 @@
     }
     const folder = `${basePath}/${caseItem.id}`;
     const videoPath = `${folder}/${variant.clip_file}`;
-    const posterPath = videoPath.replace(/\.mp4$/, ".jpg");
+    const posterPath = variant.poster_file
+      ? `${folder}/${variant.poster_file}`
+      : videoPath.replace(/\.mp4$/, ".jpg");
     return `
       <figure class="case-video-card">
         <video controls preload="metadata" playsinline poster="${escapeHtml(posterPath)}">

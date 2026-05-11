@@ -12,9 +12,9 @@ The source clips were cut from the original recordings with stream-copy. The web
 
 | Variant | Score | Steps | Window | Clip | Caption |
 | --- | ---: | ---: | ---: | --- | --- |
-| `no_skills` | 0.0 | 20 | 60.0s + 45.0s | [no_skills.mp4](no_skills.mp4) | No-skills: reaches the Extensions area but repeats clicks near the panel menu and never opens the Install from VSIX file picker. |
-| `text_only` | 0.0 | 20 | 100.0s + 50.0s | [text_only.mp4](text_only.mp4) | Text-only: alternates between the Extensions icon and View menu, but never commits to the local VSIX installation path. |
-| `multimodal_v9` | 1.0 | 8 | 35.0s + 50.0s | [multimodal.mp4](multimodal.mp4) | Multimodal v9: opens Extensions, uses the overflow menu's Install from VSIX option, selects /home/user/test.vsix, and stops after the install path is completed. |
+| `no_skills` | 0.0 | 20 | 60.0s + 45.0s | [no_skills_1080p.mp4](no_skills_1080p.mp4) | No-skills: reaches the Extensions area but repeats clicks near the panel menu and never opens the Install from VSIX file picker. |
+| `text_only` | 0.0 | 20 | 100.0s + 50.0s | [text_only_1080p.mp4](text_only_1080p.mp4) | Text-only: alternates between the Extensions icon and View menu, but never commits to the local VSIX installation path. |
+| `multimodal_v9` | 1.0 | 8 | 35.0s + 50.0s | [multimodal_1080p.mp4](multimodal_1080p.mp4) | Multimodal v9: opens Extensions, uses the overflow menu's Install from VSIX option, selects /home/user/test.vsix, and stops after the install path is completed. |
 
 ## Behavior Summary
 

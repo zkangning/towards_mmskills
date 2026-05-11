@@ -16,7 +16,7 @@
           "caption": "No-skills: repeatedly clicks around the sheet tab/context-menu area and never constructs the requested merged-cell layout.",
           "score": "0.0",
           "steps": 20,
-          "clip_file": "no_skills.mp4",
+          "clip_file": "no_skills_1080p.mp4",
           "clip_start_sec": 98.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
@@ -50,7 +50,7 @@
           "caption": "Text-only: starts toward the right operation, but loses cell selection state and ends by rewriting only Investment Summary, without the two second-row headers.",
           "score": "0.0",
           "steps": 20,
-          "clip_file": "text_only.mp4",
+          "clip_file": "text_only_1080p.mp4",
           "clip_start_sec": 120.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
@@ -87,7 +87,7 @@
           "caption": "Multimodal v9: creates Sheet2, selects each target range, merges A1:C1, A2:B2, and C2:D2, then writes all three labels.",
           "score": "1.0",
           "steps": 12,
-          "clip_file": "multimodal.mp4",
+          "clip_file": "multimodal_1080p.mp4",
           "clip_start_sec": 80.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
@@ -139,7 +139,7 @@
           "caption": "No-skills: reaches the Extensions area but repeats clicks near the panel menu and never opens the Install from VSIX file picker.",
           "score": "0.0",
           "steps": 20,
-          "clip_file": "no_skills.mp4",
+          "clip_file": "no_skills_1080p.mp4",
           "clip_start_sec": 60.0,
           "clip_target_duration_sec": 45.0,
           "clip_probe": {
@@ -173,7 +173,7 @@
           "caption": "Text-only: alternates between the Extensions icon and View menu, but never commits to the local VSIX installation path.",
           "score": "0.0",
           "steps": 20,
-          "clip_file": "text_only.mp4",
+          "clip_file": "text_only_1080p.mp4",
           "clip_start_sec": 100.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
@@ -209,7 +209,7 @@
           "caption": "Multimodal v9: opens Extensions, uses the overflow menu's Install from VSIX option, selects /home/user/test.vsix, and stops after the install path is completed.",
           "score": "1.0",
           "steps": 8,
-          "clip_file": "multimodal.mp4",
+          "clip_file": "multimodal_1080p.mp4",
           "clip_start_sec": 35.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
@@ -260,7 +260,7 @@
           "caption": "No-skills: repeatedly clicks tools/layers and drags from the image area, often affecting or targeting the background instead of the text box.",
           "score": "0.0",
           "steps": 20,
-          "clip_file": "no_skills.mp4",
+          "clip_file": "no_skills_1080p.mp4",
           "clip_start_sec": 250.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
@@ -294,7 +294,7 @@
           "caption": "Text-only: receives the right high-level idea but keeps dragging large distances from the wrong visual anchor, so the target text box is not placed correctly.",
           "score": "0.0",
           "steps": 20,
-          "clip_file": "text_only.mp4",
+          "clip_file": "text_only_1080p.mp4",
           "clip_start_sec": 245.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
@@ -333,7 +333,7 @@
           "caption": "Multimodal v9: activates the text/object layer, uses the move tool, and drags the text box left while avoiding the background layer.",
           "score": "1.0",
           "steps": 8,
-          "clip_file": "multimodal.mp4",
+          "clip_file": "multimodal_1080p.mp4",
           "clip_start_sec": 45.0,
           "clip_target_duration_sec": 50.0,
           "clip_probe": {
@@ -385,7 +385,7 @@
           "caption": "No-skills: selects data and clicks chart-related controls, but then cuts/pastes around the workbook and never leaves a correct clustered chart with the required title on Sheet2.",
           "score": "0.0",
           "steps": 20,
-          "clip_file": "no_skills.mp4",
+          "clip_file": "no_skills_1080p.mp4",
           "clip_start_sec": 0.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
@@ -419,7 +419,7 @@
           "caption": "Text-only: repeatedly retries chart insertion and sheet movement, but does not stabilize the correct data range, title, and destination sheet.",
           "score": "0.0",
           "steps": 20,
-          "clip_file": "text_only.mp4",
+          "clip_file": "text_only_1080p.mp4",
           "clip_start_sec": 140.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
@@ -457,7 +457,7 @@
           "caption": "Multimodal v9: selects the Sales/COGS data range, opens the chart wizard, enters the exact title Sales & COGS, creates Sheet2, and moves the chart there.",
           "score": "1.0",
           "steps": 16,
-          "clip_file": "multimodal.mp4",
+          "clip_file": "multimodal_1080p.mp4",
           "clip_start_sec": 220.0,
           "clip_target_duration_sec": 60.0,
           "clip_probe": {
@@ -508,7 +508,7 @@
           "caption": "No-skills: interacts with the sidebar and menus but does not complete the combined note plus purple-background requirement.",
           "score": "0",
           "steps": 17,
-          "clip_file": "no_skills.mp4",
+          "clip_file": "no_skills_1080p.mp4",
           "clip_start_sec": 135.0,
           "clip_target_duration_sec": 55.0,
           "clip_probe": {
@@ -542,7 +542,7 @@
           "caption": "Text-only: enters APP in the notes area, then drifts through menus and context clicks without reliably setting the purple slide background.",
           "score": "0",
           "steps": 20,
-          "clip_file": "text_only.mp4",
+          "clip_file": "text_only_1080p.mp4",
           "clip_start_sec": 0.0,
           "clip_target_duration_sec": 60.0,
           "clip_probe": {
@@ -582,7 +582,7 @@
           "caption": "Multimodal v9: switches to Notes view, writes APP, returns to the slide/background controls, selects purple, and verifies the final state.",
           "score": "1",
           "steps": 15,
-          "clip_file": "multimodal.mp4",
+          "clip_file": "multimodal_1080p.mp4",
           "clip_start_sec": 25.0,
           "clip_target_duration_sec": 75.0,
           "clip_probe": {

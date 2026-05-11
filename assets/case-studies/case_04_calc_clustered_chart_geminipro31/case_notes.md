@@ -12,9 +12,9 @@ The source clips were cut from the original recordings with stream-copy. The web
 
 | Variant | Score | Steps | Window | Clip | Caption |
 | --- | ---: | ---: | ---: | --- | --- |
-| `no_skills` | 0.0 | 20 | 0.0s + 55.0s | [no_skills.mp4](no_skills.mp4) | No-skills: selects data and clicks chart-related controls, but then cuts/pastes around the workbook and never leaves a correct clustered chart with the required title on Sheet2. |
-| `text_only` | 0.0 | 20 | 140.0s + 55.0s | [text_only.mp4](text_only.mp4) | Text-only: repeatedly retries chart insertion and sheet movement, but does not stabilize the correct data range, title, and destination sheet. |
-| `multimodal_v9` | 1.0 | 16 | 220.0s + 60.0s | [multimodal.mp4](multimodal.mp4) | Multimodal v9: selects the Sales/COGS data range, opens the chart wizard, enters the exact title Sales & COGS, creates Sheet2, and moves the chart there. |
+| `no_skills` | 0.0 | 20 | 0.0s + 55.0s | [no_skills_1080p.mp4](no_skills_1080p.mp4) | No-skills: selects data and clicks chart-related controls, but then cuts/pastes around the workbook and never leaves a correct clustered chart with the required title on Sheet2. |
+| `text_only` | 0.0 | 20 | 140.0s + 55.0s | [text_only_1080p.mp4](text_only_1080p.mp4) | Text-only: repeatedly retries chart insertion and sheet movement, but does not stabilize the correct data range, title, and destination sheet. |
+| `multimodal_v9` | 1.0 | 16 | 220.0s + 60.0s | [multimodal_1080p.mp4](multimodal_1080p.mp4) | Multimodal v9: selects the Sales/COGS data range, opens the chart wizard, enters the exact title Sales & COGS, creates Sheet2, and moves the chart there. |
 
 ## Behavior Summary
 
