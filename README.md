@@ -42,14 +42,23 @@
 
 ## 🎬 Demos
 
-Five OSWorld demos compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. Each video is ordered left-to-right as **No skills / Text-only / MMSkills** and plays directly in GitHub README. The full controllable video layout is also available at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
+Five OSWorld demos compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. To keep GUI text readable in the GitHub README, each case uses three separate 1080p MP4 players instead of a compressed side-by-side composite. The full video layout is also available at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
 
 <details open>
 <summary><h3>1. Calc merged headers</h3></summary>
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/3fdbfaef-d4e7-4177-9b02-e94d5f5f5c61" width="95%" controls />
-</div>
+<table>
+  <tr>
+    <th>No skills</th>
+    <th>Text-only</th>
+    <th>MMSkills</th>
+  </tr>
+  <tr>
+    <td><video src="https://github.com/user-attachments/assets/cfe1cde8-5da1-4f69-9e90-1a3ee0b82023" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/ce092ee3-4e10-44cb-bfd3-bb4780e5c9c4" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/24c8ca7a-a028-422a-8207-52b14c8b5d1e" width="280" controls></video></td>
+  </tr>
+</table>
 
 Creates Sheet2, merges the requested header ranges, and writes the target labels. MMSkills follows the intended spreadsheet workflow while the other modes make slower or less reliable progress.
 
@@ -58,9 +67,18 @@ Creates Sheet2, merges the requested header ranges, and writes the target labels
 <details>
 <summary><h3>2. VS Code local VSIX install</h3></summary>
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/f504fbe6-a0c0-4d7c-8d48-6f10be3e6868" width="95%" controls />
-</div>
+<table>
+  <tr>
+    <th>No skills</th>
+    <th>Text-only</th>
+    <th>MMSkills</th>
+  </tr>
+  <tr>
+    <td><video src="https://github.com/user-attachments/assets/2296cd12-733e-4f25-95d5-402b2845ae37" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/4cfdfe99-6bb6-4a40-86ae-c7703eb1182c" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/90abd134-1e2c-4bbd-833f-83938b81383a" width="280" controls></video></td>
+  </tr>
+</table>
 
 Installs a local VSIX extension through the GUI workflow. The comparison highlights how multimodal skill references reduce detours around extension discovery and confirmation steps.
 
@@ -69,9 +87,18 @@ Installs a local VSIX extension through the GUI workflow. The comparison highlig
 <details>
 <summary><h3>3. GIMP text-layer move</h3></summary>
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/74ab6a67-64f8-40e0-bf57-ff5e6d3e60c7" width="95%" controls />
-</div>
+<table>
+  <tr>
+    <th>No skills</th>
+    <th>Text-only</th>
+    <th>MMSkills</th>
+  </tr>
+  <tr>
+    <td><video src="https://github.com/user-attachments/assets/6f0d27ba-25a4-4b31-b34b-8480eb3d5fa0" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/57a4719d-0d62-4c00-a0b0-befecf5ac256" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/0e221a36-29a8-4b7f-8eac-1af5e492fbc7" width="280" controls></video></td>
+  </tr>
+</table>
 
 Moves a specific text layer in GIMP. The multimodal skill package provides visual grounding for the relevant layer and toolbar state, making the edit path clearer.
 
@@ -80,9 +107,18 @@ Moves a specific text layer in GIMP. The multimodal skill package provides visua
 <details>
 <summary><h3>4. Calc chart creation</h3></summary>
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/a5d906e6-87de-437d-8769-cbd0ddd09d7c" width="95%" controls />
-</div>
+<table>
+  <tr>
+    <th>No skills</th>
+    <th>Text-only</th>
+    <th>MMSkills</th>
+  </tr>
+  <tr>
+    <td><video src="https://github.com/user-attachments/assets/55a01c94-a748-4a22-9c40-cab707aca386" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/ca310dd1-252a-4608-a0c7-7e613b31ee08" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/1a485289-ceb5-4601-8e16-1be439593145" width="280" controls></video></td>
+  </tr>
+</table>
 
 Builds the requested clustered chart in LibreOffice Calc. The side-by-side run shows the effect of reusable spreadsheet procedure knowledge on multi-step GUI manipulation.
 
@@ -91,9 +127,18 @@ Builds the requested clustered chart in LibreOffice Calc. The side-by-side run s
 <details>
 <summary><h3>5. Impress note and background</h3></summary>
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/db879ea0-9633-4112-bda0-8f860dec3360" width="95%" controls />
-</div>
+<table>
+  <tr>
+    <th>No skills</th>
+    <th>Text-only</th>
+    <th>MMSkills</th>
+  </tr>
+  <tr>
+    <td><video src="https://github.com/user-attachments/assets/a15dedfa-17a5-47d2-89ee-d1307ec663b5" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/e37badaa-66db-4a1e-a4d4-3af1dab29ce1" width="280" controls></video></td>
+    <td><video src="https://github.com/user-attachments/assets/cde03dd8-ee67-4097-aa2b-ab045882b1a5" width="280" controls></video></td>
+  </tr>
+</table>
 
 Updates an Impress slide note and visual background. MMSkills keeps the agent aligned with the presentation-specific workflow and target visual state.
 
