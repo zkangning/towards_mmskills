@@ -19,3 +19,10 @@ traj.jsonl
 conversation.json
 skill_invocations.json
 skill_usage_summary.json
+
+# Website frontend is published from the gh-pages branch.
+.nojekyll
+index.html
+cases.html
+skills.html
+assets/

@@ -1,5 +1,0 @@
-{
-  "no_skills": "No-skills: repeatedly clicks tools/layers and drags from the image area, often affecting or targeting the background instead of the text box.",
-  "text_only": "Text-only: receives the right high-level idea but keeps dragging large distances from the wrong visual anchor, so the target text box is not placed correctly.",
-  "multimodal_v9": "Multimodal v9: activates the text/object layer, uses the move tool, and drags the text box left while avoiding the background layer."
-}

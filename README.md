@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="assets/mmskills_title.svg" alt="MMSkills" width="440"/><br>
+  <img src="https://zkangning.github.io/towards_mmskills/assets/mmskills_title.svg" alt="MMSkills" width="440"/><br>
   Towards Multimodal Skills for General Visual Agents
 </h1>
 
@@ -46,18 +46,18 @@ Five OSWorld demos compare the same task under no skills, text-only skill guidan
 
 | Demo | Inline preview |
 |------|----------------|
-| Calc merged headers | <img src="assets/case-studies/case_01_calc_merged_headers_qwen3/demo_preview.gif" width="720" alt="Calc merged headers demo preview: no skills, text-only, and MMSkills"/> |
-| VS Code local VSIX install | <img src="assets/case-studies/case_02_vscode_install_vsix_qwen3/demo_preview.gif" width="720" alt="VS Code local VSIX install demo preview: no skills, text-only, and MMSkills"/> |
-| GIMP text-layer move | <img src="assets/case-studies/case_03_gimp_move_text_box_geminipro31/demo_preview.gif" width="720" alt="GIMP text-layer move demo preview: no skills, text-only, and MMSkills"/> |
-| Calc chart creation | <img src="assets/case-studies/case_04_calc_clustered_chart_geminipro31/demo_preview.gif" width="720" alt="Calc chart creation demo preview: no skills, text-only, and MMSkills"/> |
-| Impress note and background | <img src="assets/case-studies/case_05_impress_purple_note_kimi_k26/demo_preview.gif" width="720" alt="Impress note and background demo preview: no skills, text-only, and MMSkills"/> |
+| Calc merged headers | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_01_calc_merged_headers_qwen3/demo_preview.gif" width="720" alt="Calc merged headers demo preview: no skills, text-only, and MMSkills"/> |
+| VS Code local VSIX install | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_02_vscode_install_vsix_qwen3/demo_preview.gif" width="720" alt="VS Code local VSIX install demo preview: no skills, text-only, and MMSkills"/> |
+| GIMP text-layer move | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_03_gimp_move_text_box_geminipro31/demo_preview.gif" width="720" alt="GIMP text-layer move demo preview: no skills, text-only, and MMSkills"/> |
+| Calc chart creation | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_04_calc_clustered_chart_geminipro31/demo_preview.gif" width="720" alt="Calc chart creation demo preview: no skills, text-only, and MMSkills"/> |
+| Impress note and background | <img src="https://zkangning.github.io/towards_mmskills/assets/case-studies/case_05_impress_purple_note_kimi_k26/demo_preview.gif" width="720" alt="Impress note and background demo preview: no skills, text-only, and MMSkills"/> |
 
 ## 💡 Overview
 
 **MMSkills** is a framework for representing, loading, and using reusable multimodal procedural knowledge for visual agents. Each skill combines textual procedure guidance, compact state-card metadata, and optional visual references. At inference time, the agent keeps only lightweight skill hints in the main context, then opens a temporary skill branch when task state suggests that a skill may help.
 
 <div align="center">
-  <img src="./assets/full_figure.png" width="95%" alt="MMSkills overview" />
+  <img src="https://zkangning.github.io/towards_mmskills/assets/full_figure.png" width="95%" alt="MMSkills overview" />
 </div>
 
 This repository is a focused open-source release. It is not a full OSWorld fork; instead, it provides the MMSkill runtime layer, an install script, OSWorld runner patches, task-to-skill mappings, and a representative public skill library.
@@ -67,6 +67,8 @@ Project pages:
 - [MMSkills website](https://zkangning.github.io/towards_mmskills/)
 - [Searchable Ubuntu Skill Library](https://zkangning.github.io/towards_mmskills/skills.html)
 - [Demo video comparisons](https://zkangning.github.io/towards_mmskills/cases.html)
+
+Website frontend files are published from the `gh-pages` branch. The `main` branch is kept focused on the open-source code, runtime integration, skills, and documentation.
 
 ## ✨ Highlights
 
@@ -85,13 +87,11 @@ Project pages:
 
 ```text
 MMSkills/
-├── assets/                    # README figures, website assets, and skill-library previews
 ├── mm_agents/                 # MMSkill runtime architecture and model adapters
 ├── osworld_integration/       # MMSkills-aware OSWorld runner files
 ├── skills_library/            # Public multimodal skills subset for direct runtime use
 ├── task_skill_mappings/       # OSWorld task-to-skill mapping for released skills
 └── scripts/
-    ├── build_skill_library_site.py # Generate the website skill-library index
     ├── install_into_osworld.py # Install this release into an OSWorld checkout
     └── sync_from_sources.py    # Maintainer sync helper for source checkouts
 ```

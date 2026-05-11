@@ -1,5 +1,0 @@
-{
-  "no_skills": "No-skills: selects data and clicks chart-related controls, but then cuts/pastes around the workbook and never leaves a correct clustered chart with the required title on Sheet2.",
-  "text_only": "Text-only: repeatedly retries chart insertion and sheet movement, but does not stabilize the correct data range, title, and destination sheet.",
-  "multimodal_v9": "Multimodal v9: selects the Sales/COGS data range, opens the chart wizard, enters the exact title Sales & COGS, creates Sheet2, and moves the chart there."
-}
