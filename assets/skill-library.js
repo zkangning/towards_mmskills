@@ -9,7 +9,7 @@
     domain: "all",
     query: "",
     sort: "complete",
-    view: "grid",
+    view: "list",
   };
 
   const elements = {

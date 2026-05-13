@@ -19,7 +19,7 @@
     <meta property="og:image" content="assets/full_figure.png" />
     <title>MMSkills Skill Library</title>
     <link rel="stylesheet" href="assets/site.css" />
-    <link rel="stylesheet" href="assets/skill-library.css?v=20260513-floating-images" />
+    <link rel="stylesheet" href="assets/skill-library.css?v=20260513-sidebar-list" />
   </head>
 
   <body class="skills-page">
@@ -125,8 +125,8 @@
           </label>
 
           <div class="view-toggle" role="group" aria-label="Display mode">
-            <button class="active" type="button" data-view="grid">Grid</button>
-            <button type="button" data-view="list">List</button>
+            <button type="button" data-view="grid">Grid</button>
+            <button class="active" type="button" data-view="list">List</button>
           </div>
         </div>
 
@@ -135,7 +135,7 @@
           <span id="visibleSkillCount">0 skills</span>
         </div>
 
-        <div class="skill-grid" id="skillGrid"></div>
+        <div class="skill-grid is-list" id="skillGrid"></div>
         <div class="empty-state" id="emptyState" hidden>
           <h2>No matching skills</h2>
           <p>Try a different search term or choose another Ubuntu domain.</p>
@@ -167,6 +167,6 @@
     </dialog>
 
     <script src="assets/skill-library/skills-data.js"></script>
-    <script src="assets/skill-library.js?v=20260513-floating-images"></script>
+    <script src="assets/skill-library.js?v=20260513-sidebar-list"></script>
   </body>
 </html>
