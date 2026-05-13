@@ -19,7 +19,7 @@
     <meta property="og:image" content="assets/full_figure.png" />
     <title>MMSkills Skill Library</title>
     <link rel="stylesheet" href="assets/site.css" />
-    <link rel="stylesheet" href="assets/skill-library.css?v=20260513-fullscreen-images" />
+    <link rel="stylesheet" href="assets/skill-library.css?v=20260513-floating-images" />
   </head>
 
   <body class="skills-page">
@@ -148,25 +148,25 @@
         <button class="dialog-close" type="submit" aria-label="Close">&times;</button>
       </form>
       <div id="skillDialogContent"></div>
-    </dialog>
 
-    <dialog class="image-lightbox" id="imageLightbox" aria-labelledby="lightboxTitle" hidden>
-      <button class="lightbox-backdrop" type="button" data-close-lightbox aria-label="Close image preview"></button>
-      <div class="lightbox-panel">
-        <div class="lightbox-toolbar">
-          <div>
-            <strong id="lightboxTitle">Skill reference image</strong>
-            <span id="lightboxPath"></span>
+      <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightboxTitle" hidden>
+        <button class="lightbox-backdrop" type="button" data-close-lightbox aria-label="Close image preview"></button>
+        <div class="lightbox-panel">
+          <div class="lightbox-toolbar">
+            <div>
+              <strong id="lightboxTitle">Skill reference image</strong>
+              <span id="lightboxPath"></span>
+            </div>
+            <button type="button" data-close-lightbox aria-label="Close image preview">&times;</button>
           </div>
-          <button type="button" data-close-lightbox aria-label="Close image preview">&times;</button>
-        </div>
-        <div class="lightbox-canvas">
-          <img id="lightboxImage" alt="" />
+          <div class="lightbox-canvas">
+            <img id="lightboxImage" alt="" />
+          </div>
         </div>
       </div>
     </dialog>
 
     <script src="assets/skill-library/skills-data.js"></script>
-    <script src="assets/skill-library.js?v=20260513-fullscreen-images"></script>
+    <script src="assets/skill-library.js?v=20260513-floating-images"></script>
   </body>
 </html>

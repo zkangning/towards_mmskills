@@ -10,7 +10,6 @@
     query: "",
     sort: "complete",
     view: "grid",
-    reopenSkillDialogAfterLightbox: false,
   };
 
   const elements = {
@@ -376,26 +375,8 @@
     elements.lightboxImage.alt = button.dataset.lightboxTitle || "Skill reference image";
     setText(elements.lightboxTitle, button.dataset.lightboxTitle || "Skill reference image");
     setText(elements.lightboxPath, button.dataset.lightboxPath || source);
-
-    state.reopenSkillDialogAfterLightbox = Boolean(elements.dialog && elements.dialog.open);
-    if (state.reopenSkillDialogAfterLightbox) {
-      if (typeof elements.dialog.close === "function") {
-        elements.dialog.close();
-      } else {
-        elements.dialog.removeAttribute("open");
-      }
-    }
-
     elements.imageLightbox.hidden = false;
-    try {
-      if (typeof elements.imageLightbox.showModal === "function" && !elements.imageLightbox.open) {
-        elements.imageLightbox.showModal();
-      } else {
-        elements.imageLightbox.setAttribute("open", "open");
-      }
-    } catch (error) {
-      elements.imageLightbox.setAttribute("open", "open");
-    }
+    elements.imageLightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("lightbox-open");
     const closeButton = elements.imageLightbox.querySelector(".lightbox-toolbar button");
     if (closeButton) {
@@ -407,27 +388,10 @@
     if (!elements.imageLightbox || elements.imageLightbox.hidden) {
       return;
     }
-    if (typeof elements.imageLightbox.close === "function" && elements.imageLightbox.open) {
-      elements.imageLightbox.close();
-    } else {
-      elements.imageLightbox.removeAttribute("open");
-    }
     elements.imageLightbox.hidden = true;
+    elements.imageLightbox.setAttribute("aria-hidden", "true");
     document.body.classList.remove("lightbox-open");
     elements.lightboxImage.removeAttribute("src");
-
-    if (state.reopenSkillDialogAfterLightbox && elements.dialog && !elements.dialog.open) {
-      try {
-        if (typeof elements.dialog.showModal === "function") {
-          elements.dialog.showModal();
-        } else {
-          elements.dialog.setAttribute("open", "open");
-        }
-      } catch (error) {
-        elements.dialog.setAttribute("open", "open");
-      }
-    }
-    state.reopenSkillDialogAfterLightbox = false;
   }
 
   function openSkill(skillId) {
@@ -578,12 +542,6 @@
       }
     });
 
-    if (elements.imageLightbox) {
-      elements.imageLightbox.addEventListener("cancel", (event) => {
-        event.preventDefault();
-        closeImageLightbox();
-      });
-    }
   }
 
   renderSummary();

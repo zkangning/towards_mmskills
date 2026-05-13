@@ -497,6 +497,7 @@
   color: var(--library-ink);
   background: #fff;
   box-shadow: 0 30px 90px rgba(16, 20, 25, 0.24);
+  overflow: visible;
 }
 
 .skill-dialog::backdrop {
@@ -830,28 +831,27 @@
 
 .image-lightbox {
   position: fixed;
+  z-index: 20;
   inset: 0;
   display: grid;
   place-items: center;
   box-sizing: border-box;
-  width: 100vw;
-  max-width: none;
-  height: 100dvh;
-  max-height: none;
   margin: 0;
-  padding: 0;
+  padding: 32px;
   overflow: hidden;
   border: 0;
   background: transparent;
   color: #fff;
 }
 
-.image-lightbox::backdrop {
-  background: rgba(9, 18, 24, 0.84);
-}
-
 .lightbox-backdrop {
-  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(9, 18, 24, 0.58);
+  cursor: zoom-out;
 }
 
 .lightbox-panel {
@@ -859,15 +859,13 @@
   z-index: 1;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  width: 100vw;
-  height: 100dvh;
-  max-width: none;
-  max-height: none;
+  width: min(1180px, calc(100vw - 96px));
+  max-height: calc(100dvh - 64px);
   overflow: hidden;
-  border: 0;
-  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
   background: #101820;
-  box-shadow: none;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
 }
 
 .lightbox-toolbar {
@@ -928,9 +926,9 @@
 .lightbox-canvas img {
   display: block;
   width: auto;
-  max-width: calc(100vw - 32px);
+  max-width: min(1148px, calc(100vw - 128px));
   height: auto;
-  max-height: calc(100dvh - 88px);
+  max-height: calc(100dvh - 152px);
   margin: 0 auto;
   object-fit: contain;
   image-rendering: auto;
@@ -1023,12 +1021,12 @@
   }
 
   .image-lightbox {
-    padding: 0;
+    padding: 14px;
   }
 
   .lightbox-panel {
-    height: 100dvh;
-    max-height: none;
+    width: calc(100vw - 28px);
+    max-height: calc(100dvh - 28px);
   }
 
   .lightbox-canvas {
@@ -1036,7 +1034,7 @@
   }
 
   .lightbox-canvas img {
-    max-width: calc(100vw - 20px);
-    max-height: calc(100dvh - 82px);
+    max-width: calc(100vw - 48px);
+    max-height: calc(100dvh - 122px);
   }
 }
