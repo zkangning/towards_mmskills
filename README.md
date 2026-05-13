@@ -10,7 +10,7 @@
 [![OSWorld](https://img.shields.io/badge/Benchmark-OSWorld-7b39e2.svg)](https://github.com/xlang-ai/OSWorld)
 [![Website](https://img.shields.io/badge/Website-MMSkills-0f766e.svg)](https://zkangning.github.io/towards_mmskills/)
 [![Skill Library](https://img.shields.io/badge/Skill%20Library-247%20Ubuntu%20Skills-4420A8.svg)](https://zkangning.github.io/towards_mmskills/skills.html)
-[![Demos](https://img.shields.io/badge/Demos-5%20Video%20Comparisons-a15c11.svg)](https://zkangning.github.io/towards_mmskills/cases.html)
+[![Demos](https://img.shields.io/badge/Demos-4%20Video%20Comparisons-a15c11.svg)](https://zkangning.github.io/towards_mmskills/cases.html)
 [![GitHub stars](https://img.shields.io/github/stars/zkangning/towards_mmskills?style=social)](https://github.com/zkangning/towards_mmskills/stargazers)
 
 </div>
@@ -42,7 +42,7 @@
 
 ## 🎬 Demos
 
-Five OSWorld demos compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. To keep GUI text readable in the GitHub README, each case uses three separate 1080p MP4 players instead of a compressed side-by-side composite. The full video layout is also available at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
+Four OSWorld demos compare the same task under no skills, text-only skill guidance, and multimodal MMSkills. To keep GUI text readable in the GitHub README, each case uses three separate 1080p MP4 players instead of a compressed side-by-side composite. The full video layout is also available at [zkangning.github.io/towards_mmskills/cases.html](https://zkangning.github.io/towards_mmskills/cases.html).
 
 <details open>
 <summary><h3>1. Calc merged headers</h3></summary>
@@ -121,26 +121,6 @@ Moves a specific text layer in GIMP. The multimodal skill package provides visua
 </table>
 
 Builds the requested clustered chart in LibreOffice Calc. The side-by-side run shows the effect of reusable spreadsheet procedure knowledge on multi-step GUI manipulation.
-
-</details>
-
-<details>
-<summary><h3>5. Impress note and background</h3></summary>
-
-<table>
-  <tr>
-    <th>No skills</th>
-    <th>Text-only</th>
-    <th>MMSkills</th>
-  </tr>
-  <tr>
-    <td><video src="https://github.com/user-attachments/assets/a15dedfa-17a5-47d2-89ee-d1307ec663b5" width="280" controls></video></td>
-    <td><video src="https://github.com/user-attachments/assets/e37badaa-66db-4a1e-a4d4-3af1dab29ce1" width="280" controls></video></td>
-    <td><video src="https://github.com/user-attachments/assets/cde03dd8-ee67-4097-aa2b-ab045882b1a5" width="280" controls></video></td>
-  </tr>
-</table>
-
-Updates an Impress slide note and visual background. MMSkills keeps the agent aligned with the presentation-specific workflow and target visual state.
 
 </details>
 
