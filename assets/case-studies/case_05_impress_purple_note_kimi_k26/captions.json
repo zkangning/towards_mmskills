@@ -1,5 +1,0 @@
-{
-  "no_skills": "No-skills: interacts with the sidebar and menus but does not complete the combined note plus purple-background requirement.",
-  "text_only": "Text-only: enters APP in the notes area, then drifts through menus and context clicks without reliably setting the purple slide background.",
-  "multimodal_v9": "Multimodal v9: switches to Notes view, writes APP, returns to the slide/background controls, selects purple, and verifies the final state."
-}

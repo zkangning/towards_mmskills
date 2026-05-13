@@ -15,7 +15,6 @@ play them reliably in common browsers.
 | [VS Code local VSIX install: v9 follows the local-file route](case_02_vscode_install_vsix_qwen3/case_notes.md) | `qwen3` | `vs_code` | 0.0 | 0.0 | 1.0 |
 | [GIMP text-layer move: v9 moves the intended layer, not the background](case_03_gimp_move_text_box_geminipro31/case_notes.md) | `geminipro31` | `gimp` | 0.0 | 0.0 | 1.0 |
 | [Calc chart creation: v9 creates and relocates the exact chart](case_04_calc_clustered_chart_geminipro31/case_notes.md) | `geminipro31` | `libreoffice_calc` | 0.0 | 0.0 | 1.0 |
-| [Impress note and background: v9 completes both required edits](case_05_impress_purple_note_kimi_k26/case_notes.md) | `kimi_k26` | `libreoffice_impress` | 0 | 0 | 1 |
 
 Regenerate with:
 
